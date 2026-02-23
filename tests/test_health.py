@@ -76,31 +76,31 @@ def _seed_minimal():
     # Options for quiz step 2
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (1, 2, 'A', 'Wrong', 0, 'Nope', 1)"
+        "VALUES (1, 2, 'A', '오답 선택지입니다', 0, '이 선택지는 올바르지 않습니다. 다른 선택지를 다시 한번 검토해 보세요.', 1)"
     )
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (2, 2, 'B', 'Correct', 1, 'Yes!', 2)"
+        "VALUES (2, 2, 'B', '정답 선택지입니다', 1, '정답입니다! 올바른 선택을 하셨습니다. 이 개념을 잘 이해하고 계십니다.', 2)"
     )
 
     # Options for eval step 3
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (3, 3, 'A', 'Wrong', 0, 'No', 1)"
+        "VALUES (3, 3, 'A', '오답 선택지입니다', 0, '이 선택지는 올바르지 않습니다. 다른 선택지를 다시 한번 검토해 보세요.', 1)"
     )
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (4, 3, 'B', 'Right', 1, 'Correct!', 2)"
+        "VALUES (4, 3, 'B', '정답 선택지입니다', 1, '정답입니다! 올바른 선택을 하셨습니다. 이 개념을 잘 이해하고 계십니다.', 2)"
     )
 
     # Options for eval step 4
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (5, 4, 'A', 'Right', 1, 'Yes', 1)"
+        "VALUES (5, 4, 'A', '정답 선택지입니다', 1, '정답입니다! 올바른 선택을 하셨습니다. 이 개념을 잘 이해하고 계십니다.', 1)"
     )
     conn.execute(
         "INSERT INTO options (id, step_id, label, content, is_correct, feedback_md, order_idx) "
-        "VALUES (6, 4, 'B', 'Wrong', 0, 'No', 2)"
+        "VALUES (6, 4, 'B', '오답 선택지입니다', 0, '이 선택지는 올바르지 않습니다. 다른 선택지를 다시 한번 검토해 보세요.', 2)"
     )
 
     conn.commit()
@@ -220,7 +220,7 @@ def test_answer_quiz_correct():
     assert res.status_code == 200
     data = res.json()
     assert data["is_correct"] is True
-    assert "Yes!" in data["selected_feedback_md"]
+    assert "정답입니다" in data["selected_feedback_md"]
     assert data["correct_option"]["id"] == 2
 
 
@@ -230,7 +230,7 @@ def test_answer_quiz_incorrect():
     assert res.status_code == 200
     data = res.json()
     assert data["is_correct"] is False
-    assert "Nope" in data["selected_feedback_md"]
+    assert "올바르지 않습니다" in data["selected_feedback_md"]
     assert data["correct_option"]["id"] == 2  # Still reveals correct option
 
 

@@ -1,5 +1,51 @@
 # 90 — Decision Log
 
+## 2026-02-23 | Stage 6 시드 재구성 — GEO 액션 플랜 기반 8모듈 순차 과업 가이드
+
+### 배경
+
+기존 Stage 6은 codex가 `docs/71` 전략에 맞춰 구성한 7모듈/28스텝/84옵션이었으나, `docs/73-geo-action-plan.md` (1,390줄 GEO 전략 문서) 기반으로 재구성 요청. 핵심: "팀원들이 순차 과업 수행할 수 있는 완전 친절한 가이드".
+
+### 설계 결정
+
+| # | 결정 | 이유 |
+|---|------|------|
+| D1 | 기능별 7모듈 → Phase-순차 8모듈 | 30/60/90일 순서 그대로 따라야 "순차 과업" 실현 |
+| D2 | Reading = SOP 구조 (Why→What→How→Template→DoD) | 학습이 아닌 실행 가이드 |
+| D3 | 모듈당 4스텝 일관 유지 | 기존 패턴 호환 + 테스트 단순화 |
+| D4 | docs/71, docs/75 폐기 | 새 전략(docs/73) 기반으로 전면 교체 |
+
+### 수행 작업
+
+1. **seed.py Stage 6 전면 교체** (4,411줄 → 5,215줄, +804줄)
+   - 8모듈: 킥오프 → 기술인프라 → Answer-first → Proof-first → 측정 → 허브스포크 → 권위자동화 → 종합평가
+   - 32스텝 (8R + 9Q + 15P), 96옵션
+   - docs/73의 §0~§9 콘텐츠 직접 반영 (템플릿, 티켓 테이블, KPI SOP 등)
+2. **tests/test_phase2.py 업데이트** (5개 어설션 변경: 7→8모듈, ≥170→≥175스텝, ≥500→≥540옵션)
+3. **tests/test_health.py 수정** (영어 placeholder → 한국어 40자+ 피드백)
+4. **docs/71, docs/75 폐기 공지** 추가
+5. **docs/77 헤더 갱신** (7모듈→8모듈 Phase-순차 구조)
+
+### 검증
+
+- seed 실행 성공: 6 stages / 45 modules / 178 steps / 551 options
+- Stage 6: 8 modules / 32 steps / 96 options (8R + 9Q + 15P)
+- M6-8 capstone quiz = 2개 (evaluate 엔드포인트 호환)
+- **57개 pytest 전부 통과**
+
+### 변경 파일
+
+| 파일 | 변경 | 규모 |
+|------|------|------|
+| `apps/api/seed.py` | Stage 6 전면 교체 | +804줄 (4,411→5,215줄) |
+| `tests/test_phase2.py` | 5개 어설션 업데이트 | ~10줄 |
+| `tests/test_health.py` | 영어→한국어 피드백 | ~12줄 |
+| `docs/71-stage6-task-module-strategy.md` | 폐기 공지 추가 | +3줄 |
+| `docs/75-stage6-seed-content-preparation.md` | 폐기 공지 추가 | +3줄 |
+| `docs/77-stage6-curriculum-design.md` | 8모듈 구조 헤더 갱신 | ~30줄 |
+
+---
+
 ## 2026-02-23 | Railway 코드 개선사항 문서화
 
 ### 배경
