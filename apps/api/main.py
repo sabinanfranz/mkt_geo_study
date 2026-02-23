@@ -5,12 +5,16 @@ Serves the REST API and static frontend files.
 
 from __future__ import annotations
 
+import base64
+import hashlib
+import hmac
 import json
 import os
+import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -21,6 +25,10 @@ from apps.api.models import (
     AnswerRequest,
     AnswerResponse,
     EvaluateResponse,
+    LoginRequest,
+    LoginResponse,
+    LogoutResponse,
+    MeResponse,
     ModuleResponse,
     ModuleStats,
     OptionResponse,
@@ -78,11 +86,78 @@ WEB_DIR = Path(__file__).resolve().parent.parent / "web"
 # Helpers
 # ---------------------------------------------------------------------------
 
-USER_ID = "default"
+ALLOWED_USER_IDS = {f"b2b_mkt_{idx}" for idx in range(1, 11)}
+SESSION_SECRET = os.getenv("SESSION_SECRET", "dev-session-secret-change-me")
+SESSION_TTL_SECONDS = int(os.getenv("SESSION_TTL_SECONDS", "604800"))
 
 
-def _is_stage_unlocked(stage_row, conn) -> bool:
-    """Check whether a stage is unlocked for the default user."""
+def _b64url_encode(raw: bytes) -> str:
+    return base64.urlsafe_b64encode(raw).decode("ascii").rstrip("=")
+
+
+def _b64url_decode(value: str) -> bytes:
+    padding = "=" * (-len(value) % 4)
+    return base64.urlsafe_b64decode(value + padding)
+
+
+def _sign(payload_b64: str) -> str:
+    signature = hmac.new(
+        SESSION_SECRET.encode("utf-8"),
+        payload_b64.encode("utf-8"),
+        hashlib.sha256,
+    ).digest()
+    return _b64url_encode(signature)
+
+
+def _create_access_token(user_id: str) -> str:
+    payload = {
+        "u": user_id,
+        "exp": int(time.time()) + SESSION_TTL_SECONDS,
+    }
+    payload_json = json.dumps(payload, separators=(",", ":"), sort_keys=True).encode(
+        "utf-8"
+    )
+    payload_b64 = _b64url_encode(payload_json)
+    return f"{payload_b64}.{_sign(payload_b64)}"
+
+
+def _decode_access_token(token: str) -> str:
+    try:
+        payload_b64, signature = token.split(".", 1)
+    except ValueError as exc:
+        raise HTTPException(status_code=401, detail="Invalid token") from exc
+
+    expected_signature = _sign(payload_b64)
+    if not hmac.compare_digest(signature, expected_signature):
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    try:
+        payload = json.loads(_b64url_decode(payload_b64).decode("utf-8"))
+    except (ValueError, json.JSONDecodeError) as exc:
+        raise HTTPException(status_code=401, detail="Invalid token payload") from exc
+
+    exp = payload.get("exp")
+    user_id = payload.get("u")
+    if not isinstance(exp, int) or exp < int(time.time()):
+        raise HTTPException(status_code=401, detail="Token expired")
+    if user_id not in ALLOWED_USER_IDS:
+        raise HTTPException(status_code=401, detail="Unknown user")
+    return user_id
+
+
+def get_current_user_id(
+    authorization: str | None = Header(default=None),
+) -> str:
+    if not authorization or not authorization.lower().startswith("bearer "):
+        raise HTTPException(status_code=401, detail="Authentication required")
+    token = authorization.split(" ", 1)[1].strip()
+    if not token:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    return _decode_access_token(token)
+
+
+def _is_stage_unlocked(stage_row, conn, user_id: str) -> bool:
+    """Check whether a stage is unlocked for the current user."""
     if stage_row["id"] == 1:
         return True
     if not stage_row["unlock_condition"]:
@@ -116,14 +191,14 @@ def _is_stage_unlocked(stage_row, conn) -> bool:
     correct = conn.execute(
         f"SELECT COUNT(*) AS cnt FROM user_progress "
         f"WHERE user_id = ? AND step_id IN ({placeholders}) AND is_correct = 1",
-        [USER_ID, *quiz_step_ids],
+        [user_id, *quiz_step_ids],
     ).fetchone()["cnt"]
 
     score_pct = (correct / len(quiz_step_ids)) * 100
     return score_pct >= min_score
 
 
-def _module_completed_steps(module_id: int, conn) -> tuple[int, int]:
+def _module_completed_steps(module_id: int, conn, user_id: str) -> tuple[int, int]:
     """Return (completed_steps, total_steps) for a module."""
     total = conn.execute(
         "SELECT COUNT(*) AS cnt FROM steps WHERE module_id = ?",
@@ -134,14 +209,14 @@ def _module_completed_steps(module_id: int, conn) -> tuple[int, int]:
         "SELECT COUNT(*) AS cnt FROM user_progress up "
         "JOIN steps s ON up.step_id = s.id "
         "WHERE s.module_id = ? AND up.user_id = ?",
-        (module_id, USER_ID),
+        (module_id, user_id),
     ).fetchone()["cnt"]
 
     return completed, total
 
 
-def _is_module_completed(module_id: int, conn) -> bool:
-    completed, total = _module_completed_steps(module_id, conn)
+def _is_module_completed(module_id: int, conn, user_id: str) -> bool:
+    completed, total = _module_completed_steps(module_id, conn, user_id)
     return total > 0 and completed >= total
 
 
@@ -156,8 +231,31 @@ def health_check():
     return {"status": "ok"}
 
 
+@app.post("/api/auth/login", response_model=LoginResponse)
+def login(body: LoginRequest):
+    """Authenticate one of the fixed team accounts."""
+    username = body.username.strip()
+    password = body.password.strip()
+    if username not in ALLOWED_USER_IDS or password != username:
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    token = _create_access_token(username)
+    return LoginResponse(access_token=token, user_id=username)
+
+
+@app.get("/api/auth/me", response_model=MeResponse)
+def me(user_id: str = Depends(get_current_user_id)):
+    return MeResponse(user_id=user_id)
+
+
+@app.post("/api/auth/logout", response_model=LogoutResponse)
+def logout(_: str = Depends(get_current_user_id)):
+    # Stateless token model; client removes token.
+    return LogoutResponse(ok=True)
+
+
 @app.get("/api/stages", response_model=list[StageResponse])
-def list_stages():
+def list_stages(user_id: str = Depends(get_current_user_id)):
     """Return all stages with unlock status and progress."""
     conn = get_db()
     try:
@@ -172,7 +270,7 @@ def list_stages():
             ).fetchall()
             total_modules = len(modules)
             completed_modules = sum(
-                1 for m in modules if _is_module_completed(m["id"], conn)
+                1 for m in modules if _is_module_completed(m["id"], conn, user_id)
             )
             result.append(
                 StageResponse(
@@ -180,7 +278,7 @@ def list_stages():
                     title=s["title"],
                     description=s["description"],
                     order_idx=s["order_idx"],
-                    is_unlocked=_is_stage_unlocked(s, conn),
+                    is_unlocked=_is_stage_unlocked(s, conn, user_id),
                     completed_modules=completed_modules,
                     total_modules=total_modules,
                 )
@@ -191,7 +289,7 @@ def list_stages():
 
 
 @app.get("/api/stages/{stage_id}/modules", response_model=list[ModuleResponse])
-def list_modules(stage_id: int):
+def list_modules(stage_id: int, user_id: str = Depends(get_current_user_id)):
     """Return modules within a stage, with progress info."""
     conn = get_db()
     try:
@@ -208,7 +306,7 @@ def list_modules(stage_id: int):
 
         result: list[ModuleResponse] = []
         for m in modules:
-            completed, total = _module_completed_steps(m["id"], conn)
+            completed, total = _module_completed_steps(m["id"], conn, user_id)
             result.append(
                 ModuleResponse(
                     id=m["id"],
@@ -226,7 +324,7 @@ def list_modules(stage_id: int):
 
 
 @app.get("/api/modules/{module_id}", response_model=ModuleResponse)
-def get_module(module_id: int):
+def get_module(module_id: int, user_id: str = Depends(get_current_user_id)):
     """Return a single module with progress info."""
     conn = get_db()
     try:
@@ -236,7 +334,7 @@ def get_module(module_id: int):
         if not m:
             raise HTTPException(status_code=404, detail="Module not found")
 
-        completed, total = _module_completed_steps(m["id"], conn)
+        completed, total = _module_completed_steps(m["id"], conn, user_id)
         return ModuleResponse(
             id=m["id"],
             stage_id=m["stage_id"],
@@ -253,7 +351,7 @@ def get_module(module_id: int):
 @app.get(
     "/api/modules/{module_id}/steps", response_model=list[StepResponse]
 )
-def list_steps(module_id: int):
+def list_steps(module_id: int, user_id: str = Depends(get_current_user_id)):
     """Return steps within a module, with options (hiding is_correct/feedback)."""
     conn = get_db()
     try:
@@ -273,7 +371,7 @@ def list_steps(module_id: int):
             # Check completion
             progress = conn.execute(
                 "SELECT id FROM user_progress WHERE user_id = ? AND step_id = ?",
-                (USER_ID, s["id"]),
+                (user_id, s["id"]),
             ).fetchone()
             is_completed = progress is not None
 
@@ -311,7 +409,11 @@ def list_steps(module_id: int):
 
 
 @app.post("/api/steps/{step_id}/answer")
-def submit_answer(step_id: int, body: AnswerRequest | None = None):
+def submit_answer(
+    step_id: int,
+    body: AnswerRequest | None = None,
+    user_id: str = Depends(get_current_user_id),
+):
     """Submit an answer for a quiz/practice step, or mark a reading step as complete."""
     conn = get_db()
     try:
@@ -333,7 +435,7 @@ def submit_answer(step_id: int, body: AnswerRequest | None = None):
                 "is_correct = NULL, "
                 "time_spent_seconds = excluded.time_spent_seconds, "
                 "completed_at = CURRENT_TIMESTAMP",
-                (USER_ID, step_id, time_spent),
+                (user_id, step_id, time_spent),
             )
             conn.commit()
             return JSONResponse(
@@ -371,7 +473,7 @@ def submit_answer(step_id: int, body: AnswerRequest | None = None):
             "is_correct = excluded.is_correct, "
             "time_spent_seconds = excluded.time_spent_seconds, "
             "completed_at = CURRENT_TIMESTAMP",
-            (USER_ID, step_id, body.selected_option_id, int(is_correct), time_spent),
+            (user_id, step_id, body.selected_option_id, int(is_correct), time_spent),
         )
         conn.commit()
 
@@ -400,7 +502,7 @@ def submit_answer(step_id: int, body: AnswerRequest | None = None):
 
 
 @app.get("/api/progress", response_model=ProgressResponse)
-def get_progress():
+def get_progress(user_id: str = Depends(get_current_user_id)):
     """Return overall progress summary across all stages."""
     conn = get_db()
     try:
@@ -415,7 +517,7 @@ def get_progress():
             ).fetchall()
             total_modules = len(modules)
             completed_modules = sum(
-                1 for m in modules if _is_module_completed(m["id"], conn)
+                1 for m in modules if _is_module_completed(m["id"], conn, user_id)
             )
 
             # Calculate score_pct from the evaluation module (last module)
@@ -435,13 +537,13 @@ def get_progress():
                     answered = conn.execute(
                         f"SELECT COUNT(*) AS cnt FROM user_progress "
                         f"WHERE user_id = ? AND step_id IN ({placeholders})",
-                        [USER_ID, *quiz_ids],
+                        [user_id, *quiz_ids],
                     ).fetchone()["cnt"]
                     if answered > 0:
                         correct = conn.execute(
                             f"SELECT COUNT(*) AS cnt FROM user_progress "
                             f"WHERE user_id = ? AND step_id IN ({placeholders}) AND is_correct = 1",
-                            [USER_ID, *quiz_ids],
+                            [user_id, *quiz_ids],
                         ).fetchone()["cnt"]
                         score_pct = round((correct / len(quiz_ids)) * 100, 1)
 
@@ -449,7 +551,7 @@ def get_progress():
                 StageProgress(
                     stage_id=s["id"],
                     title=s["title"],
-                    is_unlocked=_is_stage_unlocked(s, conn),
+                    is_unlocked=_is_stage_unlocked(s, conn, user_id),
                     completed_modules=completed_modules,
                     total_modules=total_modules,
                     score_pct=score_pct,
@@ -462,7 +564,7 @@ def get_progress():
 
 
 @app.post("/api/stages/{stage_id}/evaluate", response_model=EvaluateResponse)
-def evaluate_stage(stage_id: int):
+def evaluate_stage(stage_id: int, user_id: str = Depends(get_current_user_id)):
     """Calculate evaluation score for a stage's final module quiz steps."""
     conn = get_db()
     try:
@@ -500,7 +602,7 @@ def evaluate_stage(stage_id: int):
         correct_answers = conn.execute(
             f"SELECT COUNT(*) AS cnt FROM user_progress "
             f"WHERE user_id = ? AND step_id IN ({placeholders}) AND is_correct = 1",
-            [USER_ID, *quiz_ids],
+            [user_id, *quiz_ids],
         ).fetchone()["cnt"]
 
         score_pct = round((correct_answers / total_questions) * 100, 1)
@@ -533,7 +635,7 @@ def evaluate_stage(stage_id: int):
 
 
 @app.post("/api/bookmarks/{step_id}")
-def toggle_bookmark(step_id: int):
+def toggle_bookmark(step_id: int, user_id: str = Depends(get_current_user_id)):
     """Toggle bookmark on a step. Returns current bookmark state."""
     conn = get_db()
     try:
@@ -543,7 +645,7 @@ def toggle_bookmark(step_id: int):
 
         existing = conn.execute(
             "SELECT id FROM user_bookmarks WHERE user_id = ? AND step_id = ?",
-            (USER_ID, step_id),
+            (user_id, step_id),
         ).fetchone()
 
         if existing:
@@ -553,7 +655,7 @@ def toggle_bookmark(step_id: int):
         else:
             conn.execute(
                 "INSERT INTO user_bookmarks (user_id, step_id) VALUES (?, ?)",
-                (USER_ID, step_id),
+                (user_id, step_id),
             )
             conn.commit()
             return {"bookmarked": True, "step_id": step_id}
@@ -562,7 +664,7 @@ def toggle_bookmark(step_id: int):
 
 
 @app.get("/api/bookmarks")
-def list_bookmarks():
+def list_bookmarks(user_id: str = Depends(get_current_user_id)):
     """Return all bookmarked steps for the current user."""
     conn = get_db()
     try:
@@ -574,7 +676,7 @@ def list_bookmarks():
             "JOIN modules m ON s.module_id = m.id "
             "WHERE b.user_id = ? "
             "ORDER BY b.created_at DESC",
-            (USER_ID,),
+            (user_id,),
         ).fetchall()
         return [
             {
@@ -596,7 +698,7 @@ def list_bookmarks():
 
 
 @app.get("/api/admin/stats", response_model=AdminStatsResponse)
-def admin_stats():
+def admin_stats(user_id: str = Depends(get_current_user_id)):
     """Return learning statistics for the admin dashboard."""
     conn = get_db()
     try:
@@ -608,7 +710,7 @@ def admin_stats():
         # 2. Completed step count
         total_completed = conn.execute(
             "SELECT COUNT(*) AS cnt FROM user_progress WHERE user_id = ?",
-            (USER_ID,),
+            (user_id,),
         ).fetchone()["cnt"]
 
         # 3. Overall accuracy (quiz/practice only, where is_correct IS NOT NULL)
@@ -616,7 +718,7 @@ def admin_stats():
             "SELECT COUNT(*) AS total, "
             "SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) AS correct "
             "FROM user_progress WHERE user_id = ? AND is_correct IS NOT NULL",
-            (USER_ID,),
+            (user_id,),
         ).fetchone()
         overall_accuracy = None
         if quiz_progress["total"] > 0:
@@ -628,7 +730,7 @@ def admin_stats():
         total_time = conn.execute(
             "SELECT COALESCE(SUM(time_spent_seconds), 0) AS total "
             "FROM user_progress WHERE user_id = ?",
-            (USER_ID,),
+            (user_id,),
         ).fetchone()["total"]
 
         # 5. Per-module statistics
@@ -650,7 +752,7 @@ def admin_stats():
                 "SELECT COUNT(*) AS cnt FROM user_progress up "
                 "JOIN steps s ON up.step_id = s.id "
                 "WHERE s.module_id = ? AND up.user_id = ?",
-                (mod["id"], USER_ID),
+                (mod["id"], user_id),
             ).fetchone()["cnt"]
 
             # Quiz/practice accuracy in module
@@ -661,7 +763,7 @@ def admin_stats():
                 "FROM user_progress up "
                 "JOIN steps s ON up.step_id = s.id "
                 "WHERE s.module_id = ? AND up.user_id = ? AND up.is_correct IS NOT NULL",
-                (mod["id"], USER_ID),
+                (mod["id"], user_id),
             ).fetchone()
 
             accuracy = None
@@ -676,7 +778,7 @@ def admin_stats():
                 "FROM user_progress up "
                 "JOIN steps s ON up.step_id = s.id "
                 "WHERE s.module_id = ? AND up.user_id = ? AND up.time_spent_seconds > 0",
-                (mod["id"], USER_ID),
+                (mod["id"], user_id),
             ).fetchone()
             avg_time = (
                 round(avg_time_row["avg_time"], 1)

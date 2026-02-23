@@ -1,5 +1,41 @@
 # 90 — Decision Log
 
+## 2026-02-23 | Stage 6 시각 컴포넌트 개선 — ASCII Art → HTML 컴포넌트 + 다크모드 수정
+
+### 배경
+
+Stage 6 시드 콘텐츠에서 플로우차트가 `&#8595;` 텍스트 화살표, Hub-Spoke 도식이 `|`/`+--` ASCII 아트, hierarchy-box 안 마크다운 테이블이 raw 텍스트로 렌더링되는 문제 발견. 또한 `.extension-content` 영역에 다크모드 색상 오버라이드 누락으로 글자가 안 보이는 케이스 존재.
+
+### 수행 작업
+
+**seed.py (9개 블록 교체)**:
+1. M6-6 Hub-Spoke ASCII 트리 → `tree-diagram` 컴포넌트
+2. 5개 flow-chart의 `&#8595;<br>` → `flow-step`/`flow-arrow` 컴포넌트 (M6-1, M6-2, M6-5, M6-7, M6-8)
+3. 3개 마크다운 테이블 → HTML `<table class="comparison-table">` (M6-1 RACI, M6-5 KPI, M6-7 스키마)
+
+**style.css (다크모드 수정 5종)**:
+1. `.extension-content strong` 다크모드 추가 (`color: #e0e0e0`)
+2. `.extension-content h3/h4` 다크모드 추가 (`color: #f0f0f0`)
+3. `.extension-content pre/code` 라이트+다크 스타일 추가
+4. `.extension-content blockquote` 다크모드 추가
+5. 기타 5개 선택자 다크모드 대비 보정 (`.module-status.in-progress`, `.option-label`, `.error`, `.empty`, `.bookmark-module`)
+
+### 검증
+
+- seed 실행 성공: DB 무결성 변동 없음 (6/45/178 stages/modules/steps)
+- `&#8595;` 잔여: 0건, ASCII 트리 잔여: 0건
+- `flow-arrow` 사용 스텝: 5개, `tree-diagram` 사용: 1개, `comparison-table` 사용: 3개
+- **61개 pytest 전부 통과**
+
+### 변경 파일
+
+| 파일 | 변경 | 규모 |
+|------|------|------|
+| `apps/api/seed.py` | 9개 시각 블록 교체 | ~100줄 변경 |
+| `apps/web/css/style.css` | 다크모드 오버라이드 5종 추가 | +80줄 |
+
+---
+
 ## 2026-02-23 | Stage 6 시드 재구성 — GEO 액션 플랜 기반 8모듈 순차 과업 가이드
 
 ### 배경

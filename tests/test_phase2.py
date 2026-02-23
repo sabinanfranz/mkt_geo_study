@@ -27,10 +27,21 @@ client = TestClient(app)
 # ---------------------------------------------------------------------------
 
 
+def _set_client_auth(username: str = "b2b_mkt_1") -> None:
+    res = client.post(
+        "/api/auth/login",
+        json={"username": username, "password": username},
+    )
+    assert res.status_code == 200
+    token = res.json()["access_token"]
+    client.headers.update({"Authorization": f"Bearer {token}"})
+
+
 def _seed_phase2():
     """Initialize DB and load Phase 2 seed data."""
     init_db()
     seed()
+    _set_client_auth()
 
 
 # ---------------------------------------------------------------------------

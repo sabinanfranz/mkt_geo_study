@@ -15,6 +15,20 @@ client = TestClient(app)
 # ---------------------------------------------------------------------------
 
 
+def _login_test_user(test_client: TestClient, username: str = "b2b_mkt_1") -> str:
+    res = test_client.post(
+        "/api/auth/login",
+        json={"username": username, "password": username},
+    )
+    assert res.status_code == 200
+    return res.json()["access_token"]
+
+
+def _set_client_auth(username: str = "b2b_mkt_1") -> None:
+    token = _login_test_user(client, username=username)
+    client.headers.update({"Authorization": f"Bearer {token}"})
+
+
 def _seed_minimal():
     """Insert minimal test data into the database."""
     conn = get_db()
@@ -105,6 +119,7 @@ def _seed_minimal():
 
     conn.commit()
     conn.close()
+    _set_client_auth()
 
 
 # ---------------------------------------------------------------------------
@@ -116,6 +131,53 @@ def test_health_returns_ok():
     res = client.get("/api/health")
     assert res.status_code == 200
     assert res.json() == {"status": "ok"}
+
+
+def test_login_success():
+    res = client.post(
+        "/api/auth/login",
+        json={"username": "b2b_mkt_1", "password": "b2b_mkt_1"},
+    )
+    assert res.status_code == 200
+    data = res.json()
+    assert data["token_type"] == "bearer"
+    assert data["user_id"] == "b2b_mkt_1"
+    assert isinstance(data["access_token"], str)
+    assert len(data["access_token"]) > 20
+
+
+def test_login_fail_invalid_credentials():
+    res = client.post(
+        "/api/auth/login",
+        json={"username": "b2b_mkt_11", "password": "b2b_mkt_11"},
+    )
+    assert res.status_code == 401
+
+
+def test_auth_required_for_protected_api():
+    _seed_minimal()
+    anon = TestClient(app)
+    res = anon.get("/api/stages")
+    assert res.status_code == 401
+
+
+def test_user_progress_isolated_by_account():
+    _seed_minimal()
+    c1 = TestClient(app)
+    c2 = TestClient(app)
+    token_1 = _login_test_user(c1, "b2b_mkt_1")
+    token_2 = _login_test_user(c2, "b2b_mkt_2")
+    h1 = {"Authorization": f"Bearer {token_1}"}
+    h2 = {"Authorization": f"Bearer {token_2}"}
+
+    # User 1 completes reading step.
+    r1 = c1.post("/api/steps/1/answer", headers=h1)
+    assert r1.status_code == 200
+
+    steps_u1 = c1.get("/api/modules/1/steps", headers=h1).json()
+    steps_u2 = c2.get("/api/modules/1/steps", headers=h2).json()
+    assert steps_u1[0]["is_completed"] is True
+    assert steps_u2[0]["is_completed"] is False
 
 
 # ---------------------------------------------------------------------------

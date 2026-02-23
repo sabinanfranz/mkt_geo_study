@@ -3981,26 +3981,27 @@ def seed(run_migrations: bool = True) -> None:
         "</div>\n\n"
 
         "### 30/60/90일 마일스톤\n\n"
-        "<div class='flow-chart'>\n"
-        "<strong>Phase 1 (30일)</strong>: 상위 10 랜딩 Answer-first/Proof-first + 기술 인프라 + 측정 체계 "
-        "-- <em>28 tickets (P0)</em><br>\n"
-        "&#8595;<br>\n"
-        "<strong>Phase 2 (60일)</strong>: 허브 7개 구축 + 스포크 60개 1차 발행 + 자산 표준화 "
-        "-- <em>20 tickets (P1)</em><br>\n"
-        "&#8595;<br>\n"
-        "<strong>Phase 3 (90일)</strong>: 구조화데이터 정착 + 내부링크 재설계 + 외부 권위 확보 "
-        "-- <em>11 tickets (P2)</em>\n"
-        "</div>\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">30/60/90일 마일스톤</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">Phase 1 (30일)</div><div class="step-desc">상위 10 랜딩 Answer-first/Proof-first + 기술 인프라 + 측정 체계 — 28 tickets (P0)</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">Phase 2 (60일)</div><div class="step-desc">허브 7개 구축 + 스포크 60개 1차 발행 + 자산 표준화 — 20 tickets (P1)</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">Phase 3 (90일)</div><div class="step-desc">구조화데이터 정착 + 내부링크 재설계 + 외부 권위 확보 — 11 tickets (P2)</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
 
         "### RACI 표 (권장 역할)\n\n"
-        "<div class='hierarchy-box'>\n"
-        "| 역할 | 담당자 | 책임 범위 |\n"
-        "|------|--------|----------|\n"
-        "| Owner (A) | B2B 마케팅 리드 | 최종 의사결정, 승인 SLA |\n"
-        "| Responsible (R) | 콘텐츠 담당, 웹 운영 담당 | 페이지 개선, 배포, 스키마 |\n"
-        "| Consulted (C) | 데이터 분석, 세일즈 운영 | KPI 해석, 사례 데이터 |\n"
-        "| Informed (I) | 경영진, 영업 리더 | 주간/월간 리포트 수신 |\n"
-        "</div>\n\n"
+        '<div class="hierarchy-box">\n'
+        '<table class="comparison-table"><thead><tr><th>역할</th><th>담당자</th><th>책임 범위</th></tr></thead>\n'
+        '<tbody>\n'
+        '<tr><td>Owner (A)</td><td>B2B 마케팅 리드</td><td>최종 의사결정, 승인 SLA</td></tr>\n'
+        '<tr><td>Responsible (R)</td><td>콘텐츠 담당, 웹 운영 담당</td><td>페이지 개선, 배포, 스키마</td></tr>\n'
+        '<tr><td>Consulted (C)</td><td>데이터 분석, 세일즈 운영</td><td>KPI 해석, 사례 데이터</td></tr>\n'
+        '<tr><td>Informed (I)</td><td>경영진, 영업 리더</td><td>주간/월간 리포트 수신</td></tr>\n'
+        '</tbody></table>\n'
+        '</div>\n\n'
 
         "### 주간 리듬 (권장)\n\n"
         "- **월요일**: KPI/이슈 리뷰 30분\n"
@@ -4124,17 +4125,20 @@ def seed(run_migrations: bool = True) -> None:
         "AI 검색 결과에 반영되지 않습니다.\n\n"
 
         "### 5대 과업 실행 순서\n\n"
-        "<div class='flow-chart'>\n"
-        "<strong>P0-1</strong> robots.txt 작성<br>\n"
-        "&#8595;<br>\n"
-        "<strong>P0-2</strong> sitemap.xml 생성 + 제출<br>\n"
-        "&#8595;<br>\n"
-        "<strong>P0-3</strong> 구조화데이터 감사<br>\n"
-        "&#8595;<br>\n"
-        "<strong>P0-4</strong> Organization/BreadcrumbList JSON-LD 템플릿<br>\n"
-        "&#8595;<br>\n"
-        "<strong>P0-5</strong> ChatGPT utm_source 추적 설정\n"
-        "</div>\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">기술 인프라 5대 과업</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">P0-1</div><div class="step-desc">robots.txt 작성</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">P0-2</div><div class="step-desc">sitemap.xml 생성 + 제출</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">P0-3</div><div class="step-desc">구조화데이터 감사</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">4</div><div class="step-content"><div class="step-title">P0-4</div><div class="step-desc">Organization/BreadcrumbList JSON-LD 템플릿</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">5</div><div class="step-content"><div class="step-title">P0-5</div><div class="step-desc">ChatGPT utm_source 추적 설정</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
 
         "### P0-1: robots.txt 작성\n\n"
         "<div class='callout warning'>\n"
@@ -4634,13 +4638,14 @@ def seed(run_migrations: bool = True) -> None:
         "측정 없는 콘텐츠 개선은 방향을 잃기 쉽습니다.\n\n"
 
         "### KPI 3종 정의\n\n"
-        "<div class='hierarchy-box'>\n"
-        "| KPI | 정의 | 측정 빈도 | 도구 | 목표 |\n"
-        "|-----|------|---------|------|------|\n"
-        "| KPI-A | ChatGPT Search 인용 빈도 | 주 2회 (화/금 10:00) | 수동 SERP + utm GA4 | 30일 +20% -> 90일 +150~200% |\n"
-        "| KPI-B | Google AI Overviews 노출 | 주 1회 (수 14:00) | Google Search 수동 | 30일 기준선 -> 90일 +80% |\n"
-        "| KPI-C | 하위 질의 커버리지 | 주 1회 (목) | 수동 평가 + AI Validator | 30일 35% -> 90일 85%+ |\n"
-        "</div>\n\n"
+        '<div class="hierarchy-box">\n'
+        '<table class="comparison-table"><thead><tr><th>KPI</th><th>정의</th><th>측정 빈도</th><th>도구</th><th>목표</th></tr></thead>\n'
+        '<tbody>\n'
+        '<tr><td>KPI-A</td><td>ChatGPT Search 인용 빈도</td><td>주 2회 (화/금 10:00)</td><td>수동 SERP + utm GA4</td><td>30일 +20% → 90일 +150~200%</td></tr>\n'
+        '<tr><td>KPI-B</td><td>Google AI Overviews 노출</td><td>주 1회 (수 14:00)</td><td>Google Search 수동</td><td>30일 기준선 → 90일 +80%</td></tr>\n'
+        '<tr><td>KPI-C</td><td>하위 질의 커버리지</td><td>주 1회 (목)</td><td>수동 평가 + AI Validator</td><td>30일 35% → 90일 85%+</td></tr>\n'
+        '</tbody></table>\n'
+        '</div>\n\n'
 
         "### KPI-A 측정 SOP\n\n"
         "<div class='code-example'>\n"
@@ -4696,17 +4701,20 @@ def seed(run_migrations: bool = True) -> None:
         "</div>\n\n"
 
         "### 4주 실험 루프\n\n"
-        "<div class='flow-chart'>\n"
-        "<strong>1주차</strong>: Answer-first 길이 테스트 (2문장 vs 4문장 vs 6문장) -- 5개 A/B 페이지 쌍<br>\n"
-        "&#8595;<br>\n"
-        "<strong>2주차</strong>: Proof 블록 위치 테스트 (Answer 직하 vs 본문 중간)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>3주차</strong>: 스포크 길이 테스트 (600자 vs 1,000자 vs 1,200자)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>4주차</strong>: 내부 링크 수 테스트 (1개 vs 3개 vs 5개)<br>\n"
-        "&#8595;<br>\n"
-        "주간 리뷰 -> 가설 검증 결과 리포트 -> 승자 테크닉 전사 적용\n"
-        "</div>\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">4주 실험 루프</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">W1</div><div class="step-content"><div class="step-title">1주차: Answer-first 길이</div><div class="step-desc">2문장 vs 4문장 vs 6문장 — 5개 A/B 페이지 쌍</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">W2</div><div class="step-content"><div class="step-title">2주차: Proof 블록 위치</div><div class="step-desc">Answer 직하 vs 본문 중간</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">W3</div><div class="step-content"><div class="step-title">3주차: 스포크 길이</div><div class="step-desc">600자 vs 1,000자 vs 1,200자</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">W4</div><div class="step-content"><div class="step-title">4주차: 내부 링크 수</div><div class="step-desc">1개 vs 3개 vs 5개</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">✓</div><div class="step-content"><div class="step-title">주간 리뷰</div><div class="step-desc">가설 검증 결과 리포트 → 승자 테크닉 전사 적용</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
 
         "### 6개 실험 가설 (H1~H6)\n\n"
         "- **H1**: Answer-first 적용 시 인용 빈도 +20% (30일, 5페이지 쌍)\n"
@@ -4801,17 +4809,22 @@ def seed(run_migrations: bool = True) -> None:
         "허브-스포크 구조를 통해 하위 질의 커버리지를 확대하면 인용 기회가 크게 늘어납니다.\n\n"
 
         "### 7개 허브 목록\n\n"
-        "<div class='diagram-box'>\n"
-        "홈 (Index) -- 모든 허브로의 네비게이션<br>\n"
-        "|<br>\n"
-        "+-- Hub 1: 기업 생성형 AI 교육 도입 가이드 (스포크 10개)<br>\n"
-        "+-- Hub 2: 스킬 진단/스킬 기반 HRD (스포크 8개)<br>\n"
-        "+-- Hub 3: 교육 ROI/러닝 애널리틱스 (스포크 10개)<br>\n"
-        "+-- Hub 4: 기업교육 플랫폼(LMS/LXP) 선택 (스포크 9개)<br>\n"
-        "+-- Hub 5: 직무별 AI 활용 시나리오 (스포크 8개)<br>\n"
-        "+-- Hub 6: 폐쇄망/보안 환경 AI 교육 (스포크 7개)<br>\n"
-        "+-- Hub 7: 벤치마크/사례 라이브러리 (스포크 8개)\n"
-        "</div>\n\n"
+        '<div class="tree-diagram">\n'
+        '<div class="tree-title">허브-스포크 아키텍처 (7 Hubs)</div>\n'
+        '<ul class="tree">\n'
+        '<li class="tree-item"><span class="tree-node root">홈 (Index)</span>\n'
+        '<ul class="tree">\n'
+        '<li class="tree-item"><span class="tree-node">Hub 1: 기업 생성형 AI 교육 도입 가이드 (스포크 10개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 2: 스킬 진단/스킬 기반 HRD (스포크 8개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 3: 교육 ROI/러닝 애널리틱스 (스포크 10개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 4: 기업교육 플랫폼(LMS/LXP) 선택 (스포크 9개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 5: 직무별 AI 활용 시나리오 (스포크 8개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 6: 폐쇄망/보안 환경 AI 교육 (스포크 7개)</span></li>\n'
+        '<li class="tree-item"><span class="tree-node">Hub 7: 벤치마크/사례 라이브러리 (스포크 8개)</span></li>\n'
+        '</ul>\n'
+        '</li>\n'
+        '</ul>\n'
+        '</div>\n\n'
 
         "### 스포크 페이지 포맷 (600~1,200자)\n\n"
         "<div class='code-example'>\n"
@@ -4945,15 +4958,16 @@ def seed(run_migrations: bool = True) -> None:
         "**자동화 루틴**으로 지속 가능한 GEO 운영 체계를 완성합니다.\n\n"
 
         "### 구조화데이터 전사 적용 (P2-1~5)\n\n"
-        "<div class='hierarchy-box'>\n"
-        "| 스키마 | 대상 페이지 | 우선순위 |\n"
-        "|--------|-----------|----------|\n"
-        "| Organization | 모든 페이지 | 필수 (P2-1) |\n"
-        "| BreadcrumbList | 허브-스포크 네비 | 필수 (P2-2) |\n"
-        "| Event | 세미나 페이지 | 조건부 (P2-3) |\n"
-        "| Article | 인사이트 페이지 | 조건부 (P2-4) |\n"
-        "| FAQPage | 스포크 FAQ | 권장 (P2-5) |\n"
-        "</div>\n\n"
+        '<div class="hierarchy-box">\n'
+        '<table class="comparison-table"><thead><tr><th>스키마</th><th>대상 페이지</th><th>우선순위</th></tr></thead>\n'
+        '<tbody>\n'
+        '<tr><td>Organization</td><td>모든 페이지</td><td>필수 (P2-1)</td></tr>\n'
+        '<tr><td>BreadcrumbList</td><td>허브-스포크 네비</td><td>필수 (P2-2)</td></tr>\n'
+        '<tr><td>Event</td><td>세미나 페이지</td><td>조건부 (P2-3)</td></tr>\n'
+        '<tr><td>Article</td><td>인사이트 페이지</td><td>조건부 (P2-4)</td></tr>\n'
+        '<tr><td>FAQPage</td><td>스포크 FAQ</td><td>권장 (P2-5)</td></tr>\n'
+        '</tbody></table>\n'
+        '</div>\n\n'
 
         "### 외부 권위 3축\n\n"
         "1. **오리지널 리포트**: 연 2회 발행 (표본/방법론 투명화) -- P2-9\n"
@@ -4965,15 +4979,18 @@ def seed(run_migrations: bool = True) -> None:
         "</div>\n\n"
 
         "### AI Validator 주간 루틴\n\n"
-        "<div class='flow-chart'>\n"
-        "<strong>매주 수요일</strong>: AI Validator 10개 프롬프트 자동 실행<br>\n"
-        "&#8595;<br>\n"
-        "<strong>결과 자동 로깅</strong>: 구글 시트에 KPI-A/B/C 기록<br>\n"
-        "&#8595;<br>\n"
-        "<strong>이상 탐지</strong>: 인용 급감(-20% 이상) 시 자동 알림<br>\n"
-        "&#8595;<br>\n"
-        "<strong>매주 금요일</strong>: 주간 종합 리포트 생성 + 다음주 액션 확정\n"
-        "</div>\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">AI Validator 주간 루틴</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">매주 수요일</div><div class="step-desc">AI Validator 10개 프롬프트 자동 실행</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">결과 자동 로깅</div><div class="step-desc">구글 시트에 KPI-A/B/C 기록</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">이상 탐지</div><div class="step-desc">인용 급감(-20% 이상) 시 자동 알림</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">4</div><div class="step-content"><div class="step-title">매주 금요일</div><div class="step-desc">주간 종합 리포트 생성 + 다음주 액션 확정</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
 
         "### 인용 이상 대응 룰\n\n"
         "- **인용 0건 (2주 연속)**: Answer-first 존재 확인 -> 없으면 P0 작성, 있으면 Proof 강화\n"
@@ -5067,23 +5084,26 @@ def seed(run_migrations: bool = True) -> None:
     add_step(m, "reading", "캡스톤 가이드: 90일 실행 통합 체크리스트", (
         "## 캡스톤 가이드: 90일 실행 통합 체크리스트\n\n"
         "### Stage 6 학습 경로 회고\n\n"
-        "<div class='flow-chart'>\n"
-        "<strong>M6-1</strong> 킥오프 & 현황 진단 (RACI, KPI 베이스라인, 주간 리듬)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-2</strong> 기술 인프라 정비 (robots.txt, sitemap, 구조화데이터)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-3</strong> Answer-first 콘텐츠 전환 (상위 10 랜딩)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-4</strong> Proof-first 신뢰 강화 (통계/인용/출처)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-5</strong> 측정 체계 & 실험 설계 (KPI, Top 50, 4주 루프)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-6</strong> 허브-스포크 팬아웃 확장 (7허브, 60스포크)<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-7</strong> 권위 구축 & AI Validator 자동화<br>\n"
-        "&#8595;<br>\n"
-        "<strong>M6-8</strong> 종합 평가 (Capstone) -- 지금 여기\n"
-        "</div>\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">Stage 6 학습 경로</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">M6-1 킥오프</div><div class="step-desc">RACI, KPI 베이스라인, 주간 리듬</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">M6-2 기술 인프라</div><div class="step-desc">robots.txt, sitemap, 구조화데이터</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">M6-3 Answer-first</div><div class="step-desc">상위 10 랜딩 콘텐츠 전환</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">4</div><div class="step-content"><div class="step-title">M6-4 Proof-first</div><div class="step-desc">통계/인용/출처 신뢰 강화</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">5</div><div class="step-content"><div class="step-title">M6-5 측정 체계</div><div class="step-desc">KPI, Top 50, 4주 실험 루프</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">6</div><div class="step-content"><div class="step-title">M6-6 허브-스포크</div><div class="step-desc">7허브, 60스포크 팬아웃 확장</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">7</div><div class="step-content"><div class="step-title">M6-7 권위 구축</div><div class="step-desc">AI Validator 자동화</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">8</div><div class="step-content"><div class="step-title">M6-8 종합 평가</div><div class="step-desc">캡스톤 — 지금 여기</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
 
         "### 59개 티켓 체크리스트\n\n"
         "**Phase 1 (P0, 30일): 28 tickets**\n"

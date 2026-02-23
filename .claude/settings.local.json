@@ -38,7 +38,8 @@
       "Bash(exit 0:*)",
       "Bash(tail:*)",
       "Bash(start:*)",
-      "Bash(echo requests not available in venv:*)"
+      "Bash(echo requests not available in venv:*)",
+      "Bash(cd \"C:\\\\Users\\\\admin\\\\Desktop\\\\Mkt Geo Study\" && PYTHONPATH=. python -m pytest tests/ -q 2>&1)"
     ],
     "deny": [
       "Read(.env)",

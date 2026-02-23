@@ -11,8 +11,12 @@
 <body>
   <header>
     <h1>GEO 멘토링 학습</h1>
-    <span id="health-badge" class="badge badge--loading">checking...</span>
-    <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" title="다크 모드">&#9790;</button>
+    <div class="header-actions">
+      <span id="auth-user" class="auth-user" hidden></span>
+      <button id="logout-btn" class="btn btn-secondary btn-sm" onclick="handleLogout()" hidden>로그아웃</button>
+      <span id="health-badge" class="badge badge--loading">checking...</span>
+      <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" title="다크 모드">&#9790;</button>
+    </div>
   </header>
 
   <main>

@@ -3,6 +3,17 @@
 const API = "";
 const app = document.getElementById("app");
 const badge = document.getElementById("health-badge");
+const authUserLabel = document.getElementById("auth-user");
+const logoutBtn = document.getElementById("logout-btn");
+const AUTH_STORAGE_KEY = "geo_auth_session_v1";
+const ALLOWED_TEAM_ACCOUNTS = Array.from(
+  { length: 10 },
+  (_, idx) => `b2b_mkt_${idx + 1}`,
+);
+let authState = {
+  accessToken: null,
+  userId: null,
+};
 
 // ──────────────────────────────────────────
 // Dark Mode
@@ -61,20 +72,172 @@ async function checkHealth() {
 }
 
 // ──────────────────────────────────────────
+// Auth
+// ──────────────────────────────────────────
+function loadStoredSession() {
+  try {
+    const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+    if (!raw) {
+      return;
+    }
+    const parsed = JSON.parse(raw);
+    if (
+      parsed &&
+      typeof parsed.access_token === "string" &&
+      typeof parsed.user_id === "string"
+    ) {
+      authState.accessToken = parsed.access_token;
+      authState.userId = parsed.user_id;
+    }
+  } catch {
+    authState.accessToken = null;
+    authState.userId = null;
+  }
+}
+
+function isAuthenticated() {
+  return Boolean(authState.accessToken && authState.userId);
+}
+
+function setSession(accessToken, userId) {
+  authState.accessToken = accessToken;
+  authState.userId = userId;
+  localStorage.setItem(
+    AUTH_STORAGE_KEY,
+    JSON.stringify({ access_token: accessToken, user_id: userId }),
+  );
+  updateAuthUI();
+}
+
+function clearSession() {
+  authState.accessToken = null;
+  authState.userId = null;
+  localStorage.removeItem(AUTH_STORAGE_KEY);
+  updateAuthUI();
+}
+
+function updateAuthUI() {
+  if (authUserLabel) {
+    authUserLabel.hidden = !isAuthenticated();
+    if (isAuthenticated()) {
+      authUserLabel.textContent = authState.userId;
+    }
+  }
+  if (logoutBtn) {
+    logoutBtn.hidden = !isAuthenticated();
+  }
+}
+
+function renderLogin(errorMessage = "") {
+  updateAuthUI();
+  app.innerHTML = `
+    <div class="login-wrap">
+      <div class="login-card">
+        <h2>팀 계정 로그인</h2>
+        <p class="login-desc">아이디/비밀번호는 같은 값입니다.</p>
+        <form id="login-form" class="login-form">
+          <label for="login-username">아이디</label>
+          <input id="login-username" name="username" type="text" placeholder="b2b_mkt_1" required />
+          <label for="login-password">비밀번호</label>
+          <input id="login-password" name="password" type="password" placeholder="b2b_mkt_1" required />
+          <button id="login-submit" type="submit" class="btn btn-primary">로그인</button>
+        </form>
+        ${
+          errorMessage
+            ? `<p class="login-error">${escapeHtml(errorMessage)}</p>`
+            : ""
+        }
+        <p class="login-help">사용 계정: ${ALLOWED_TEAM_ACCOUNTS.join(", ")}</p>
+      </div>
+    </div>
+  `;
+
+  const form = document.getElementById("login-form");
+  const submitBtn = document.getElementById("login-submit");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const username = String(form.username.value || "").trim();
+    const password = String(form.password.value || "").trim();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "로그인 중...";
+    try {
+      const result = await login(username, password);
+      setSession(result.access_token, result.user_id);
+      router();
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "로그인";
+      renderLogin("로그인에 실패했습니다. 계정을 다시 확인해주세요.");
+    }
+  });
+}
+
+async function handleLogout() {
+  try {
+    if (isAuthenticated()) {
+      await logoutSession();
+    }
+  } catch {
+    // Ignore logout API errors in stateless mode.
+  } finally {
+    clearSession();
+    location.hash = "#/";
+    renderLogin();
+  }
+}
+
+// ──────────────────────────────────────────
 // API Functions
 // ──────────────────────────────────────────
 async function apiCall(endpoint, options = {}) {
+  const { skipAuthRedirect = false, ...fetchOptions } = options;
+  const headers = { ...(fetchOptions.headers || {}) };
+  if (fetchOptions.body !== undefined && !headers["Content-Type"]) {
+    headers["Content-Type"] = "application/json";
+  }
+  if (authState.accessToken) {
+    headers.Authorization = `Bearer ${authState.accessToken}`;
+  }
+
   try {
     const res = await fetch(`${API}${endpoint}`, {
-      headers: { "Content-Type": "application/json" },
-      ...options,
+      ...fetchOptions,
+      headers,
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const err = new Error(`HTTP ${res.status}`);
+      err.status = res.status;
+      if (res.status === 401 && !skipAuthRedirect) {
+        clearSession();
+        renderLogin("세션이 만료되었습니다. 다시 로그인해주세요.");
+      }
+      throw err;
+    }
+    if (res.status === 204) {
+      return null;
+    }
     return await res.json();
   } catch (err) {
     console.error("API Error:", err);
     throw err;
   }
+}
+
+async function login(username, password) {
+  return apiCall("/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify({ username, password }),
+    skipAuthRedirect: true,
+  });
+}
+
+async function fetchCurrentUser() {
+  return apiCall("/api/auth/me");
+}
+
+async function logoutSession() {
+  return apiCall("/api/auth/logout", { method: "POST" });
 }
 
 async function fetchStages() {
@@ -134,6 +297,10 @@ function showLoading(container) {
 }
 
 function showError(container, message, retryFn) {
+  if (!isAuthenticated()) {
+    renderLogin();
+    return;
+  }
   container.innerHTML = `
     <div class="error">
       <p>${escapeHtml(message)}</p>
@@ -170,6 +337,11 @@ function navigate(hash) {
 }
 
 function router() {
+  if (!isAuthenticated()) {
+    renderLogin();
+    return;
+  }
+
   const hash = getRoute();
 
   // #/admin/content
@@ -1400,5 +1572,25 @@ function retryModule(moduleId, isAdmin = false) {
 // ──────────────────────────────────────────
 // Init
 // ──────────────────────────────────────────
-checkHealth();
-router();
+async function bootstrap() {
+  checkHealth();
+  loadStoredSession();
+  updateAuthUI();
+
+  if (isAuthenticated()) {
+    try {
+      const me = await fetchCurrentUser();
+      if (!me || !me.user_id) {
+        clearSession();
+      } else if (me.user_id !== authState.userId) {
+        setSession(authState.accessToken, me.user_id);
+      }
+    } catch {
+      clearSession();
+    }
+  }
+
+  router();
+}
+
+bootstrap();
