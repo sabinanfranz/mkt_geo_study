@@ -224,13 +224,13 @@ def test_stage5_has_seven_modules():
     assert len(data) == 7, f"Expected 7 modules in Stage 5, got {len(data)}"
 
 
-def test_stage6_has_seven_modules():
-    """Stage 6 should have 7 modules."""
+def test_stage6_has_eight_modules():
+    """Stage 6 should have 8 modules."""
     _seed_phase2()
     res = client.get("/api/stages/6/modules")
     assert res.status_code == 200
     data = res.json()
-    assert len(data) == 7, f"Expected 7 modules in Stage 6, got {len(data)}"
+    assert len(data) == 8, f"Expected 8 modules in Stage 6, got {len(data)}"
 
 
 def test_stage3_step_counts():
@@ -251,13 +251,13 @@ def test_stage3_step_counts():
 
 
 def test_stage6_step_counts():
-    """Stage 6 modules M6-1~M6-7 should have 4 steps each."""
+    """Stage 6 modules M6-1~M6-8 should have 4 steps each."""
     _seed_phase2()
     res = client.get("/api/stages/6/modules")
     assert res.status_code == 200
     modules = res.json()
-    assert len(modules) == 7
-    for i in range(7):
+    assert len(modules) == 8
+    for i in range(8):
         assert modules[i]["total_steps"] == 4, \
             f"Stage 6 Module {i+1} should have 4 steps, got {modules[i]['total_steps']}"
 
@@ -275,7 +275,7 @@ def test_stage6_eval_module_has_quiz_steps():
             "SELECT COUNT(*) AS cnt FROM steps WHERE module_id = ? AND type = 'quiz'",
             (eval_module["id"],)
         ).fetchone()["cnt"]
-        assert quiz_count >= 1, "Stage 6 evaluation module must have at least 1 quiz step"
+        assert quiz_count >= 2, "Stage 6 evaluation module must have at least 2 quiz steps"
     finally:
         conn.close()
 
@@ -289,9 +289,9 @@ def test_total_step_count():
             "SELECT COUNT(*) AS cnt FROM steps"
         ).fetchone()["cnt"]
 
-        # Stage 6 added: total should be at least 170 steps.
-        assert total_steps >= 170, \
-            f"Expected at least 170 steps, got {total_steps}"
+        # Stage 6 added: total should be at least 175 steps.
+        assert total_steps >= 175, \
+            f"Expected at least 175 steps, got {total_steps}"
     finally:
         conn.close()
 
@@ -305,8 +305,8 @@ def test_total_option_count():
             "SELECT COUNT(*) AS cnt FROM options"
         ).fetchone()["cnt"]
 
-        assert total_options >= 500, \
-            f"Expected at least 500 options, got {total_options}"
+        assert total_options >= 540, \
+            f"Expected at least 540 options, got {total_options}"
     finally:
         conn.close()
 

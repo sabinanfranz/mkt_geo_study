@@ -1,4 +1,7 @@
-# 71 — Stage 6 과업 모듈 전략 설명서 (LLM Handoff)
+> **⚠️ 이 문서는 폐기되었습니다.** Stage 6은 `docs/73-geo-action-plan.md` 기반으로 재구성되었습니다.
+> 새 설계: `docs/77-stage6-curriculum-design.md` 참조.
+
+# 71 — Stage 6 과업 모듈 전략 설명서 (LLM Handoff) — ~~DEPRECATED~~
 
 ## 1) 문서 목적
 
@@ -9,6 +12,9 @@
 - Stage 6는 학습형 콘텐츠가 아니라 **실행형 운영 모듈**이다.
 - 전략은 `materials/b2b.fastcampus.co.kr를 위한 GEO 심층 리서치 및 90일 실행 로드맵.md`의 L1~L5 + Off-site + AI Validator + Measurement + 90일 로드맵을 기반으로 구성했다.
 - 모듈은 “팀이 다음 주 바로 실행 가능한 과업 묶음(work package)” 기준으로 설계했다.
+
+관련 문서:
+- Stage 6 시드 제작 프로세스: `docs/75-stage6-seed-content-preparation.md`
 
 ---
 
@@ -153,4 +159,3 @@ L5(크롤링/렌더링/robots/sitemap)는 Stage 6에서 별도 모듈로 분리�
 ## 8) 타 LLM 전달용 한 줄 요약
 
 Stage 6는 “L1~L5 + Off-site + Measurement + 90일 로드맵”을 **실행 가능한 7개 워크패키지**로 변환한 캡스톤이며, 각 모듈은 SOP(Reading) + 판단기준(Quiz) + 시뮬레이션(Practice)으로 설계되어 팀이 다음 주 바로 실행하도록 만든 운영형 교육 모듈이다.
-

@@ -1,5 +1,54 @@
 # 90 — Decision Log
 
+## 2026-02-23 | Railway 코드 개선사항 문서화
+
+### 배경
+
+`docs/74-railway-deployment-runbook.md`는 운영 절차 중심 문서이고,  
+Railway 대응 코드가 실제로 어떻게 바뀌었는지(`database.py`, `main.py`, `seed.py`, migrations, scripts)를 한 번에 파악하기 어려웠습니다.
+
+### 수행 작업
+
+1. **신규 문서 작성**: `docs/76-railway-code-changes.md`
+   - DB 계층(SQLite/PostgreSQL) 전환 구조
+   - 마이그레이션 러너/이력 테이블
+   - seed 멱등 업서트 + user_progress 보존 정책
+   - 배포 파일(`railway.json`, `Procfile`, `runtime.txt`) 역할
+   - 검증 범위(`tests/test_deploy_db.py`)와 미보장 영역
+2. **교차 링크 추가**
+   - `docs/74-railway-deployment-runbook.md`에 코드 변경 상세 링크 추가
+   - `README.md` Railway 섹션에 코드 문서 링크 추가
+
+### 목적
+
+운영 런북(절차)과 구현 문서(코드 변경 근거)를 분리해,  
+타 엔지니어/LLM이 문제 발생 시 코드 레벨 진단 지점을 빠르게 찾을 수 있도록 하기 위함.
+
+---
+
+## 2026-02-23 | Stage 6 시드 제작 근거 문서 분리
+
+### 배경
+
+기존 `docs/71-stage6-task-module-strategy.md`는 전략-모듈 매핑 중심 문서였고,  
+`시드 콘텐츠를 어떤 규칙으로 마련했는지`를 재현 가능한 형태로 전달하기에는 정보가 분산되어 있었습니다.
+
+### 수행 작업
+
+1. **신규 문서 작성**: `docs/75-stage6-seed-content-preparation.md`
+   - 입력 소스 매핑
+   - 전략 → seed 변환 규칙(module/step/option)
+   - 품질 규칙(피드백 길이/존댓말)
+   - 테스트 연결(`tests/test_phase2.py`)과 재생산 SOP 정리
+2. **문서 링크 연결**
+   - `docs/71-stage6-task-module-strategy.md`에 관련 문서 링크 추가
+
+### 목적
+
+타 LLM이 Stage 6를 개정/확장할 때, 코드 탐색 없이도 제작 근거와 품질 게이트를 그대로 재적용할 수 있도록 하기 위함.
+
+---
+
 ## 2026-02-22 | Stage 6 과업 실행 캡스톤 구현
 
 ### 배경
