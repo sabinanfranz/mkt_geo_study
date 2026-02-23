@@ -14,6 +14,7 @@
 | DB 계층 | SQLite 고정에서 SQLite/PostgreSQL 분기 지원 | Railway PostgreSQL 운영 가능 |
 | 스키마 관리 | `run_migrations()` + `schema_migrations` 도입 | 시작 시 자동 마이그레이션 |
 | 앱 기동 | lifespan에서 `init_db()` + 조건부 seed | 배포 직후 스키마 일관성 확보 |
+| 인증/세션 | 고정 팀 계정 로그인 + HMAC 토큰 검증 | 사용자별 진도 분리/보호 |
 | 쓰기 쿼리 | `INSERT OR REPLACE` 제거, `ON CONFLICT` 업서트로 통일 | PostgreSQL 호환 |
 | 시드 정책 | 콘텐츠 멱등 업서트, 사용자 진척 보존 | 운영 데이터 유실 방지 |
 | 배포 설정 | `railway.json`, `Procfile`, `runtime.txt` 추가 | Railway 표준 기동/헬스체크 지원 |
@@ -55,16 +56,20 @@
 1. lifespan에서 `init_db()` 실행
 2. `SEED_ON_START=true`일 때만 `seed(run_migrations=False)` 실행
 3. `CORS_ALLOW_ORIGINS` 콤마 파싱 로직 추가
-4. `INSERT OR REPLACE`를 `ON CONFLICT(user_id, step_id) DO UPDATE`로 변경
+4. `SESSION_SECRET`, `SESSION_TTL_SECONDS` 기반 토큰 생성/검증 추가
+5. `/api/auth/login`, `/api/auth/me`, `/api/auth/logout` 엔드포인트 추가
+6. `INSERT OR REPLACE`를 `ON CONFLICT(user_id, step_id) DO UPDATE`로 변경
 
 운영 영향:
 - 재배포 시 스키마 누락으로 인한 기동 실패 위험 감소
 - 운영 환경에서 seed 자동 실행 여부를 변수로 제어 가능
+- 인증된 사용자별로 학습 진도 데이터를 안정적으로 분리 가능
 - PostgreSQL에서 진행 데이터 기록 로직 일관 동작
 
 확장 시 주의:
 - 운영 환경은 기본 `SEED_ON_START=false` 유지
 - CORS는 `*` 대신 환경별 도메인으로 점진 제한 권장
+- 운영 환경은 `SESSION_SECRET`을 반드시 랜덤 긴 문자열로 지정
 
 ## 3-3. 시드 정책 변경(데이터 보존)
 
@@ -76,13 +81,17 @@
 2. 콘텐츠 테이블(`stages/modules/steps/options`)만 멱등 업서트
 3. `user_progress`, `user_bookmarks` 삭제 로직 제거
 4. `order_idx` 기반 업데이트 규칙으로 반복 실행 가능
+5. 퀴즈 정답 라벨을 A/B/C 중심으로 균등 분배하도록 재정렬
+6. 시드 실행 완료 시 정답 라벨 분포 로그(`A/B/C/D`) 출력
 
 운영 영향:
 - 콘텐츠 갱신과 사용자 학습 진척 보존을 분리해서 운영 가능
+- 퀴즈 정답 라벨 편향(A/B/C/D 치우침) 감소로 학습 품질 개선
 
 확장 시 주의:
 - `order_idx`는 사실상 멱등 키이므로 변경 시 영향도 분석 필요
 - 모듈/스텝 재배치 작업은 테스트 동반 필수
+- 현재 재분배 정책은 정답 라벨을 A/B/C에만 할당하므로 `D=0`이 정상값
 
 ## 3-4. 배포 구성 파일 추가
 
@@ -97,7 +106,7 @@
 1. Railway start command/healthcheck 명시
 2. Python 런타임 버전 고정
 3. `psycopg[binary]` 의존성 추가
-4. 환경변수 표준 샘플 제공(`DATABASE_URL`, `APP_ENV`, `SEED_ON_START`, `CORS_ALLOW_ORIGINS`)
+4. 환경변수 표준 샘플 제공(`DATABASE_URL`, `APP_ENV`, `SEED_ON_START`, `CORS_ALLOW_ORIGINS`, `SESSION_SECRET`, `SESSION_TTL_SECONDS`)
 
 운영 영향:
 - Railway에서 별도 커맨드 입력 없이 기동 가능
@@ -114,11 +123,12 @@
 핵심 변경:
 1. migrate 전용 스크립트 분리
 2. seed 전용 스크립트 분리
-3. 배포 후 `/api/health`, `/api/stages`, `/api/progress` 스모크 체크 스크립트 추가
+3. 배포 후 `/api/health` 및 인증 API 검증 절차 문서화
 4. 로컬 dev 스크립트에서 DB migrate+seed 자동 실행
 
 운영 영향:
 - 배포/장애 대응 시 표준 실행 커맨드가 명확해짐
+- 인증 도입 이후 `/api/stages`, `/api/progress`는 토큰 기반 수동 smoke 절차를 기준으로 운영
 
 ---
 
@@ -130,12 +140,15 @@
 | DB 연결 변수 | 파일 경로 중심 | `DATABASE_URL` 중심 |
 | seed 제어 | 수동 실행 위주 | `SEED_ON_START` 조건부 자동 + 수동 병행 |
 | CORS 설정 | `*` 고정 | `CORS_ALLOW_ORIGINS` 변수 기반 |
+| 인증 방식 | 무인증 API | Bearer token 기반 인증 API |
 
 추가된/중요 환경변수:
 - `DATABASE_URL`
 - `APP_ENV`
 - `SEED_ON_START`
 - `CORS_ALLOW_ORIGINS`
+- `SESSION_SECRET`
+- `SESSION_TTL_SECONDS`
 
 ---
 
@@ -166,6 +179,9 @@
 
 리스크 3: CORS 과도 허용
 - 대응: 환경별 도메인 명시, `*`는 로컬/초기 검증에 한정
+
+리스크 4: `SESSION_SECRET` 미설정으로 개발용 기본값 사용
+- 대응: `staging`/`prod` 필수 변수로 고정하고, 배포 체크리스트에서 누락 여부 점검
 
 ---
 

@@ -63,6 +63,7 @@ claude --agent mvp-coordinator
 ## Railway 배포
 
 코드 변경 상세 문서:
+- `docs/ops/74-railway-deployment-runbook.md`
 - `docs/ops/76-railway-code-changes.md`
 
 ### 배포 파일
@@ -84,18 +85,36 @@ claude --agent mvp-coordinator
 | `APP_ENV` | `local`/`staging`/`prod` 구분 | `local` |
 | `SEED_ON_START` | 앱 시작 시 seed 실행 여부 | `false` |
 | `CORS_ALLOW_ORIGINS` | 허용 Origin 목록(콤마 구분) | `*` |
+| `SESSION_SECRET` | 세션 토큰 서명 키(운영 필수) | `dev-session-secret-change-me` |
+| `SESSION_TTL_SECONDS` | 세션 토큰 TTL(초) | `604800` |
 
 ### 배포 후 스모크 체크
 
 ```bash
-python scripts/check_deploy.py https://<your-env>.up.railway.app
+BASE_URL=https://<your-env>.up.railway.app
+
+# 1) health
+curl -fsS "$BASE_URL/api/health"
+
+# 2) login (테스트 계정: b2b_mkt_1~b2b_mkt_10, 비밀번호는 ID와 동일)
+TOKEN=$(
+  curl -fsS -X POST "$BASE_URL/api/auth/login" \
+    -H "Content-Type: application/json" \
+    -d '{"username":"b2b_mkt_1","password":"b2b_mkt_1"}' \
+  | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"
+)
+
+# 3) 인증 필요한 API
+curl -fsS -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/stages" > /dev/null
+curl -fsS -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/progress" > /dev/null
 ```
 
 ### 운영 권장 정책
 
 - `SEED_ON_START=false` 유지 (운영에서 자동 재시드 방지)
+- `SESSION_SECRET`는 `staging`/`prod`에 랜덤 긴 문자열로 반드시 지정
 - 콘텐츠 업데이트 시 `python scripts/db_seed.py`를 작업성 배포 잡으로 실행
-- 배포 전 `staging`에서 `check_deploy.py` 통과 후 `prod` 반영
+- 배포 전 `staging`에서 `health + login + 인증 API` 스모크 체크 통과 후 `prod` 반영
 
 ## 구조
 
