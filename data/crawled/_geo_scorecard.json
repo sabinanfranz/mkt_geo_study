@@ -1,0 +1,1290 @@
+{
+  "generated_at": "2026-02-22T23:31:34.406754+00:00",
+  "total_pages": 27,
+  "average_score": 19.3,
+  "pages": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/info/policies/privacy",
+      "slug": "info_policies_privacy",
+      "scores": {
+        "answerability": 0,
+        "proof": 3,
+        "fan_out": 1,
+        "crawlability": 0,
+        "trust": 3,
+        "total": 7
+      },
+      "details": {
+        "answerability": [],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)"
+        ],
+        "fan_out": [
+          "3 internal link(s)"
+        ],
+        "crawlability": [],
+        "trust": [
+          "SSR page",
+          "has date reference",
+          "img alt ratio 100%"
+        ]
+      },
+      "rendered_with": "requests",
+      "text_length": 244,
+      "priority_rank": 1
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/b2b_seminar_2023",
+      "slug": "b2b_seminar_2023",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 18
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 6346,
+      "priority_rank": 2
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "slug": "contact",
+      "scores": {
+        "answerability": 2,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 18
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 88%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 1293,
+      "priority_rank": 3
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact_mktg",
+      "slug": "contact_mktg",
+      "scores": {
+        "answerability": 2,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 18
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 88%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 1284,
+      "priority_rank": 4
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+      "slug": "resource_insight_hrdai",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 2,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 18
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "5 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "4 internal link(s)"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "SSR page",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 100%"
+        ]
+      },
+      "rendered_with": "requests",
+      "text_length": 4417,
+      "priority_rank": 5
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "slug": "resource_report",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 18
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "61 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 3911,
+      "priority_rank": 6
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/b2b_seminar_2024",
+      "slug": "b2b_seminar_2024",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "9 subheading(s)",
+          ">= 5 subheadings",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 3772,
+      "priority_rank": 7
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/b2b_seminar_2025",
+      "slug": "b2b_seminar_2025",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 51%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2577,
+      "priority_rank": 8
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/content_contentsbook_all",
+      "slug": "content_contentsbook_all",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 82%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 1266,
+      "priority_rank": 9
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_25trend",
+      "slug": "resource_insight_25trend",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 2,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "6 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "4 internal link(s)"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "SSR page",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 100%"
+        ]
+      },
+      "rendered_with": "requests",
+      "text_length": 6458,
+      "priority_rank": 10
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_recipe",
+      "slug": "resource_insight_recipe",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "FAQ content detected",
+          "3 internal link(s)"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "SSR page",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 100%"
+        ]
+      },
+      "rendered_with": "requests",
+      "text_length": 2515,
+      "priority_rank": 11
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar",
+      "slug": "resource_seminar",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "5 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "57 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2104,
+      "priority_rank": 12
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar_onlinelearning",
+      "slug": "resource_seminar_onlinelearning",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "4 subheading(s)",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 73%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 4555,
+      "priority_rank": 13
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_custom",
+      "slug": "service_custom",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 19
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "14 subheading(s)",
+          ">= 5 subheadings",
+          "53 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2094,
+      "priority_rank": 14
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/content_edu",
+      "slug": "content_edu",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "5 subheading(s)",
+          ">= 5 subheadings",
+          "39 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 82%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 1451,
+      "priority_rank": 15
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "slug": "index",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "5 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "10 subheading(s)",
+          ">= 5 subheadings",
+          "56 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2545,
+      "priority_rank": 16
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer",
+      "slug": "refer_customer",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "12 subheading(s)",
+          ">= 5 subheadings",
+          "66 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "has author/editor reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 4405,
+      "priority_rank": 17
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer_automatewn8n",
+      "slug": "refer_customer_automatewn8n",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "6 subheading(s)",
+          ">= 5 subheadings",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 79%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2806,
+      "priority_rank": 18
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_bizletter",
+      "slug": "resource_bizletter",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "11 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "103 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 82%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 3970,
+      "priority_rank": 19
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+      "slug": "resource_insight_aiforwork",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 3,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "6 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "2 subheading(s)",
+          "5 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "SSR page",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 100%"
+        ]
+      },
+      "rendered_with": "requests",
+      "text_length": 4797,
+      "priority_rank": 20
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_enterprise",
+      "slug": "service_online_enterprise",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 20
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "9 subheading(s)",
+          ">= 5 subheadings",
+          "39 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 62%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2433,
+      "priority_rank": 21
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/b2b_instructor_applygenai",
+      "slug": "b2b_instructor_applygenai",
+      "scores": {
+        "answerability": 3,
+        "proof": 4,
+        "fan_out": 5,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 21
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "6 subheading(s)",
+          ">= 5 subheadings",
+          "FAQ content detected",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "has author/editor reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 4086,
+      "priority_rank": 22
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp",
+      "slug": "service_aicamp",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 5,
+        "crawlability": 5,
+        "trust": 3,
+        "total": 21
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "5 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "6 subheading(s)",
+          ">= 5 subheadings",
+          "FAQ content detected",
+          "45 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 3239,
+      "priority_rank": 23
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online",
+      "slug": "service_online",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 21
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "6 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "10 subheading(s)",
+          ">= 5 subheadings",
+          "41 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 60%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2502,
+      "priority_rank": 24
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer_coretalentaiedu",
+      "slug": "refer_customer_coretalentaiedu",
+      "scores": {
+        "answerability": 5,
+        "proof": 4,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 22
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "answer block >= 100 chars (440 chars)",
+          "answer block >= 200 chars",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "4 external link(s)",
+          ">= 3 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "6 subheading(s)",
+          ">= 5 subheadings",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 73%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 2967,
+      "priority_rank": 25
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_b2bproposalwai",
+      "slug": "service_aicamp_b2bproposalwai",
+      "scores": {
+        "answerability": 3,
+        "proof": 5,
+        "fan_out": 4,
+        "crawlability": 5,
+        "trust": 5,
+        "total": 22
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "9 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "7 subheading(s)",
+          ">= 5 subheadings",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "has author/editor reference",
+          "canonical without noindex",
+          "img alt ratio 60%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 6226,
+      "priority_rank": 26
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/b2b_instructor_apply",
+      "slug": "b2b_instructor_apply",
+      "scores": {
+        "answerability": 5,
+        "proof": 5,
+        "fan_out": 5,
+        "crawlability": 5,
+        "trust": 4,
+        "total": 24
+      },
+      "details": {
+        "answerability": [
+          "H1 exists",
+          "title exists",
+          "answer block >= 100 chars (500 chars)",
+          "answer block >= 200 chars",
+          "meta_description >= 50 chars"
+        ],
+        "proof": [
+          "5 external link(s)",
+          ">= 3 external links",
+          ">= 5 external links",
+          "contains statistics (number+unit)",
+          "contains citation keywords"
+        ],
+        "fan_out": [
+          "8 subheading(s)",
+          ">= 5 subheadings",
+          "FAQ content detected",
+          "38 internal link(s)",
+          ">= 5 internal links"
+        ],
+        "crawlability": [
+          "title",
+          "meta_desc",
+          "canonical",
+          "structured_data",
+          "og:title + og:description"
+        ],
+        "trust": [
+          "text > 500 despite CSR",
+          "has date reference",
+          "canonical without noindex",
+          "img alt ratio 51%"
+        ]
+      },
+      "rendered_with": "selenium",
+      "text_length": 3143,
+      "priority_rank": 27
+    }
+  ],
+  "summary": {
+    "by_dimension": {
+      "answerability": {
+        "avg": 3.0,
+        "min": 0,
+        "max": 5
+      },
+      "proof": {
+        "avg": 4.3,
+        "min": 3,
+        "max": 5
+      },
+      "fan_out": {
+        "avg": 3.4,
+        "min": 1,
+        "max": 5
+      },
+      "crawlability": {
+        "avg": 4.8,
+        "min": 0,
+        "max": 5
+      },
+      "trust": {
+        "avg": 3.7,
+        "min": 3,
+        "max": 5
+      }
+    },
+    "top_issues": [
+      "3/27 pages lack Answer-first block (answerability < 3)",
+      "1/27 pages have low Fan-out (score < 2)",
+      "1/27 pages have low Crawlability (score < 3)",
+      "22/27 pages are CSR-rendered (selenium)",
+      "1/27 pages score <= 8/25 (critical)"
+    ]
+  }
+}

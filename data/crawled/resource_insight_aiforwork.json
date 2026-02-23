@@ -1,0 +1,180 @@
+{
+  "url": "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+  "slug": "resource_insight_aiforwork",
+  "crawled_at": "2026-02-22T23:29:24.957750+00:00",
+  "status_code": 200,
+  "title": "시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례 | 패스트캠퍼스 기업교육",
+  "meta_description": "빅데이터와 인공지능 기술이 대중화되면서 일반 사무직에서도 AI 기술을 활용하는 역할이 등장했습니다. 바로 ‘시티즌 데이터 사이언티스트(CDS·Citizen Data Scientist)’입니다. ‘시민 데이터 과학자’라고 불리기도 하는 이 역할은 한 마디로 데이터를 분석하고, 새로운 인사이트를 도출하여 비즈니스 기회를 발견하거나 결과를 개선하는 사람을 말합니다. 시티즌 데이터 사이언티스트에게 요구되는 기본 역량을 이해하고, 사무직 대상의 AI 교육 사례를 소개합니다.",
+  "meta_keywords": "성인교육, 직무교육, 교육, 교육콘텐츠, 교육서비스, 패스트캠퍼스, 학원, fastcampus, 컨퍼런스, 퓨처콘, futurecon, 온라인, 싱글팩, 프로그래밍, 데이터사이언스, 파이낸스, 마케팅, 비즈니스, 온라인교육, 개발자, 디자이너, 기획자, 마케터, 프로덕트매니저, 디벨로퍼, 퍼포먼스마케터, 데이터사이언티스트, 패스트원, education, conference, programming, developer, finance, business, design, designer, marketing, marketer,",
+  "canonical": "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+  "og_tags": {
+    "og:type": "website",
+    "og:image": "https://cdn.day1company.io/prod/uploads/202308/071854-571/og-image-aiforwork.png",
+    "og:image:width": "600",
+    "og:image:height": "315",
+    "og:url": "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+    "og:title": "시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례 | 패스트캠퍼스 기업교육",
+    "og:description": "빅데이터와 인공지능 기술이 대중화되면서 일반 사무직에서도 AI 기술을 활용하는 역할이 등장했습니다. 바로 ‘시티즌 데이터 사이언티스트(CDS·Citizen Data Scientist)’입니다. ‘시민 데이터 과학자’라고 불리기도 하는 이 역할은 한 마디로 데이터를 분석하고, 새로운 인사이트를 도출하여 비즈니스 기회를 발견하거나 결과를 개선하는 사람을 말합니다. 시티즌 데이터 사이언티스트에게 요구되는 기본 역량을 이해하고, 사무직 대상의 AI 교육 사례를 소개합니다. "
+  },
+  "headings": [
+    {
+      "level": 1,
+      "tag": "h1",
+      "text": "시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "Citizen Data Scientist"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "AI 교육"
+    }
+  ],
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례",
+      "description": "일반 사무직 임직원을 위한 AI(인공지능) 활용 교육 트렌드 ",
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+      "provider": {
+        "@type": "Organization",
+        "name": "패스트캠퍼스 기업교육 - Fastcampus",
+        "sameAs": "https://b2b.fastcampus.co.kr/"
+      }
+    }
+  ],
+  "schema_microdata": [],
+  "rdfa_types": [],
+  "internal_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+      "text": "ChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact_mktg",
+      "text": "1:1 무료 상담"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/info/policies/privacy",
+      "text": "개인정보 처리방침"
+    }
+  ],
+  "external_links": [
+    {
+      "url": "https://blogs.gartner.com/carlie-idoine/2018/05/13/citizen-data-scientists-and-why-they-matter",
+      "text": "Citizen Data Scientists and Why They Matter"
+    },
+    {
+      "url": "https://medium.com/airbnb-engineering/how-airbnb-democratizes-data-science-with-data-university-3eccc71e073a",
+      "text": "How Airbnb Democratizes Data Science With Data University | by Jeff Feng | The Airbnb Tech Blog"
+    },
+    {
+      "url": "https://www.facebook.com/b2bfastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://pf.kakao.com/_LxbMxnb",
+      "text": ""
+    },
+    {
+      "url": "https://blog.naver.com/fastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://www.linkedin.com/showcase/b2bfastcampus",
+      "text": ""
+    }
+  ],
+  "nav_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/logo.ea8ed80f.svg",
+      "alt": "패스트캠퍼스 기업교육 로고"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/hamburger.9ad22d05.svg",
+      "alt": "메뉴 열기"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202308/063203-571/image-1.png",
+      "alt": "시티즌 데이터 사이언티스트 AI 교육"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202308/072129-571/image-3.png",
+      "alt": "시티즌 데이터 사이언티스트 AI 교육"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202308/072247-571/image-4.png",
+      "alt": "시티즌 데이터 사이언티스트 AI 교육"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202308/063858-571/image-2.png",
+      "alt": "시티즌 데이터 사이언티스트 AI 교육"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202308/072607-571/image-5.png",
+      "alt": "시티즌 데이터 사이언티스트 AI 교육"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/facebook.d4a7041a.svg",
+      "alt": "패스트캠퍼스 페이스북"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/kakao.e533b3af.svg",
+      "alt": "패스트캠퍼스 카카오톡 채널"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/naver-blog.934340b5.svg",
+      "alt": "패스트캠퍼스 네이버 블로그"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/linkedin.b3b3feb8.svg",
+      "alt": "패스트캠퍼스 링크드인 링크"
+    }
+  ],
+  "text_content": "기업교육 문의하기\n문의하기\n시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례\nCitizen Data Scientist\nAI 교육\n시티즌 데이터 사이언티스트(Citizen Data Scientist) : 사무직을 위한 AI 교육 사례\n발행 2023년 8월 9일\n2023년 1월 기준 월 사용자수 1억명을 돌파했을 정도로 ChatGPT는 우리 일상에 빠르게 녹아들었습니다. 누구나 쉽게 접근할 수 있어 친숙한 반면, ChatGPT가 보유한 방대한 데이터와 인간의 요구를 이해하는 능력에 압도되어 당황스러움을 느끼기도 했습니다.\n우리는 ChatGPT가 등장한 시점부터 본질에 가까운 질문을 던지게 됐습니다. ‘인공지능과 차별화되는, 인간만이 할 수 있는 ‘일’이란 무엇인가?’, ‘기술을 활용하는 것이 비즈니스에 최종적으로 어떤 영향을 끼치는가?’와 같은 질문 말이죠.\n이러한 질문은 빅데이터와 인공지능 전문가보다 오히려 인사, 재무, 영업, 홍보와 같은 일반 사무직군에 더 크게 와닿았을 겁니다. 그동안 이러한 기술과 멀리 떨어져 있다고 느꼈을 테니까요. 일상까지 바짝 다가온 빅데이터와 AI 기술은 기술의 이해와 업무에서의 적용, 두 가지 면에서 우리에게 빠른 변화를 요구했습니다.\n*출처:\nCitizen Data Scientists and Why They Matter\n시티즌 데이터 사이언티스트(Citizen Data Scientist)의 등장\n최근에는 이러한 빅데이터와 인공지능 기술이 대중화되면서 일반 사무직에서도 이를 활용한 역할이 등장했습니다. 바로 ‘시티즌 데이터 사이언티스트(CDS·Citizen Data Scientist)’입니다. ‘시민 데이터 과학자’라고 불리기도 하는 이 역할은 한 마디로 데이터를 분석하고, 새로운 인사이트를 도출하여 비즈니스 기회를 발견하거나 결과를 개선하는 사람을 말합니다.\n‘시티즌(시민)’이라는 표현은 전문적으로 데이터를 다루는 데이터 과학자가 아님을 뜻합니다. 2016년 가트너가 개념을 정리하면서 널리 알려졌는데요. ‘수학이나 통계에 대한 깊은 지식 없이 자신의 전문 지식에 데이터 과학 원리를 적용할 수 있는 비즈니스 사용자’로 정의할 수 있습니다. 조금 더 자세히 얘기하면, 자동화 도구를 활용하여 Data Preparation이나 Data Analytics를 수행하고, 이를 통해 정보나 인사이트를 도출하는 것에 초점을 맞춘다고도 할 수 있죠.\nData Preparation은 데이터를 분석하거나 처리하기에 적합한 형태로 가공하는 과정을 뜻합니다. 데이터 전처리라고 칭하며, 현업에서 쓸 수 있는 데이터로 만들기 위해 정합성이 맞거나 품질이 좋은 데이터로 탈바꿈하는 과정입니다. 특히 데이터를 추상화하거나 데이터의 패턴을 모델링 하는 등의 작업은 복잡하기 때문에 시티즌 데이터 사이언티스트는 다양한 자동화 도구의 힘을 빌리죠.\nData Analytics도 마찬가지로 자동화 솔루션을 활용하여 실무 수준에서 데이터를 분석하는 것을 뜻합니다. 고급 단계에서 시행하는 데이터 예측과 분석보다는, 최신 분석과 비즈니스 인텔리전스(BI) 또는 증강 분석, 기계 학습(ML)에 의존하여 데이터 분석에 접근합니다. 결국 시티즌 데이터 사이언티스트는 시시각각 변하는 산업 생태계에서 최신 기술을 최대한 활용하여 빠르고 합리적인 의사결정을 하는 데에 영향을 미치는 데이터 가공자이자 활용자인 셈이죠.\n기업의 시티즌 데이터 사이언티스트(Citizen Data Scientist) 활용 사례\n비 개발 직군이 시티즌 데이터 사이언티스트로 활약한 사례는 무엇이 있을까요? 대표적으로 에어비앤비가 있습니다. 숙박 예약 플랫폼인 에어비앤비는 2011년 무렵부터 직원들이 권한을 갖고 데이터에 접근하며 작업하는 ‘데이터 기반 문화’를 구축하고자 노력했습니다. 이를 위해 중급 수준의 SQL 기술, 데이터 분석, 데이터 쿼리, 자동 머신러닝(ML) 기능 및 데이터 시각화 기능을 갖춘 데이터 플랫폼을 전사 차원에서 공유했습니다.\n*출처:\nHow Airbnb Democratizes Data Science With Data University | by Jeff Feng | The Airbnb Tech Blog\n# 글로벌 사례\n에어비앤비는 2016년 Data University 프로그램을 구축하기도 했습니다. 이는 접근 가능한 고객 데이터를 통해 의사 결정을 하기 위한 것으로 ‘100-level: 데이터 인식(Data Awareness)’, ‘200-level: 데이터 수집과 시각화(Data Collection & Visualization)’, ‘300-level: 대규모 데이터 다루기(Data at Scale)’ 등으로 프로그램을 구분하여 모든 직원이 데이터를 분석하고 결론을 도출하는 역량을 키울 수 있도록 만들었습니다.\n100레벨은 데이터 기반 의사 결정 과정에서 필요한 기초를 배울 수 있는 초급 과정으로 모든 직원을 대상으로 합니다. 200레벨은 일반 직원도 프로젝트 관리자로서 역할을 수행하는 데 필요한 중급 과정으로 SQL을 사용하여 데이터에 접근하거나, 에어비앤비의 데이터를 Superset, Tableau, ERF와 같은 도구를 사용하여 분석하거나 시각화할 수 있는 기술 교육을 제공합니다. 300레벨은 전문 데이터 사이언티스트를 위한 심화 학습 과정으로, Airflow와 같은 도구와 머신 러닝과 같은 고급 데이터 기술을 활용하여 데이터 파이프라인을 작성할 수 있는 수준의 교육입니다.\n직원들은 매월 제공되는 다양한 수업에 등록하고 자신의 진도에 맞춰 커리큘럼을 완료할 수 있습니다. 예를 들어 SQL에 집중하고 싶다면 한 달 동안 제공되는 3개의 SQL 수업을 듣거나, 여러 달에 걸쳐 수업을 들을 수도 있죠. 에어비앤비는 시민 데이터 사이언티스트 양성을 통해 데이터에 근거한 의사 결정을 보장할 뿐만 아니라, 질문을 받는 사람과 질문을 하는 사람이 데이터에 기반한 컨텍스트를 가지고 있기 때문에 불필요한 피드백 루프(Feedback Loop)를 방지한다고 밝혔습니다.\n2015년 3분기에 도입된 Data University는 당시 500명 이상의 직원이 1개 이상의 과정을 마쳤고, 그 결과 2016년 상반기에 에어비앤비의 데이터 플랫폼 주간 활성 사용자(WAU)는 45%에서 이후 66%까지의 증가율을 보였습니다. 데이터 활용이 높아지면서 프로젝트의 진행 속도와 효율도 크게 향상되었습니다. 그리고 에어비앤비는 2016년 하반기에 처음으로 흑자를 달성했죠.\n# 국내 사례\n국내 S 보험사의 경우에도, 패스트캠퍼스 기업교육을 통해 ‘파이썬 코딩을 통한 데이터 분석’ 교육을 진행한 적 있습니다. 해당 교육은 파이썬 입문자들을 대상으로 데이터 분석에 필요한 파이썬 코딩, 문법, 라이브러리를 학습해 볼 수 있는 과정이었는데요. S 보험사의 임직원은 데이터 분석에 꼭 필요한 파이썬 핵심 문법을 익히고, 체계적인 이론과 충분한 실습으로 실제 데이터 크롤링을 진행하여 새로운 비즈니스 인사이트를 얻을 수 있었습니다. 이후 사내에서 시티즌 데이터 사이언티스트로서의 역할을 수행하기 위한 역량을 갖추기 위한 교육이죠.\n일반 사무직 대상 AI 교육 프로그램 기획 시 유의할 점\n기업은 빅데이터와 AI를 활용하여 실무에 바로 적용할 수 있는 실습 위주의 교육을 늘리고 있습니다. ChatGPT나 데이터 관련 소프트웨어 툴이 발전하면서 일반직군도 자동화(RPA)의 이점을 활용하여, 빅데이터를 통한 유의미한 결론을 도출할 수 있게 된 거죠. 기업은 비용을 아끼거나 도출된 인사이트를 바탕으로 비즈니스 수익을 전환하는 데 집중할 수 있습니다.\n즉, 빅데이터나 AI와 같은 기술 교육은 철저히 실무 단계에서 필요한 것들을 이루고자 시행되는 것임을 잊지 말아야 합니다. 중요한 건 빅데이터, AI와 같은 기술 자체보다 구성원들이 유의미한 데이터를 발견하고 실제로 비즈니스에서 활용할 수 있도록 돕는 것이니까요. 만약 구성원이 파이썬 같은 툴을 배우기 어려워하거나 기초 프로그래밍에 대한 부담을 느낀다면 평소 구성원이 익숙하게 사용하는 엑셀과 같은 툴을 최대한 접목하는 교육도 하나의 방법이 될 수 있습니다.\n또한 일반직군의 AI 교육을 기획할 경우, 보안 문제에도 신경 써야 합니다. 만약 데이터를 세팅하고 실습하는 과정에서 ChatGPT와 같은 OpenAI를 활용하는 경우, 기업 기밀이 유출될 수 있습니다. ChatGPT와 대화하는 과정에서 입력된 프롬프트가 추후 OpenAI의 학습 데이터로 이용될 수 있고, 타사가 우회적인 질문을 던져 우리 기업의 정보가 반출되는 등 부작용이 우려되기 때문입니다. 따라서 실습 가이드라인 정립과 외부 데이터 활용 범위를 제한하는 것도 필요합니다.\n지금까지 사무직을 위한 AI 및 빅데이터 교육 트렌드와 관련 교육 프로그램 기획 시 유의할 점 등에 대해 알아봤습니다. Digital Transformation으로 빠르게 전환하는 시대인 만큼, HRD 담당자의 역할은 더욱 중요해졌다고 할 수 있겠죠. 구성원의 학습을 위한 콘텐츠, 조직의 가치와 부합하는 AI 및 빅데이터 교육을 기획하셔서 성과와 유의미하게 연계되는 결과를 보시면 좋겠습니다.\n📌 관련 글 더 읽기 :\nChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?\n일반 직군 임직원 대상의 AI 활용 교육\nHRD 전문 컨설턴트와 함께 시작해 보세요.\n1:1 무료 상담\n(주) 데이원컴퍼니\n대표이사: 이강민\n사업자번호: 810-86-00658\nb2b@day1company.co.kr, 02-501-7429\n개인정보책임관리자: 이강민\n사무실: 서울특별시 강남구 테헤란로 231, 센터필드 WEST 6층, 7층\n교육장: 서울특별시 강남구 강남대로 364 미왕빌딩 10, 11층\n개인정보 처리방침\nCopyright © 2021 (주) 데이원컴퍼니. All rights reserved.",
+  "text_length": 4797,
+  "h1_count": 1,
+  "has_structured_data": true,
+  "rendered_with": "requests",
+  "js_rendered": false,
+  "meta_robots": null,
+  "x_robots_tag": null,
+  "response_headers": {
+    "Last-Modified": null,
+    "Cache-Control": "private, no-cache, no-store, max-age=0, must-revalidate",
+    "Content-Type": "text/html; charset=utf-8",
+    "X-Frame-Options": null
+  },
+  "hreflang": [],
+  "answer_first_block": null,
+  "img_alt_coverage": {
+    "total": 11,
+    "with_alt": 11,
+    "ratio": 1.0
+  },
+  "word_count": 1027,
+  "faq_count": 0,
+  "subheading_count": 2
+}

@@ -1,0 +1,605 @@
+{
+  "url": "https://b2b.fastcampus.co.kr/b2b_instructor_apply",
+  "slug": "b2b_instructor_apply",
+  "crawled_at": "2026-02-22T23:30:20.568714+00:00",
+  "status_code": 200,
+  "title": "패스트캠퍼스 기업교육 강사 지원하기 | 패스트캠퍼스 기업교육",
+  "meta_description": "성인 교육 서비스 기업, 패스트캠퍼스는 개인과 조직의 실질적인 '업(業)'의 성장을 돕고자 모든 종류의 교육 콘텐츠 서비스를 제공하는 대한민국 No. 1 교육 서비스 회사입니다.",
+  "meta_keywords": "성인교육, 직무교육, 교육, 교육콘텐츠, 교육서비스, 패스트캠퍼스, 학원, fastcampus, 컨퍼런스, 퓨처콘, futurecon, 온라인, 싱글팩, 프로그래밍, 데이터사이언스, 파이낸스, 마케팅, 비즈니스, 온라인교육, 개발자, 디자이너, 기획자, 마케터, 프로덕트매니저, 디벨로퍼, 퍼포먼스마케터, 데이터사이언티스트, 패스트원, education, conference, programming, developer, finance, business, design, designer, marketing, marketer,",
+  "canonical": "https://b2b.fastcampus.co.kr/b2b_instructor_apply",
+  "og_tags": {
+    "og:type": "website",
+    "og:image:width": "600",
+    "og:image:height": "315",
+    "og:url": "https://b2b.fastcampus.co.kr/b2b_instructor_apply",
+    "og:title": "패스트캠퍼스 기업교육 강사 지원하기 | 패스트캠퍼스 기업교육",
+    "og:description": "성인 교육 서비스 기업, 패스트캠퍼스는 개인과 조직의 실질적인 '업(業)'의 성장을 돕고자 모든 종류의 교육 콘텐츠 서비스를 제공하는 대한민국 No. 1 교육 서비스 회사입니다."
+  },
+  "headings": [
+    {
+      "level": 1,
+      "tag": "h1",
+      "text": "패스트캠퍼스"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "강의 준비는 주로 어떻게 이루어지나요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "교육 대상은 주로 어떤 분들인가요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "강사료는 어떻게 책정되나요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "강사료는 어떤 형태로 지급되나요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "강사 계약은 어떻게 진행되나요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "직장에 소속되어 있는데 강사 활동이 가능한가요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "대면/비대면을 선택할 수 있나요?"
+    },
+    {
+      "level": 3,
+      "tag": "h3",
+      "text": "주말/야간에도 강의할 수 있나요?"
+    }
+  ],
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "패스트캠퍼스",
+      "description": "",
+      "url": "https://b2b.fastcampus.co.kr/b2b_instructor_apply",
+      "provider": {
+        "@type": "Organization",
+        "name": "패스트캠퍼스 기업교육 - Fastcampus",
+        "sameAs": "https://b2b.fastcampus.co.kr/"
+      }
+    }
+  ],
+  "schema_microdata": [],
+  "rdfa_types": [],
+  "internal_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_subs",
+      "text": "온라인 교육 (LMS)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation",
+      "text": "AI 활용 교육 (출강)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_all",
+      "text": "직무 공통 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_job",
+      "text": "직무 특화 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_it",
+      "text": "└ IT · 개발 · 엔지니어링"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_rnd",
+      "text": "└ 연구개발 · 생산"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_mkt",
+      "text": "└ 마케팅 · 서비스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_support",
+      "text": "└ HR · 경영지원 · 재무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_hackathon",
+      "text": "AI 해커톤"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_workshop",
+      "text": "AI 워크숍"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_leadership",
+      "text": "AI 리더십 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_enterprise",
+      "text": "엔터프라이즈 전용"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_contents",
+      "text": "콘텐츠 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflo",
+      "text": "LMS 기능 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflolite",
+      "text": "중소기업 전용 서비스"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_skillmatch",
+      "text": "스킬 진단/평가"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_skillmatch",
+      "text": "└ 업종별 스킬 진단 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp",
+      "text": "전체 과정 살펴보기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_businesswriting",
+      "text": "└ AI 문서 작성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_dataanalysiswai",
+      "text": "└ 엑셀 데이터 분석"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_excelautomation",
+      "text": "└ 엑셀 업무자동화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_rndresearch",
+      "text": "└ R&D 직군 특화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_aisimulationforbd",
+      "text": "└ 비즈니스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_productmdai",
+      "text": "└ AI 기반 상품기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_public",
+      "text": "공공 특화 교육/컨설팅"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicgovernment",
+      "text": "└ 공공 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicuniversity",
+      "text": "└ 대학 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer",
+      "text": "산업별 교육 운영 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook",
+      "text": "[사례집] 생성형 AI 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_online",
+      "text": "[사례집] 온라인 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight",
+      "text": "공식 블로그"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_bizletter",
+      "text": "뉴스레터"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "text": "교육 설계 가이드"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_template",
+      "text": "무료 템플릿"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar",
+      "text": "트렌드 세미나"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/info/policies/privacy",
+      "text": "개인정보 처리방침"
+    }
+  ],
+  "external_links": [
+    {
+      "url": "https://forms.gle/B5boccD4cipkTMNT8",
+      "text": "강사 지원하기 Click"
+    },
+    {
+      "url": "https://www.facebook.com/b2bfastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://pf.kakao.com/_LxbMxnb",
+      "text": ""
+    },
+    {
+      "url": "https://blog.naver.com/fastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://www.linkedin.com/showcase/b2bfastcampus",
+      "text": ""
+    }
+  ],
+  "nav_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_subs",
+      "text": "온라인 교육 (LMS)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation",
+      "text": "AI 활용 교육 (출강)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_all",
+      "text": "직무 공통 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_job",
+      "text": "직무 특화 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_it",
+      "text": "└ IT · 개발 · 엔지니어링"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_rnd",
+      "text": "└ 연구개발 · 생산"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_mkt",
+      "text": "└ 마케팅 · 서비스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_support",
+      "text": "└ HR · 경영지원 · 재무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_hackathon",
+      "text": "AI 해커톤"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_workshop",
+      "text": "AI 워크숍"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_leadership",
+      "text": "AI 리더십 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_enterprise",
+      "text": "엔터프라이즈 전용"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_contents",
+      "text": "콘텐츠 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflo",
+      "text": "LMS 기능 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflolite",
+      "text": "중소기업 전용 서비스"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_skillmatch",
+      "text": "스킬 진단/평가"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_skillmatch",
+      "text": "└ 업종별 스킬 진단 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp",
+      "text": "전체 과정 살펴보기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_businesswriting",
+      "text": "└ AI 문서 작성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_dataanalysiswai",
+      "text": "└ 엑셀 데이터 분석"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_excelautomation",
+      "text": "└ 엑셀 업무자동화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_rndresearch",
+      "text": "└ R&D 직군 특화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_aisimulationforbd",
+      "text": "└ 비즈니스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_productmdai",
+      "text": "└ AI 기반 상품기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_public",
+      "text": "공공 특화 교육/컨설팅"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicgovernment",
+      "text": "└ 공공 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicuniversity",
+      "text": "└ 대학 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer",
+      "text": "산업별 교육 운영 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook",
+      "text": "[사례집] 생성형 AI 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_online",
+      "text": "[사례집] 온라인 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight",
+      "text": "공식 블로그"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_bizletter",
+      "text": "뉴스레터"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "text": "교육 설계 가이드"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_template",
+      "text": "무료 템플릿"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar",
+      "text": "트렌드 세미나"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/logo.ea8ed80f.svg",
+      "alt": "패스트캠퍼스 기업교육 로고"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/hamburger.9ad22d05.svg",
+      "alt": "메뉴 열기"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/214433-890/format-logo.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/013912-890/format-1-main2.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/234701-890/format-frame-1321314696.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/214126-890/format-01-logop.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/232133-890/format-frame-1321314690.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/235332-890/format-frame-1321314700.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/230258-890/format-or.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/232623-890/format-web.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/012116-890/format-a.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/012127-890/format-b.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/181444-890/format-e.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/012145-890/format-d.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/093937-890/format-point-web-2.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/001544-890/format-333.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/231859-890/format-card-mo.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/231821-890/format-frame-1321314684.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/184626-890/format-web222.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202403/001949-890/format-bg.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/facebook.d4a7041a.svg",
+      "alt": "패스트캠퍼스 페이스북"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/kakao.e533b3af.svg",
+      "alt": "패스트캠퍼스 카카오톡 채널"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/naver-blog.934340b5.svg",
+      "alt": "패스트캠퍼스 네이버 블로그"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/linkedin.b3b3feb8.svg",
+      "alt": "패스트캠퍼스 링크드인 링크"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    }
+  ],
+  "text_content": "서비스 소개\n온라인 교육 (LMS)\nAI 활용 교육 (출강)\n생성형 AI 활용\n직무 공통 교육\n직무 특화 교육\n└ IT · 개발 · 엔지니어링\n└ 연구개발 · 생산\n└ 마케팅 · 서비스 기획\n└ HR · 경영지원 · 재무\nAI 해커톤\nAI 워크숍\nAI 리더십 교육\nLMS\n엔터프라이즈 전용\n콘텐츠 소개\nLMS 기능 소개\n중소기업 전용 서비스\n진단\n스킬 진단/평가\n└ 업종별 스킬 진단 사례\n공개교육\n전체 과정 살펴보기\n└ AI 문서 작성\n└ 엑셀 데이터 분석\n└ 엑셀 업무자동화\n└ R&D 직군 특화\n└ 비즈니스 기획\n└ AI 기반 상품기획\n공공\n공공 특화 교육/컨설팅\n└ 공공 특화 사례\n└ 대학 특화 사례\n교육 사례\n산업별 교육 운영 사례\n[사례집] 생성형 AI 교육\n[사례집] 온라인 교육\n[사례집] 업종별 스킬 진단\n블로그\n공식 블로그\n뉴스레터\n교육 설계 가이드\n무료 템플릿\n트렌드 세미나\n기업교육 문의하기\n문의하기\n패스트캠퍼스\n패스트캠퍼스 기업교육팀\n과 함께\n전문 강사로서의\n커리어를 시작해보세요!\n'Life-Changing Education'이라는 비전 아래,\n대학과 실무 간의 격차를 해소하고\n기업의 성장을 돕는 여정에 함께 하실 주인공을 모십니다.\n강사 지원하기 Click\n기업교육팀의 탄탄한 고객군을 기반으로\n전문 강사 커리어에 날개를 달아보세요.\n국내 50대 기업의 70%이상, 4,000여 기업, 75,000여 임직원이\n패스트캠퍼스와 기업교육을 진행했습니다.\n패스트캠퍼스는 국내 50대 기업의 70%가 선택한 직무 스킬 강화 전문 교육 기관입니다.\n직무 스킬 교육만 650건 이상 진행한 노하우를 바탕으로 강사님의 성장에도 함께 합니다.\n패스트캠퍼스 기업교육팀과 함께 강사님의 인생도 바꿔보세요.\n강사 지원분야\n기업교육팀에서는 아래 분야의\n전문성을 갖춘 강사님을 찾습니다.\n위 분야에 해당하지 않더라도 괜찮습니다.\n나의 전문성과 노하우를 공유할 준비가 되신 분들은 주저 말고 지원해주세요!\n강사 형태\n기업교육은 주로 아래 형태로 이루어집니다.\n아직 전문 강사 지원은 부담스럽다면?\n가볍게 시작할 수 있는 포지션도 있어요.\n자세한 교육 방식은 담당 컨설턴트가 자세히 안내해드립니다.\n강사 지원 시 원하는 포지션을 기재해주시면 참고하여 연락 드리겠습니다.\n패스트캠퍼스 대표 강사님들의 한마디\n패캠의 강사님들이 직접 말하는 패캠에서의 경험을 들어보세요!\nprev\nnext\n패스트캠퍼스 강사님께 주어지는 기회/혜택\n패스트캠퍼스 기업교육 강사님에게는\n새로운 기회의 장이 열립니다.\n강의준비 프로세스\n강사님은 강의 퀄리티만 생각하세요!\n패스트캠퍼스 기업교육 전문 컨설턴트가 교육 설계부터 운영까지 함께 합니다.\n강의준비 프로세스\n패스트캠퍼스 강사 등록은 이렇게 진행됩니다.\n5분 만에 지원하기\nFAQ.\n강의 준비는 주로 어떻게 이루어지나요?\n· 담당 컨설턴트가 기업 고객 니즈를 파악하여 1차적으로 교육 내용과 방식 등을 설계한 후 메일로 출강 문의 드립니다.\n· 이후 교육 관련 세부 조율 후 강의 최소 2주 전까지 교육 자료/교안을 제작합니다.\n· 기업 고객 맞춤형으로 진행될 경우, 추가 논의나 미팅을 요청드릴 수 있습니다.\n교육 대상은 주로 어떤 분들인가요?\n· 기업교육 특성상, 다양한 산업군/직무/직급의 임직원 분들의 수강 대상자가 됩니다.\n· 담당 컨설턴트가 출강 기업의 산업과 도메인, 수강생 수준 등을 고려하여 강사님께 출강 문의를 드리고 있습니다.\n강사료는 어떻게 책정되나요?\n· 첨부해주시는 이력서/CV를 기반으로 내부 테이블에 따라 제안드리고 있습니다.\n· 이력서에 학력/경력, 강의 이력을 상세히 작성해주시면 좋습니다.\n강사료는 어떤 형태로 지급되나요?\n· 3.3% 사업소득세를 제외한 ‘사업소득’ 형태로 지급됩니다.\n· 보통 강의 종료 익월에 정산되며 장기 과정의 경우, 월별 분할 지급도 가능합니다.(담당자와 논의 必)\n강사 계약은 어떻게 진행되나요?\n· 강사료, 교육 일정 등 협의 후 계약 관련해 메일로 별도 안내 드립니다.\n*전자계약으로 진행 예정\n직장에 소속되어 있는데 강사 활동이 가능한가요?\n· 외부 출강과 관련해 회사별 내부 지침이 상이하므로 재직 중이신 회사 내규를 확인 후 지원하시기 바랍니다.\n대면/비대면을 선택할 수 있나요?\n· 수도권 외 지역, 해외 거주 중이신 경우에도 비대면으로 강의를 하실 수 있습니다.\n· 지방에 위치한 연수원이나 교육장에서 진행되는 강의도 있으므로  [강사 지원하기] 비고란에 거주지, 희망 출강 형태 작성해주시면 참고하여 문의 드리겠습니다.\n주말/야간에도 강의할 수 있나요?\n· 주로 주중 워킹타임 내 강의가 진행되지만, 종종 주말/야간 강의도 있습니다. [강사 지원하기] 비고란에 출강 희망하시는 시간대를 작성해주시면 참고하여 문의 드리겠습니다.\n저희 패스트캠퍼스는 강사님들을 늘 업계\nTOP-Tier\n로 생각하며\n그에 알맞는 아낌없는 지원을 해드립니다.\n패캠과 함께 인생을 바꾸는 교육을 실현시키고 커리어 성장을 이뤄보세요!\n5분 만에 지원하기\n서비스 소개\n온라인 교육 (LMS)\nAI 활용 교육 (출강)\n생성형 AI 활용\n직무 공통 교육\n직무 특화 교육\n└ IT · 개발 · 엔지니어링\n└ 연구개발 · 생산\n└ 마케팅 · 서비스 기획\n└ HR · 경영지원 · 재무\nAI 해커톤\nAI 워크숍\nAI 리더십 교육\nLMS\n엔터프라이즈 전용\n콘텐츠 소개\nLMS 기능 소개\n중소기업 전용 서비스\n진단\n스킬 진단/평가\n└ 업종별 스킬 진단 사례\n공개교육\n전체 과정 살펴보기\n└ AI 문서 작성\n└ 엑셀 데이터 분석\n└ 엑셀 업무자동화\n└ R&D 직군 특화\n└ 비즈니스 기획\n└ AI 기반 상품기획\n공공\n공공 특화 교육/컨설팅\n└ 공공 특화 사례\n└ 대학 특화 사례\n교육 사례\n산업별 교육 운영 사례\n[사례집] 생성형 AI 교육\n[사례집] 온라인 교육\n[사례집] 업종별 스킬 진단\n블로그\n공식 블로그\n뉴스레터\n교육 설계 가이드\n무료 템플릿\n트렌드 세미나\n(주) 데이원컴퍼니\n대표이사: 이강민\n사업자번호: 810-86-00658\nb2b@day1company.co.kr, 02-501-7429\n개인정보책임관리자: 이강민\n사무실: 서울특별시 강남구 테헤란로 231, 센터필드 WEST 6층, 7층\n교육장: 서울특별시 강남구 강남대로 364 미왕빌딩 10, 11층\n개인정보 처리방침\nCopyright © 2021 (주) 데이원컴퍼니. All rights reserved.\n서비스 소개\n생성형 AI 활용\nLMS\n진단\n공개교육\n공공\n교육 사례\n블로그",
+  "text_length": 3143,
+  "h1_count": 1,
+  "has_structured_data": true,
+  "rendered_with": "selenium",
+  "js_rendered": true,
+  "meta_robots": null,
+  "x_robots_tag": null,
+  "response_headers": {
+    "Last-Modified": null,
+    "Cache-Control": "private, no-cache, no-store, max-age=0, must-revalidate",
+    "Content-Type": "text/html; charset=utf-8",
+    "X-Frame-Options": null
+  },
+  "hreflang": [],
+  "answer_first_block": "패스트캠퍼스 기업교육팀과 함께전문 강사로서의커리어를 시작해보세요!'Life-Changing Education'이라는 비전 아래,대학과 실무 간의 격차를 해소하고기업의 성장을 돕는 여정에 함께 하실 주인공을 모십니다.강사 지원하기 Click기업교육팀의 탄탄한 고객군을 기반으로전문 강사 커리어에 날개를 달아보세요.국내 50대 기업의 70%이상, 4,000여 기업, 75,000여 임직원이패스트캠퍼스와 기업교육을 진행했습니다.패스트캠퍼스는 국내 50대 기업의 70%가 선택한 직무 스킬 강화 전문 교육 기관입니다.직무 스킬 교육만 650건 이상 진행한 노하우를 바탕으로 강사님의 성장에도 함께 합니다.패스트캠퍼스 기업교육팀과 함께 강사님의 인생도 바꿔보세요.강사 지원분야기업교육팀에서는 아래 분야의전문성을 갖춘 강사님을 찾습니다.위 분야에 해당하지 않더라도 괜찮습니다.나의 전문성과 노하우를 공유할 준비가 되신 분들은 주저 말고 지원해주세요!강사 형태기업교육은 주로 아래 형태로 이루어집니다.아직 ",
+  "img_alt_coverage": {
+    "total": 43,
+    "with_alt": 22,
+    "ratio": 0.512
+  },
+  "word_count": 755,
+  "faq_count": 30,
+  "subheading_count": 8
+}

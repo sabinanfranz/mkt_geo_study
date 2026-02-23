@@ -1,0 +1,38 @@
+{
+  "crawl_timestamp": "2026-02-22T04:36:52.229219+00:00",
+  "base_domain": "b2b.fastcampus.co.kr",
+  "page_count": 10,
+  "crawled_urls": [
+    "https://b2b.fastcampus.co.kr/",
+    "https://b2b.fastcampus.co.kr/service_custom",
+    "https://b2b.fastcampus.co.kr/refer_customer",
+    "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+    "https://b2b.fastcampus.co.kr/resource_seminar_onlinelearning",
+    "https://b2b.fastcampus.co.kr/service_aicamp_b2bproposalwai",
+    "https://b2b.fastcampus.co.kr/contact",
+    "https://b2b.fastcampus.co.kr/contact_mktg",
+    "https://b2b.fastcampus.co.kr/info/policies/privacy",
+    "https://b2b.fastcampus.co.kr/resource_insight_hrdai"
+  ],
+  "total_internal_links": 33,
+  "total_external_links": 43,
+  "discovered_urls_not_crawled": [],
+  "navigation_structure": {
+    "https://b2b.fastcampus.co.kr/": "",
+    "https://b2b.fastcampus.co.kr/contact": "기업교육 문의하기"
+  },
+  "pages_with_structured_data": [
+    "https://b2b.fastcampus.co.kr/resource_insight_aiforwork",
+    "https://b2b.fastcampus.co.kr/contact",
+    "https://b2b.fastcampus.co.kr/contact_mktg",
+    "https://b2b.fastcampus.co.kr/resource_insight_hrdai"
+  ],
+  "pages_without_structured_data": [
+    "https://b2b.fastcampus.co.kr/",
+    "https://b2b.fastcampus.co.kr/service_custom",
+    "https://b2b.fastcampus.co.kr/refer_customer",
+    "https://b2b.fastcampus.co.kr/resource_seminar_onlinelearning",
+    "https://b2b.fastcampus.co.kr/service_aicamp_b2bproposalwai",
+    "https://b2b.fastcampus.co.kr/info/policies/privacy"
+  ]
+}

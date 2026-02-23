@@ -1,0 +1,708 @@
+{
+  "url": "https://b2b.fastcampus.co.kr/resource_report",
+  "slug": "resource_report",
+  "crawled_at": "2026-02-22T23:29:48.713270+00:00",
+  "status_code": 200,
+  "title": "HRD 트렌드 리포트 : AI 활용 기업교육 사례부터 Skill 기반 HR 가이드까지 | 패스트캠퍼스 기업교육",
+  "meta_description": "비즈니스 목표 달성에 기여하는 인재 육성 및 관리 전략을 리포트로 만나보세요. AI 활용 기업교육 사례부터 Skill 기반 HR 가이드까지 무료로 다운로드 받아 열람할 수 있습니다.",
+  "meta_keywords": "성인교육, 직무교육, 교육, 교육콘텐츠, 교육서비스, 패스트캠퍼스, 학원, fastcampus, 컨퍼런스, 퓨처콘, futurecon, 온라인, 싱글팩, 프로그래밍, 데이터사이언스, 파이낸스, 마케팅, 비즈니스, 온라인교육, 개발자, 디자이너, 기획자, 마케터, 프로덕트매니저, 디벨로퍼, 퍼포먼스마케터, 데이터사이언티스트, 패스트원, education, conference, programming, developer, finance, business, design, designer, marketing, marketer,",
+  "canonical": "https://b2b.fastcampus.co.kr/resource_report",
+  "og_tags": {
+    "og:type": "website",
+    "og:image": "https://cdn.day1company.io/prod/uploads/202501/114610-890/report.png",
+    "og:image:width": "600",
+    "og:image:height": "315",
+    "og:url": "https://b2b.fastcampus.co.kr/resource_report",
+    "og:title": "HRD 트렌드 리포트 : AI 활용 기업교육 사례부터 Skill 기반 HR 가이드까지 | 패스트캠퍼스 기업교육",
+    "og:description": "비즈니스 목표 달성에 기여하는 인재 육성 및 관리 전략을 리포트로 만나보세요. AI 활용 기업교육 사례부터 Skill 기반 HR 가이드까지 무료로 다운로드 받아 열람할 수 있습니다."
+  },
+  "headings": [
+    {
+      "level": 1,
+      "tag": "h1",
+      "text": "HRD 트렌드 리포트"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "디지털트랜스포메이션"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "패스트캠퍼스 AI 활용 교육"
+    }
+  ],
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "HRD 트렌드 리포트",
+      "description": "HRD 담당자를 위한 각종 트렌드 리포트, 기업교육 사례집 제공",
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "provider": {
+        "@type": "Organization",
+        "name": "패스트캠퍼스 기업교육 - Fastcampus",
+        "sameAs": "https://b2b.fastcampus.co.kr/"
+      }
+    }
+  ],
+  "schema_microdata": [],
+  "rdfa_types": [],
+  "internal_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_subs",
+      "text": "온라인 교육 (LMS)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation",
+      "text": "AI 활용 교육 (출강)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_all",
+      "text": "직무 공통 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_job",
+      "text": "직무 특화 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_it",
+      "text": "└ IT · 개발 · 엔지니어링"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_rnd",
+      "text": "└ 연구개발 · 생산"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_mkt",
+      "text": "└ 마케팅 · 서비스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_support",
+      "text": "└ HR · 경영지원 · 재무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_hackathon",
+      "text": "AI 해커톤"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_workshop",
+      "text": "AI 워크숍"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_leadership",
+      "text": "AI 리더십 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_enterprise",
+      "text": "엔터프라이즈 전용"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_contents",
+      "text": "콘텐츠 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflo",
+      "text": "LMS 기능 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflolite",
+      "text": "중소기업 전용 서비스"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_skillmatch",
+      "text": "스킬 진단/평가"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_skillmatch",
+      "text": "└ 업종별 스킬 진단 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp",
+      "text": "전체 과정 살펴보기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_businesswriting",
+      "text": "└ AI 문서 작성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_dataanalysiswai",
+      "text": "└ 엑셀 데이터 분석"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_excelautomation",
+      "text": "└ 엑셀 업무자동화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_rndresearch",
+      "text": "└ R&D 직군 특화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_aisimulationforbd",
+      "text": "└ 비즈니스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_productmdai",
+      "text": "└ AI 기반 상품기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_public",
+      "text": "공공 특화 교육/컨설팅"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicgovernment",
+      "text": "└ 공공 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicuniversity",
+      "text": "└ 대학 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer",
+      "text": "산업별 교육 운영 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook",
+      "text": "[사례집] 생성형 AI 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_online",
+      "text": "[사례집] 온라인 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight",
+      "text": "공식 블로그"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_bizletter",
+      "text": "뉴스레터"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "text": "교육 설계 가이드"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_template",
+      "text": "무료 템플릿"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar",
+      "text": "트렌드 세미나"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_skilltrend",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_lmsguide",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_atdkorea2024",
+      "text": "ATD Korea Summit 2024 하이라이트북컨퍼런스 요약집 : 스킬 중심으로HR과 HRD의 혁신을 이끌다#ATD#Skill based HR/HRD"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_aileadership",
+      "text": "AX 시대 리더라면 꼭 알아야 할 퍼스트 리더십 스킬AI 시대 대체 불가능한리더가 되기 위한 리더십 스킬#리더십#AI"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_itleaders",
+      "text": "성장하는 기업의 IT 인재 육성 및 조직 문화 사례초고속 성장 기업의 IT 인재 육성 :Tech 리더 인터뷰집#IT인재#인재 육성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_dt2022",
+      "text": "Digital Transformation 현황 조사기업별 사내 디지털 혁신 추진 및 임직원 DX 교육 현황 조사#DX#Digital Transformation"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_hraiguide",
+      "text": "채용부터 교육까지 한 권에 끝낼 수 있는효율적인 HR 업무를 위한생성형 AI 활용 가이드#AI 활용#HR 업무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_talentmanagement",
+      "text": "피플 애널리틱스를 활용 핵심인재 관리 가이드탤런트 매니지먼트 가이드 :핵심 인재 관리 전략#피플애널리틱스#핵심인재"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_talentmarketplace",
+      "text": "채용, 리텐션, 재교육까지 내부 인재 시장 구축 전략우리 회사만의 탤런트 마켓플레이스 구축 가이드#탤런트 마켓 플레이스#HR 업무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_skillbasedcerti",
+      "text": "HD현대인프라코어 케이스 스터디 수록스킬 기반 평가 및 인증 프로세스 구축 가이드#스킬 기반 조직#평가/인증"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_skilltrans",
+      "text": "비즈니스 생존을 위한 HRD 전략Skills-based Organization으로 변화하는 인재 육성 가이드#스킬 기반 조직#HR 업무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_trainingroi",
+      "text": "교육 프로그램 성과 분석을 위한 최신 가이드조직 성과 향상을 위한교육 ROI 최적화 방법 가이드#HRD#ROI"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_leadershipfw",
+      "text": "리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드새로운 리더십 프레임워크를 활용한리더십 교육 설계 가이드#HRD#리더십 육성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_leadership",
+      "text": "사내 리더십 양성을 위한 HRD 전략지속 가능한 리더십 양성 노하우,리더십 플레이북 구축 가이드#HRD#리더십 육성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_gptguide",
+      "text": "AI 시대를 준비하는 HRD 실무 가이드우리 기업에 딱 맞는Chat GPT 활용 교육 기획법#HRD#AI 활용 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_workflowlearning",
+      "text": "리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드Skills-based Organization으로 변화하는 인재 육성 가이드#PM/PO#AI"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_cd",
+      "text": "시티즌 디벨로퍼(Citizen Developer) 육성시티즌 디벨로퍼 양성을 위한직무 교육 가이드#CD 양성#AI 활용 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_cds",
+      "text": "시티즌 데이터 사이언티스트 육성시티즌 데이터 사이언티스트양성을 위한 직무 교육 가이드#CDS 양성#AI 활용 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_po",
+      "text": "프로덕트 오너 & 프로덕트 매니저 인재 육성디지털 프로덕트 오너 양성을 위한직무 교육 가이드#PM/PO#직무 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_hrdedu",
+      "text": "기업의 DX 목표 달성을 위한 디지털 역량 교육 설계디지털 인재 육성 위한교육 설계 및 체계 수립 가이드#HRD#직무 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_reskilupskill",
+      "text": "리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드리더십 프레임워크 기반기업 맞춤 리더십 육성 전략#PM/PO#AI"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_genaisubject",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report_genaijob",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/info/policies/privacy",
+      "text": "개인정보 처리방침"
+    }
+  ],
+  "external_links": [
+    {
+      "url": "https://www.facebook.com/b2bfastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://pf.kakao.com/_LxbMxnb",
+      "text": ""
+    },
+    {
+      "url": "https://blog.naver.com/fastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://www.linkedin.com/showcase/b2bfastcampus",
+      "text": ""
+    }
+  ],
+  "nav_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_subs",
+      "text": "온라인 교육 (LMS)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation",
+      "text": "AI 활용 교육 (출강)"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_all",
+      "text": "직무 공통 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_job",
+      "text": "직무 특화 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_it",
+      "text": "└ IT · 개발 · 엔지니어링"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_rnd",
+      "text": "└ 연구개발 · 생산"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_mkt",
+      "text": "└ 마케팅 · 서비스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_support",
+      "text": "└ HR · 경영지원 · 재무"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_hackathon",
+      "text": "AI 해커톤"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_workshop",
+      "text": "AI 워크숍"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aieducation_leadership",
+      "text": "AI 리더십 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_enterprise",
+      "text": "엔터프라이즈 전용"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_contents",
+      "text": "콘텐츠 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflo",
+      "text": "LMS 기능 소개"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_online_skillflolite",
+      "text": "중소기업 전용 서비스"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_skillmatch",
+      "text": "스킬 진단/평가"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_skillmatch",
+      "text": "└ 업종별 스킬 진단 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp",
+      "text": "전체 과정 살펴보기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_businesswriting",
+      "text": "└ AI 문서 작성"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_dataanalysiswai",
+      "text": "└ 엑셀 데이터 분석"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_excelautomation",
+      "text": "└ 엑셀 업무자동화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_rndresearch",
+      "text": "└ R&D 직군 특화"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_aisimulationforbd",
+      "text": "└ 비즈니스 기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_aicamp_productmdai",
+      "text": "└ AI 기반 상품기획"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/service_public",
+      "text": "공공 특화 교육/컨설팅"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicgovernment",
+      "text": "└ 공공 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_publicuniversity",
+      "text": "└ 대학 특화 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/refer_customer",
+      "text": "산업별 교육 운영 사례"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook",
+      "text": "[사례집] 생성형 AI 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_casebook_online",
+      "text": "[사례집] 온라인 교육"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_insight",
+      "text": "공식 블로그"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_bizletter",
+      "text": "뉴스레터"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_report",
+      "text": "교육 설계 가이드"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_template",
+      "text": "무료 템플릿"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/resource_seminar",
+      "text": "트렌드 세미나"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/logo.ea8ed80f.svg",
+      "alt": "패스트캠퍼스 기업교육 로고"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/hamburger.9ad22d05.svg",
+      "alt": "메뉴 열기"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/140422-890/main-trend.png",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/140900-890/trend-report-main.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/140908-890/scene-1.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202502/114545-1804/thumnail-main.png",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/155931-890/atd.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/163026-890/aiai.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/163038-890/it-leader.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/163052-890/dx.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/170605-890/ai-guide.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/170625-890/talent.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/170636-890/hr.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/170648-890/skill.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/170659-890/hrd.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171244-890/roi.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171250-890/leader2.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171307-890/leader3.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171313-890/gpt.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171319-890/leaning.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202502/113958-1804/thumnail-small.png",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171334-890/cd.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171343-890/cds.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171355-890/po.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171401-890/cds2.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/171413-890/ru.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/172554-890/ai2.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/172558-890/ai3.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/172901-890/frame-953.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202501/172856-890/frame-934.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/opener.e1ca1ddb.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/facebook.d4a7041a.svg",
+      "alt": "패스트캠퍼스 페이스북"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/kakao.e533b3af.svg",
+      "alt": "패스트캠퍼스 카카오톡 채널"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/naver-blog.934340b5.svg",
+      "alt": "패스트캠퍼스 네이버 블로그"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/linkedin.b3b3feb8.svg",
+      "alt": "패스트캠퍼스 링크드인 링크"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/arrow.21cb0e1d.svg",
+      "alt": "서브 메뉴 여닫기"
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    },
+    {
+      "src": "https://www.facebook.com/tr",
+      "alt": ""
+    }
+  ],
+  "text_content": "서비스 소개\n온라인 교육 (LMS)\nAI 활용 교육 (출강)\n생성형 AI 활용\n직무 공통 교육\n직무 특화 교육\n└ IT · 개발 · 엔지니어링\n└ 연구개발 · 생산\n└ 마케팅 · 서비스 기획\n└ HR · 경영지원 · 재무\nAI 해커톤\nAI 워크숍\nAI 리더십 교육\nLMS\n엔터프라이즈 전용\n콘텐츠 소개\nLMS 기능 소개\n중소기업 전용 서비스\n진단\n스킬 진단/평가\n└ 업종별 스킬 진단 사례\n공개교육\n전체 과정 살펴보기\n└ AI 문서 작성\n└ 엑셀 데이터 분석\n└ 엑셀 업무자동화\n└ R&D 직군 특화\n└ 비즈니스 기획\n└ AI 기반 상품기획\n공공\n공공 특화 교육/컨설팅\n└ 공공 특화 사례\n└ 대학 특화 사례\n교육 사례\n산업별 교육 운영 사례\n[사례집] 생성형 AI 교육\n[사례집] 온라인 교육\n[사례집] 업종별 스킬 진단\n블로그\n공식 블로그\n뉴스레터\n교육 설계 가이드\n무료 템플릿\n트렌드 세미나\n기업교육 문의하기\n문의하기\nHRD 트렌드 리포트\n디지털트랜스포메이션\n패스트캠퍼스 AI 활용 교육\n기업의 AX(AI Transformation)부터 이러닝 운영까지\n임직원 교육에 관한 인사이트를 만나보세요.\nNEW\n지금 가장 주목 받는 리포트를 무료로 챙겨보세요!\n2024-25 국내 조직의 스킬 활용 현황\nSkill Trend Report\n이번 리포트에서는 400명의 국내 HR 담당자가 참여한 서베이 결과를 바탕으로, 국내 조직의 스킬 도입 현황과 직면한 한계점을 분석하였습니다. 조직의 경쟁력 강화를 위해 필수 전략으로 자리 잡은 스킬 기반 조직 전환에 대한 인사이트를 얻어 가시길 바랍니다.\n효과적인 온라인 교육 설계를 위한\nHRD 전략 가이드\n이번 가이드에서는 글로벌 HRD 전문기관에서 예측한 온라인 교육 트렌드를 기반으로 임직원의 교육 참여율을 끌어올릴 수 있는 3가지 방법과 핵심 역할에 대해 소개합니다. 해당 가이드를 통해 임직원의 교육 참여율을 높일 수 있는 교육 설계 전략을 세워보시길 바랍니다.\nTREND ARCHIVE\n벌써 3,600명 넘는 구독자가 읽고 간 분야별 HR 트렌드 리포트를 만나보세요.\nHRD 트렌드\nSkill 기반 HR 전략\n교육 기획/운영 가이드\n기업교육 사례집\nHRD 트렌드\n2025년 인재 육성 트렌드, 어디로 향하고 있을까요?\n기업의 비즈니스 임팩트로 연결되는 임직원 육성 전략,\nHRD 트렌드 리포트를 통해 아이디어를 얻어 보세요!\nATD Korea Summit 2024 하이라이트북\n컨퍼런스 요약집 : 스킬 중심으로\nHR과 HRD의 혁신을 이끌다\n#ATD\n#Skill based HR/HRD\nAX 시대 리더라면 꼭 알아야 할 퍼스트 리더십 스킬\nAI 시대 대체 불가능한\n리더가 되기 위한 리더십 스킬\n#리더십\n#AI\n성장하는 기업의 IT 인재 육성 및 조직 문화 사례\n초고속 성장 기업의 IT 인재 육성 :\nTech 리더 인터뷰집\n#IT인재\n#인재 육성\nDigital Transformation 현황 조사\n기업별 사내 디지털 혁신 추진 및 임직원 DX 교육 현황 조사\n#DX\n#Digital Transformation\nprev\nnext\nSkill 기반 HR 전략\n스킬(Skill) 기반으로 HR 체계 개편, 어디서부터 어떻게 시작해야 할까요?\n스킬 기반 조직에 관한 기초 개념 이해부터 실무 적용 방법론,\n기업의 평가 및 인증 프로세스 사례까지 단계별로 확인해 보세요.\n채용부터 교육까지 한 권에 끝낼 수 있는\n효율적인 HR 업무를 위한\n생성형 AI 활용 가이드\n#AI 활용\n#HR 업무\n피플 애널리틱스를 활용 핵심인재 관리 가이드\n탤런트 매니지먼트 가이드 :\n핵심 인재 관리 전략\n#피플애널리틱스\n#핵심인재\n채용, 리텐션, 재교육까지 내부 인재 시장 구축 전략\n우리 회사만의 탤런트 마켓플레이스 구축 가이드\n#탤런트 마켓 플레이스\n#HR 업무\nHD현대인프라코어 케이스 스터디 수록\n스킬 기반 평가 및 인증 프로세스 구축 가이드\n#스킬 기반 조직\n#평가/인증\n비즈니스 생존을 위한 HRD 전략\nSkills-based Organization으로 변화하는 인재 육성 가이드\n#스킬 기반 조직\n#HR 업무\nprev\nnext\n교육 기획/운영 가이드\nHRD 담당자는 어떻게 성과를 보여주고 가시화 할 수 있을까요?\n조직의 성과에 바로 기여할 수 있는 인재 육성의 핵심이 되는\n교육 프로그램 기획 및 운영 방법을 가이드북을 통해 알아보세요!\n교육 프로그램 성과 분석을 위한 최신 가이드\n조직 성과 향상을 위한\n교육 ROI 최적화 방법 가이드\n#HRD\n#ROI\n리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드\n새로운 리더십 프레임워크를 활용한\n리더십 교육 설계 가이드\n#HRD\n#리더십 육성\n사내 리더십 양성을 위한 HRD 전략\n지속 가능한 리더십 양성 노하우,\n리더십 플레이북 구축 가이드\n#HRD\n#리더십 육성\nAI 시대를 준비하는 HRD 실무 가이드\n우리 기업에 딱 맞는\nChat GPT 활용 교육 기획법\n#HRD\n#AI 활용 교육\n리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드\nSkills-based Organization으로 변화하는 인재 육성 가이드\n#PM/PO\n#AI\n임직원 온라인 교육의 ROI를 끌어올릴 방법\n효과적인 온라인 교육 설계를 위한 HRD 전략 가이드\n#LMS\n#HRD\nprev\nnext\n시티즌 디벨로퍼(Citizen Developer) 육성\n시티즌 디벨로퍼 양성을 위한\n직무 교육 가이드\n#CD 양성\n#AI 활용 교육\n시티즌 데이터 사이언티스트 육성\n시티즌 데이터 사이언티스트\n양성을 위한 직무 교육 가이드\n#CDS 양성\n#AI 활용 교육\n프로덕트 오너 & 프로덕트 매니저 인재 육성\n디지털 프로덕트 오너 양성을 위한\n직무 교육 가이드\n#PM/PO\n#직무 교육\n기업의 DX 목표 달성을 위한 디지털 역량 교육 설계\n디지털 인재 육성 위한\n교육 설계 및 체계 수립 가이드\n#HRD\n#직무 교육\n리더십 교육 실패를 끊을 새로운 리더십 교육 트렌드\n리더십 프레임워크 기반\n기업 맞춤 리더십 육성 전략\n#PM/PO\n#AI\nprev\nnext\n기업교육 사례집\n항상 다른 회사에서는 어떤 교육을 운영하고 있는지 궁금하시죠?\n2025년 기업에서 가장 많이 찾는 임직원 AI 활용 교육 사례를\n주제별/직무별/수준별로 상세하게 확인해 보세요!\n주제별 생성형 AI 기업교육 사례\n업무에 바로 적용할 수 있는\n주제별 생성형 AI 교육 사례집\n#교육 사례\n#AI 활용 교육\n직무별 생성형 AI 기업교육 사례\n5가지 대표 직무로 살펴보는\n생성형 AI 교육 사례집\n#교육 사례\n#AI 활용 교육\n기업의 AX(AI Transformation)부터 이러닝 운영까지\n서비스 소개\n온라인 교육 (LMS)\nAI 활용 교육 (출강)\n생성형 AI 활용\n직무 공통 교육\n직무 특화 교육\n└ IT · 개발 · 엔지니어링\n└ 연구개발 · 생산\n└ 마케팅 · 서비스 기획\n└ HR · 경영지원 · 재무\nAI 해커톤\nAI 워크숍\nAI 리더십 교육\nLMS\n엔터프라이즈 전용\n콘텐츠 소개\nLMS 기능 소개\n중소기업 전용 서비스\n진단\n스킬 진단/평가\n└ 업종별 스킬 진단 사례\n공개교육\n전체 과정 살펴보기\n└ AI 문서 작성\n└ 엑셀 데이터 분석\n└ 엑셀 업무자동화\n└ R&D 직군 특화\n└ 비즈니스 기획\n└ AI 기반 상품기획\n공공\n공공 특화 교육/컨설팅\n└ 공공 특화 사례\n└ 대학 특화 사례\n교육 사례\n산업별 교육 운영 사례\n[사례집] 생성형 AI 교육\n[사례집] 온라인 교육\n[사례집] 업종별 스킬 진단\n블로그\n공식 블로그\n뉴스레터\n교육 설계 가이드\n무료 템플릿\n트렌드 세미나\n(주) 데이원컴퍼니\n대표이사: 이강민\n사업자번호: 810-86-00658\nb2b@day1company.co.kr, 02-501-7429\n개인정보책임관리자: 이강민\n사무실: 서울특별시 강남구 테헤란로 231, 센터필드 WEST 6층, 7층\n교육장: 서울특별시 강남구 강남대로 364 미왕빌딩 10, 11층\n개인정보 처리방침\nCopyright © 2021 (주) 데이원컴퍼니. All rights reserved.\n서비스 소개\n생성형 AI 활용\nLMS\n진단\n공개교육\n공공\n교육 사례\n블로그",
+  "text_length": 3911,
+  "h1_count": 1,
+  "has_structured_data": true,
+  "rendered_with": "selenium",
+  "js_rendered": true,
+  "meta_robots": null,
+  "x_robots_tag": null,
+  "response_headers": {
+    "Last-Modified": null,
+    "Cache-Control": "private, no-cache, no-store, max-age=0, must-revalidate",
+    "Content-Type": "text/html; charset=utf-8",
+    "X-Frame-Options": null
+  },
+  "hreflang": [],
+  "answer_first_block": null,
+  "img_alt_coverage": {
+    "total": 54,
+    "with_alt": 22,
+    "ratio": 0.407
+  },
+  "word_count": 974,
+  "faq_count": 0,
+  "subheading_count": 2
+}

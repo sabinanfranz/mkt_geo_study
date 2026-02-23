@@ -1,0 +1,152 @@
+{
+  "url": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+  "slug": "resource_insight_hrdai",
+  "crawled_at": "2026-02-22T04:36:50.719206+00:00",
+  "status_code": 200,
+  "title": "ChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?  | 패스트캠퍼스 기업교육",
+  "meta_description": "ChatGPT가 일상으로 들어온 AI 시대, 개인화에 따른 인재 육성 전략을 수립하고 AI를 활용하여 임직원의 몰입감 높은 학습 경험을 조성하는 방법을 알아봅니다.",
+  "meta_keywords": "성인교육, 직무교육, 교육, 교육콘텐츠, 교육서비스, 패스트캠퍼스, 학원, fastcampus, 컨퍼런스, 퓨처콘, futurecon, 온라인, 싱글팩, 프로그래밍, 데이터사이언스, 파이낸스, 마케팅, 비즈니스, 온라인교육, 개발자, 디자이너, 기획자, 마케터, 프로덕트매니저, 디벨로퍼, 퍼포먼스마케터, 데이터사이언티스트, 패스트원, education, conference, programming, developer, finance, business, design, designer, marketing, marketer,",
+  "canonical": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+  "og_tags": {
+    "og:type": "website",
+    "og:image": "https://cdn.day1company.io/prod/uploads/202303/083309-571/og-image.png",
+    "og:image:width": "600",
+    "og:image:height": "315",
+    "og:url": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+    "og:title": "ChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?  | 패스트캠퍼스 기업교육",
+    "og:description": "ChatGPT가 일상으로 들어온 AI 시대, 개인화에 따른 인재 육성 전략을 수립하고 AI를 활용하여 임직원의 몰입감 높은 학습 경험을 조성하는 방법을 알아봅니다."
+  },
+  "headings": [
+    {
+      "level": 1,
+      "tag": "h1",
+      "text": "ChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "기업교육"
+    },
+    {
+      "level": 2,
+      "tag": "h2",
+      "text": "디지털 인재 양성"
+    }
+  ],
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "ChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게? ",
+      "description": "월간인재경영 기고 : AI 시대의 디지털 인재 양성 ",
+      "url": "https://b2b.fastcampus.co.kr/resource_insight_hrdai",
+      "provider": {
+        "@type": "Organization",
+        "name": "패스트캠퍼스 기업교육 - Fastcampus",
+        "sameAs": "https://b2b.fastcampus.co.kr/"
+      }
+    }
+  ],
+  "schema_microdata": [],
+  "rdfa_types": [],
+  "internal_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact_mktg",
+      "text": "1:1 무료 상담"
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/info/policies/privacy",
+      "text": "개인정보 처리방침"
+    }
+  ],
+  "external_links": [
+    {
+      "url": "https://www.abouthr.co.kr/news/articleView.html",
+      "text": "월간 인재경영 23년 4월호에 기고한 글"
+    },
+    {
+      "url": "https://www.facebook.com/b2bfastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://pf.kakao.com/_LxbMxnb",
+      "text": ""
+    },
+    {
+      "url": "https://blog.naver.com/fastcampus",
+      "text": ""
+    },
+    {
+      "url": "https://www.linkedin.com/showcase/b2bfastcampus",
+      "text": ""
+    }
+  ],
+  "nav_links": [
+    {
+      "url": "https://b2b.fastcampus.co.kr/",
+      "text": ""
+    },
+    {
+      "url": "https://b2b.fastcampus.co.kr/contact",
+      "text": "기업교육 문의하기"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/logo.ea8ed80f.svg",
+      "alt": "패스트캠퍼스 기업교육 로고"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/hamburger.9ad22d05.svg",
+      "alt": "메뉴 열기"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202303/070744-571/image-1.png",
+      "alt": "AI 시대 디지털인재양성 ChatGPT"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202303/070955-571/image-2.png",
+      "alt": "AI 시대 디지털인재양성 ChatGPT"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202303/071345-571/image-3.png",
+      "alt": "AI 시대 디지털인재양성 ChatGPT"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202303/071613-571/image-4.png",
+      "alt": "AI 시대 디지털인재양성 ChatGPT"
+    },
+    {
+      "src": "https://cdn.day1company.io/prod/uploads/202303/072751-571/image-5.png",
+      "alt": "AI 시대 디지털인재양성 ChatGPT"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/facebook.d4a7041a.svg",
+      "alt": "패스트캠퍼스 페이스북"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/kakao.e533b3af.svg",
+      "alt": "패스트캠퍼스 카카오톡 채널"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/naver-blog.934340b5.svg",
+      "alt": "패스트캠퍼스 네이버 블로그"
+    },
+    {
+      "src": "https://b2b.fastcampus.co.kr/_next/static/media/linkedin.b3b3feb8.svg",
+      "alt": "패스트캠퍼스 링크드인 링크"
+    }
+  ],
+  "text_content": "기업교육 문의하기\n문의하기\nChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?\n기업교육\n디지털 인재 양성\nChatGPT가 등장한 AI 시대의 디지털 인재 양성, 어떻게?\n발행 2023년 3월 30일\n*본 아티클은 패스트캠퍼스 기업교육 팀이\n월간 인재경영 23년 4월호에 기고한 글\n을 일부 수정하여 추가 게재한 것입니다.\n인공지능(AI)은 기업의 여러 측면을 변화시키는 강력한 도구로 등장했습니다. 이러한 AI 기술은 기업의 업무 처리 방식, 비즈니스가 작동하는 전반적인 변화 뿐만 아니라 인재 육성을 담당하는 HRD 부서 내 L&D(Learning Development)와 L&X(Learning Experience)에도 큰 변화를 가져왔습니다. 빅데이터 분석, 자동화 및 개인화와 같은 AI 기술을 활용하여 조직은 더 효과적이고 효율적인 인재 육성 전략 및 과정을 만들 수 있게 되었습니다. 개인화 및 맞춤화된 인재 육성 전략을 수립하고, AI를 활용하여 임직원의 몰입감 높은 학습 경험을 조성하는 방법을 살펴보겠습니다.\n인재 발굴 및 디지털 인재 양성에\nAI 기술을 전략적으로 활용하는 법\n디지털 인재 양성에 있어, AI 기술을 활용하는 이점 중 하나는 직원의 역량, 지식, 잠재력 전반을 정량적으로 평가할 수 있다는 사실입니다. 이는 조직 내 핵심 인재를 파악하고, 비즈니스의 미래에 직접적으로 기여할 수 있는 잠재력 높은 인재를 식별하는 데 도움이 됩니다. 또한 AI 기술을 활용하면 저성과자의 경우, 부족한 스킬을 파악하고 맞춤형 학습 경로를 제시하여 보다 나은 인재로 성장할 수 있도록 지원할 수 있습니다. 즉, 인사/교육 담당자는 AI를 활용해 데이터 기반으로 의사 결정하고, 보다 최적화된 학습 프로그램을 만들어 조직에서 최상의 결과를 창출할 수 있습니다.\n1) 직무 스킬 평가 (Skill Assessment)\nAI 기반 평가 도구를 활용하면 온라인 테스트, 시뮬레이션, 성과 평가 등 다양한 방법을 통해 직원의 역량을 정확하게 평가할 수 있습니다. 직원의 강점과 개선이 필요한 영역을 객관적인 데이터로 파악할 수 있고, 데이터를 기반으로 맞춤형 학습 처방을 제공하여 인재 개발을 보다 전략적으로 지원할 수 있다는 장점이 있죠.\n2) 잠재력 파악 (Potential Identification)\nAI 알고리즘을 활용하여 직원의 성과 데이터, 학습 이력, 행동 데이터, 경력 기록 등을 종합적으로 분석하면 조직 내 직원의 성장 및 성공 가능성을 예측할 수 있습니다. 이러한 정보를 바탕으로, HRD 부서에서 인재 개발 및 육성 전략을 수립하고 리소스를 효율적으로 할당할 수 있습니다.\n3) 예측 분석 자동화 (Predictive Analytics Automation)\n인사/교육 담당자는 AI를 활용하여 인력 개발 전략을 도출하여 많은 인사이트를 얻을 수 있습니다. AI 기술을 활용해 임직원의 학습 데이터의 추세와 패턴을 파악하면, HRD 관련 의사결정 시 리소스 할당, 콘텐츠 개발 및 프로그램 효과에 대해 보다 정확한 정보에 입각한 의사 결정을 내릴 수 있죠. 이를 통해 자동화를 구현하고, 더욱 정확하게 미래를 예측할 수 있습니다.\n4) 직무 스킬 갭 분석 자동화 (Skills Gap Analysis Automation)\nAI 기술을 활용하면 임직원의 HR 정보, 학습 및 경력 이력, 스킬 진단 평가 데이터 등 다양한 데이터를 분석할 수 있는데요. 이 과정에서 인사/교육 담당자는 조직 내 기술 격차를 파악하고 맞춤형 학습 개입을 추천하고 전략을 도출할 수 있습니다. 조직은 급변하는 비즈니스 환경에서 경쟁력과 민첩성을 유지할 수 있게 되죠.\nAI 시대 인재 육성의 목표 : 1. 학습자 간 스킬 갭(Skill gap) 줄이기\nAI 기술을 HRD에 결합했을 때 기대할 수 있는 가장 이상적인 그림은 무엇일까요? 바로 직원 개개인의 고유한 요구와 목표를 충족시키기 위한 맞춤형 인재 개발 프로그램을 개발할 수 있다는 점입니다. 맞춤형 인재 개발 프로그램은 궁극적으로 임직원 개인에게 최적화된 러닝 패스를 구축할 수 있도록 도와줍니다. 이제 더 이상 임직원 모두가 수강률 80%를 목표로 삼을 필요가 없습니다. 교육을 받는 각자의 스킬 갭을 줄이는 것에 집중하면서, 개인의 상황에 맞는 학습 목표를 설정할 수 있게 되는 것이죠.\n1) 적응형 학습 로드맵 (Adaptive Learning Paths)\n임직원의 학습 선호도, 현재 직무 역량 수준, 경력 목표를 분석하여 특정 요구 사항을 충족하는 맞춤형 학습 경로를 설계할 수 있습니다. 이러한 적응형 러닝 패스는 보다 효율적으로 직원이 목표한 기술과 지식을 개발하는 데 도움을 줄 수 있죠.\n2) 워크플로우 콘텐츠 큐레이션 (Workflow Contents Curation)\n학습자 개개인의 수준에 맞추어 방대한 학습 콘텐츠 DB를 분석하고 각 학습자에게 가장 관련성이 높은 리소스를 식별하고 제안할 수 있습니다. 이를 통해 학습자는 최신 정보를 더 빠르게 얻을 수 있으며, 자신이 필요로 하는 내용을 더 쉽게 찾아 활용할 수 있게 됩니다. 또한, 이러한 기능은 학습자가 보다 높은 효율성으로 목표를 달성하도록 돕죠.\nAI 시대 인재 육성의 목표 : 2. 몰입감 높은 학습 경험 제공하기\nAI 기술은 학습자의 개인화된 목표 설정뿐만 아니라, 실제 학습 중에도 즉각적이고 다양한 학습 지원을 제공하여, 몰입감 높은 학습 경험을 제공할 수 있습니다. 또한, 실시간 성과 모니터링 도구를 활용하면, 학습 및 성과 관련 진행 상황을 실시간으로 추적하고, 개선이 필요한 부분을 파악하여 개발 전략을 조정할 수 있는데요. AI 기술을 통해, 학습 중에 필요한 질의응답 등에 대한 실시간 피드백을 제공하여, 학습자가 개선이 필요한 부분을 빠르게 파악하고, 학습 전략을 조정할 수 있도록 독려합니다. 이러한 즉각적인 피드백 루프는 보다 효율적인 학습으로 이어지죠.\n실제로 최근 Khan Academy 에서는, OpenAI와 협력하여 ChatGPT라는 AI 기반 언어 모델을 개발하여, 학습자들이 더 나은 학습을 할 수 있도록 지원하고 있습니다. ChatGPT는 학습 시 모르는 부분에 대해 실시간으로 답변을 생성하여, 복잡한 개념과 주제를 이해하는 데 도움이 되는데요. 특히 코딩 교육 시, 학습자가 작성한 코드의 오류를 즉각적으로 잡아주는 등 보다 효율적으로 학습할 수 있게 됩니다.\n1) 실시간 성과 모니터링 (Real-time Performance Monitoring)\nAI 기반 성과 모니터링 도구는 학습자의 학습 및 성과 관련 정보를 실시간으로 추적함으로써 관리자와 임직원이 개선이 필요한 영역을 파악하고 그에 따라 개발 전략을 조정할 수 있도록 지원할 수 있게 합니다.\n2) 실시간 피드백 (Real-time Feedback)\nAI 기술은 학습자가 학습 중에 필요한 질문에 대한 즉각적인 피드백을 제공하여 학습자가 개선이 필요한 부분을 파악하고 그에 따라 학습 전략을 조정할 수 있도록 합니다. 이러한 즉각적인 피드백 루프는 보다 효율적인 학습과 지식 습득으로 이어지게 합니다.\nAI 시대, HRD 부서에 기대되는 역할은\n사실 AI 기술을 활용해 학습 경험을 효율적이고 개인화된 방식으로 제공함으로써, 교육 방식을 혁신할 수 있다는 이야기는 새롭지 않습니다. 이미 몇 년 전부터 HRD 분야에서 AI 활용의 중요성이 강조되어왔는데요. 최근 ChatGPT 기술의 등장으로, 비즈니스에서도 생성 모델링 기술이 본격적으로 활용되고, AI 기술을 실제 현실에서 접하고 활용하는 시대가 도래했습니다. 앞으로도 다양한 분야에서 AI 기술을 접목한 서비스들이 출현할 것이며, 특히 학습 및 개발 분야에서는 끊임없이 새로운 기술을 도입해 학습자의 경험을 보다 개선시키는 서비스들이 더욱 발전할 것으로 기대됩니다.\n하지만 중요한 건, AI 기술 혹은 관련 솔루션이 모든 것을 대신할 수는 없다는 데 있습니다. '우리 조직에서는 현재 어떤 솔루션이 최적의 선택인가?' '어떤 기술을 우리 구성원들이 효과적으로 활용하고 적용할 수 있는가?' 에 대한 고민은 결국 기업의 HRDer의 역할입니다. AI 기술을 활용해 학습 경험을 개선하는 한편, 우리 회사 상황과 구성원에 대한 이해 등과 같이 기술이 해결할 수 없는 인간적 요소를 잃지 않도록 주의할 필요가 있습니다. 우수한 조직을 유지하며, 급변하는 세상에서 성공하기 위한 필수적인 기술과 지식을 갖출 수 있도록 구성원들을 지원해야 할 때입니다.\n임직원 개개인에 맞는 학습 경험 플랫폼 도입을 고민 중이라면\n패스트캠퍼스 HRD 전문가와 함께하세요.\n1:1 무료 상담\n(주) 데이원컴퍼니\n대표이사: 이강민\n사업자번호: 810-86-00658\nb2b@day1company.co.kr, 02-501-7429\n개인정보책임관리자: 이강민\n사무실: 서울특별시 강남구 테헤란로 231, 센터필드 WEST 6층, 7층\n교육장: 서울특별시 강남구 강남대로 364 미왕빌딩 10, 11층\n개인정보 처리방침\nCopyright © 2021 (주) 데이원컴퍼니. All rights reserved.",
+  "text_length": 4417,
+  "h1_count": 1,
+  "has_structured_data": true
+}
