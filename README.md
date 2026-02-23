@@ -63,7 +63,7 @@ claude --agent mvp-coordinator
 ## Railway 배포
 
 코드 변경 상세 문서:
-- `docs/76-railway-code-changes.md`
+- `docs/ops/76-railway-code-changes.md`
 
 ### 배포 파일
 

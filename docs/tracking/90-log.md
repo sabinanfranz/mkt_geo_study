@@ -1,5 +1,34 @@
 # 90 — Decision Log
 
+## 2026-02-24 | extension_md (더 알아보기) 시각 컴포넌트 개선
+
+### 배경
+
+전체 37개 extension_md 블록 전수조사 결과, 8개 블록이 CSS 컴포넌트로 개선 가능하고, 테이블 스타일 미정의 및 callout 특이도 충돌 CSS 인프라 이슈 2건 발견.
+
+### 수행 작업
+
+**CSS (style.css)**:
+1. `.extension-content table/th/td` 스타일 추가 (라이트+다크)
+2. `.extension-content .callout` 특이도 충돌 해결 (`color: inherit`)
+
+**seed.py (8개 extension_md 블록 교체)**:
+1. S6 M6-2: MD 테이블→`comparison-table` + 코드→`code-example`
+2. S4 M4-4: 번호목록→`flow-chart` 5단계 (Knowledge Panel)
+3. S5 M5-4: 번호목록→`flow-chart` 5단계 + `callout.warning` (API 자동화)
+4. S5 M5-1: 불릿→`layer-box` 3계층 (KPI 대시보드)
+5. S4 M4-3: 비교 불릿→`compare-cards` (프레스릴리즈 vs 에디토리얼)
+6. S3 M3-5: 순서목록→`callout.warning` (스키마 오용 경고)
+7. S3 M3-6: 백틱 코드→`code-example` 래퍼 3개 (스키마 오류 패턴)
+8. S5 M5-6: 3섹션 불릿→`hierarchy-box` 3레벨 (월간/분기/연간)
+
+### 검증
+
+- seed 실행 성공 · 62개 테스트 통과
+- extension_md에서 CSS 컴포넌트 사용: flow-chart 2, layer-box 1, compare-cards 1, callout 2, code-example 2, hierarchy-box 1, comparison-table 1
+
+---
+
 ## 2026-02-23 | Stage 6 시각 컴포넌트 개선 — ASCII Art → HTML 컴포넌트 + 다크모드 수정
 
 ### 배경
@@ -40,7 +69,7 @@ Stage 6 시드 콘텐츠에서 플로우차트가 `&#8595;` 텍스트 화살표,
 
 ### 배경
 
-기존 Stage 6은 codex가 `docs/71` 전략에 맞춰 구성한 7모듈/28스텝/84옵션이었으나, `docs/73-geo-action-plan.md` (1,390줄 GEO 전략 문서) 기반으로 재구성 요청. 핵심: "팀원들이 순차 과업 수행할 수 있는 완전 친절한 가이드".
+기존 Stage 6은 codex가 `docs/archive/deprecated/71-stage6-task-module-strategy.md` 전략에 맞춰 구성한 7모듈/28스텝/84옵션이었으나, `docs/strategy/73-geo-action-plan.md` (1,390줄 GEO 전략 문서) 기반으로 재구성 요청. 핵심: "팀원들이 순차 과업 수행할 수 있는 완전 친절한 가이드".
 
 ### 설계 결정
 
@@ -49,17 +78,17 @@ Stage 6 시드 콘텐츠에서 플로우차트가 `&#8595;` 텍스트 화살표,
 | D1 | 기능별 7모듈 → Phase-순차 8모듈 | 30/60/90일 순서 그대로 따라야 "순차 과업" 실현 |
 | D2 | Reading = SOP 구조 (Why→What→How→Template→DoD) | 학습이 아닌 실행 가이드 |
 | D3 | 모듈당 4스텝 일관 유지 | 기존 패턴 호환 + 테스트 단순화 |
-| D4 | docs/71, docs/75 폐기 | 새 전략(docs/73) 기반으로 전면 교체 |
+| D4 | docs/archive/deprecated/71-stage6-task-module-strategy.md, docs/archive/deprecated/75-stage6-seed-content-preparation.md 폐기 | 새 전략(docs/strategy/73-geo-action-plan.md) 기반으로 전면 교체 |
 
 ### 수행 작업
 
 1. **seed.py Stage 6 전면 교체** (4,411줄 → 5,215줄, +804줄)
    - 8모듈: 킥오프 → 기술인프라 → Answer-first → Proof-first → 측정 → 허브스포크 → 권위자동화 → 종합평가
    - 32스텝 (8R + 9Q + 15P), 96옵션
-   - docs/73의 §0~§9 콘텐츠 직접 반영 (템플릿, 티켓 테이블, KPI SOP 등)
+   - docs/strategy/73-geo-action-plan.md의 §0~§9 콘텐츠 직접 반영 (템플릿, 티켓 테이블, KPI SOP 등)
 2. **tests/test_phase2.py 업데이트** (5개 어설션 변경: 7→8모듈, ≥170→≥175스텝, ≥500→≥540옵션)
 3. **tests/test_health.py 수정** (영어 placeholder → 한국어 40자+ 피드백)
-4. **docs/71, docs/75 폐기 공지** 추가
+4. **docs/archive/deprecated/71-stage6-task-module-strategy.md, docs/archive/deprecated/75-stage6-seed-content-preparation.md 폐기 공지** 추가
 5. **docs/77 헤더 갱신** (7모듈→8모듈 Phase-순차 구조)
 
 ### 검증
@@ -76,9 +105,9 @@ Stage 6 시드 콘텐츠에서 플로우차트가 `&#8595;` 텍스트 화살표,
 | `apps/api/seed.py` | Stage 6 전면 교체 | +804줄 (4,411→5,215줄) |
 | `tests/test_phase2.py` | 5개 어설션 업데이트 | ~10줄 |
 | `tests/test_health.py` | 영어→한국어 피드백 | ~12줄 |
-| `docs/71-stage6-task-module-strategy.md` | 폐기 공지 추가 | +3줄 |
-| `docs/75-stage6-seed-content-preparation.md` | 폐기 공지 추가 | +3줄 |
-| `docs/77-stage6-curriculum-design.md` | 8모듈 구조 헤더 갱신 | ~30줄 |
+| `docs/archive/deprecated/71-stage6-task-module-strategy.md` | 폐기 공지 추가 | +3줄 |
+| `docs/archive/deprecated/75-stage6-seed-content-preparation.md` | 폐기 공지 추가 | +3줄 |
+| `docs/strategy/77-stage6-curriculum-design.md` | 8모듈 구조 헤더 갱신 | ~30줄 |
 
 ---
 
@@ -86,19 +115,19 @@ Stage 6 시드 콘텐츠에서 플로우차트가 `&#8595;` 텍스트 화살표,
 
 ### 배경
 
-`docs/74-railway-deployment-runbook.md`는 운영 절차 중심 문서이고,  
+`docs/ops/74-railway-deployment-runbook.md`는 운영 절차 중심 문서이고,  
 Railway 대응 코드가 실제로 어떻게 바뀌었는지(`database.py`, `main.py`, `seed.py`, migrations, scripts)를 한 번에 파악하기 어려웠습니다.
 
 ### 수행 작업
 
-1. **신규 문서 작성**: `docs/76-railway-code-changes.md`
+1. **신규 문서 작성**: `docs/ops/76-railway-code-changes.md`
    - DB 계층(SQLite/PostgreSQL) 전환 구조
    - 마이그레이션 러너/이력 테이블
    - seed 멱등 업서트 + user_progress 보존 정책
    - 배포 파일(`railway.json`, `Procfile`, `runtime.txt`) 역할
    - 검증 범위(`tests/test_deploy_db.py`)와 미보장 영역
 2. **교차 링크 추가**
-   - `docs/74-railway-deployment-runbook.md`에 코드 변경 상세 링크 추가
+   - `docs/ops/74-railway-deployment-runbook.md`에 코드 변경 상세 링크 추가
    - `README.md` Railway 섹션에 코드 문서 링크 추가
 
 ### 목적
@@ -112,18 +141,18 @@ Railway 대응 코드가 실제로 어떻게 바뀌었는지(`database.py`, `mai
 
 ### 배경
 
-기존 `docs/71-stage6-task-module-strategy.md`는 전략-모듈 매핑 중심 문서였고,  
+기존 `docs/archive/deprecated/71-stage6-task-module-strategy.md`는 전략-모듈 매핑 중심 문서였고,  
 `시드 콘텐츠를 어떤 규칙으로 마련했는지`를 재현 가능한 형태로 전달하기에는 정보가 분산되어 있었습니다.
 
 ### 수행 작업
 
-1. **신규 문서 작성**: `docs/75-stage6-seed-content-preparation.md`
+1. **신규 문서 작성**: `docs/archive/deprecated/75-stage6-seed-content-preparation.md`
    - 입력 소스 매핑
    - 전략 → seed 변환 규칙(module/step/option)
    - 품질 규칙(피드백 길이/존댓말)
    - 테스트 연결(`tests/test_phase2.py`)과 재생산 SOP 정리
 2. **문서 링크 연결**
-   - `docs/71-stage6-task-module-strategy.md`에 관련 문서 링크 추가
+   - `docs/archive/deprecated/71-stage6-task-module-strategy.md`에 관련 문서 링크 추가
 
 ### 목적
 
@@ -151,7 +180,7 @@ Railway 대응 코드가 실제로 어떻게 바뀌었는지(`database.py`, `mai
    - Stage 6 모듈 수/스텝 수/평가모듈 퀴즈 존재 테스트 추가
    - 총 Steps/Options 최소 기준 상향 (`>=170`, `>=500`)
 4. **문서 동기화**
-   - `docs/70-content-dev-plan.md`, `docs/80-progress.md`에 Stage 6 반영
+   - `docs/strategy/70-content-dev-plan.md`, `docs/tracking/80-progress.md`에 Stage 6 반영
 
 ### 검증
 
@@ -162,9 +191,9 @@ Railway 대응 코드가 실제로 어떻게 바뀌었는지(`database.py`, `mai
 
 - `apps/api/seed.py`
 - `tests/test_phase2.py`
-- `docs/70-content-dev-plan.md`
-- `docs/80-progress.md`
-- `docs/90-log.md`
+- `docs/strategy/70-content-dev-plan.md`
+- `docs/tracking/80-progress.md`
+- `docs/tracking/90-log.md`
 
 ---
 
@@ -253,9 +282,9 @@ seed.py의 텍스트/ASCII 기반 도식 21개를 구조화된 HTML/CSS 컴포�
 
 - `apps/web/css/style.css`: +708줄 (불일치 수정 + 6종 신규 컴포넌트)
 - `apps/api/seed.py`: 21개 항목 content_md 인라인 HTML 교체
-- `docs/31-visual-components-design.md`: 신규 (설계 문서)
-- `docs/32-implementation-checklist.md`: 신규 (구현 체크리스트)
-- `docs/33-visual-design-summary.md`: 신규 (설계 요약)
+- `docs/design/31-visual-components-design.md`: 신규 (설계 문서)
+- `docs/engineering/32-implementation-checklist.md`: 신규 (구현 체크리스트)
+- `docs/design/33-visual-design-summary.md`: 신규 (설계 요약)
 
 ---
 
@@ -299,7 +328,7 @@ seed.py의 텍스트/ASCII 기반 도식 21개를 구조화된 HTML/CSS 컴포�
 | `apps/web/index.html` | 재작성 | SPA 셸 + marked.js CDN |
 | `apps/web/js/app.js` | 재작성 | Hash 라우터 + 4화면 (대시보드/모듈목록/학습/결과) + 3패턴 렌더링 |
 | `apps/web/css/style.css` | 재작성 | 카드/퀴즈/피드백/프로그래스바 UI 스타일 |
-| `docs/50-test-plan.md` | 신규 | QA 테스트 계획 (이슈 10개 + 수동 체크 20개 + 자동 테스트 제안) |
+| `docs/engineering/50-test-plan.md` | 신규 | QA 테스트 계획 (이슈 10개 + 수동 체크 20개 + 자동 테스트 제안) |
 
 ### QA 발견 이슈 및 수정
 
@@ -446,7 +475,7 @@ Options: 152개 (quiz당 4개)
    - 10개 페이지 크롤링 (6 seed + 4 discovered)
    - 산출물: `data/crawled/` 폴더 (10개 JSON + _summary.json + _report.md)
 
-3. **종합 계획 문서 작성**: `docs/60-crawl-analysis-and-stage3-plan.md` (2,063줄)
+3. **종합 계획 문서 작성**: `docs/strategy/60-crawl-analysis-and-stage3-plan.md` (2,063줄)
 
 ### 핵심 발견사항
 
@@ -473,7 +502,7 @@ Options: 152개 (quiz당 4개)
 | `data/crawled/*.json` | 10개 페이지 크롤링 데이터 |
 | `data/crawled/_summary.json` | 크롤링 요약 |
 | `data/crawled/_report.md` | 크롤링 리포트 (Missing Elements 포함) |
-| `docs/60-crawl-analysis-and-stage3-plan.md` | 크롤링 분석 + Stage 3~5 계획서 |
+| `docs/strategy/60-crawl-analysis-and-stage3-plan.md` | 크롤링 분석 + Stage 3~5 계획서 |
 
 ### Next Steps
 - [ ] Stage 3 seed 데이터 작성 (7모듈 × 5steps × 4options)
@@ -487,18 +516,18 @@ Options: 152개 (quiz당 4개)
 
 ### 수행 작업
 
-1. **콘텐츠 개발 계획서 작성**: `docs/70-content-dev-plan.md`
+1. **콘텐츠 개발 계획서 작성**: `docs/strategy/70-content-dev-plan.md`
    - 비주얼 컴포넌트 시스템 설계 (6종 CSS 컴포넌트)
    - Stage 1~2 비주얼 보강 계획 (14개 reading 스텝)
    - Stage 3~5 신규 커리큘럼 상세 설계 (21모듈, ~87스텝)
    - 구현 순서, 수치 요약, 리스크 분석
 
-2. **Phase 2 백로그 추가**: `docs/40-backlog.md`
+2. **Phase 2 백로그 추가**: `docs/engineering/40-backlog.md`
    - US-026 ~ US-035 (10개 유저스토리) 신규 추가
    - Slice 5~10으로 구성 (CSS → 비주얼보강 → Stage 3 → 4 → 5 → QA)
    - 각 스토리별 Acceptance Criteria + DoD 정의
 
-3. **프로젝트 진행 현황**: `docs/80-progress.md`
+3. **프로젝트 진행 현황**: `docs/tracking/80-progress.md`
    - Phase 1 완료 현황 (25/25 유저스토리, 28 pytest)
    - Phase 2 계획 현황 (10개 유저스토리, 6 Slice)
    - 크롤링 데이터 활용 현황, 주요 결정사항 요약
@@ -507,10 +536,10 @@ Options: 152개 (quiz당 4개)
 
 | 파일 | 유형 | 내용 |
 |------|------|------|
-| `docs/70-content-dev-plan.md` | 신규 | Phase 2 콘텐츠 개발 계획서 (~200줄) |
-| `docs/40-backlog.md` | 수정 | Phase 2 백로그 US-026~035 추가 |
-| `docs/80-progress.md` | 신규 | 전체 프로젝트 진행 현황 트래커 |
-| `docs/90-log.md` | 수정 | 이번 세션 로그 추가 |
+| `docs/strategy/70-content-dev-plan.md` | 신규 | Phase 2 콘텐츠 개발 계획서 (~200줄) |
+| `docs/engineering/40-backlog.md` | 수정 | Phase 2 백로그 US-026~035 추가 |
+| `docs/tracking/80-progress.md` | 신규 | 전체 프로젝트 진행 현황 트래커 |
+| `docs/tracking/90-log.md` | 수정 | 이번 세션 로그 추가 |
 
 ### Next Steps
 
@@ -582,9 +611,9 @@ Options: 152개 (quiz당 4개)
 | `apps/web/css/style.css` | 수정 | +468줄 (1239→1708줄) |
 | `apps/api/seed.py` | 수정 | +2589줄 (1014→3603줄) |
 | `tests/test_phase2.py` | 신규 | ~400줄 (22개 테스트) |
-| `docs/40-backlog.md` | 수정 | Phase 2 완료 현황 업데이트 |
-| `docs/80-progress.md` | 수정 | Slice 5~10 완료 표시 |
-| `docs/90-log.md` | 수정 | Phase 2 작업 로그 추가 |
+| `docs/engineering/40-backlog.md` | 수정 | Phase 2 완료 현황 업데이트 |
+| `docs/tracking/80-progress.md` | 수정 | Slice 5~10 완료 표시 |
+| `docs/tracking/90-log.md` | 수정 | Phase 2 작업 로그 추가 |
 
 ### Next Steps
 
@@ -637,10 +666,10 @@ Options: 152개 (quiz당 4개)
 5. **소스 통합 분석**
    - 전략서 (37p 스코어카드, 7허브/60스포크, 45티켓, Answer-first/Proof-first 템플릿)
    - 심층리서치 (L1~L5, 오프사이트, AI Validator 10프롬프트, 6가설, 90일 주차별)
-   - 압축본 (docs/72-geo-strategy-context-compressed.md)
+   - 압축본 (docs/strategy/72-geo-strategy-context-compressed.md)
    - 신규 크롤 데이터 (25페이지 + 스코어카드 + robots/sitemap 분석)
 
-6. **`docs/73-geo-action-plan.md` 작성** (1,390줄)
+6. **`docs/strategy/73-geo-action-plan.md` 작성** (1,390줄)
    - §0 Executive Summary: 전략 한 줄 + 4레버 + 30/60/90 목표
    - §1 현재 상태 진단: robots/sitemap/JS/스코어카드/내부링크/핵심문제 4가지
    - §2 전략 우선순위: 4레버 프레임워크, 페이지-Phase 매트릭스, 의존성 그래프
@@ -685,7 +714,7 @@ Options: 152개 (quiz당 4개)
 | `data/crawled/_robots_analysis.json` | 신규 | robots.txt 분석 |
 | `data/crawled/_sitemap_urls.json` | 신규 | sitemap 분석 |
 | `data/crawled/_geo_scorecard.json` | 갱신 | 27페이지 5차원 스코어카드 |
-| `docs/73-geo-action-plan.md` | 신규 | **1,390줄** (최종 전략 문서) |
+| `docs/strategy/73-geo-action-plan.md` | 신규 | **1,390줄** (최종 전략 문서) |
 
 ### 트레이드오프
 

@@ -3,7 +3,7 @@
 ## 1) 문서 목적
 
 이 문서는 Railway 배포 대응을 위해 코드베이스에 반영된 변경을 **구현 관점**에서 정리합니다.
-운영 절차는 `docs/74-railway-deployment-runbook.md`를 따르고, 본 문서는 "무엇이 어떻게 바뀌었는지"에 집중합니다.
+운영 절차는 `docs/ops/74-railway-deployment-runbook.md`를 따르고, 본 문서는 "무엇이 어떻게 바뀌었는지"에 집중합니다.
 
 ---
 
@@ -180,7 +180,7 @@
 
 ## 8) 관련 문서
 
-- 배포 운영 런북: `docs/74-railway-deployment-runbook.md`
-- 아키텍처 문서: `docs/30-architecture.md`
+- 배포 운영 런북: `docs/ops/74-railway-deployment-runbook.md`
+- 아키텍처 문서: `docs/engineering/30-architecture.md`
 - 프로젝트 개요/빠른 시작: `README.md`
-- 의사결정 로그: `docs/90-log.md`
+- 의사결정 로그: `docs/tracking/90-log.md`

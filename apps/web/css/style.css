@@ -661,6 +661,29 @@ main {
   color: #333;
 }
 
+.feedback-md code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #d63384;
+}
+
+.feedback-md pre {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+.feedback-md pre code {
+  background: none;
+  padding: 0;
+  color: #333;
+}
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-block;
@@ -994,6 +1017,33 @@ main {
   color: #333;
 }
 
+.extension-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.extension-content th,
+.extension-content td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.extension-content th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Ensure callout colors are not overridden by extension-content text color */
+.extension-content .callout,
+.extension-content .callout p,
+.extension-content .callout li,
+.extension-content .callout strong {
+  color: inherit;
+}
+
 /* ---- Admin Stats Dashboard (US-024) ---- */
 .admin-summary {
   display: grid;
@@ -1296,6 +1346,21 @@ main {
   color: #d0d0d0;
 }
 
+[data-theme="dark"] .feedback-md code {
+  background: #2a2a4a;
+  color: #f0a0d0;
+}
+
+[data-theme="dark"] .feedback-md pre {
+  background: #12122a;
+  border-color: #2a2a4a;
+}
+
+[data-theme="dark"] .feedback-md pre code {
+  background: none;
+  color: #d0d0d0;
+}
+
 [data-theme="dark"] .reading-card p,
 [data-theme="dark"] .reading-card li,
 [data-theme="dark"] .quiz-question p {
@@ -1416,6 +1481,27 @@ main {
   background: #16213e;
   border-left-color: #60a5fa;
   color: #c0c0d0;
+}
+
+[data-theme="dark"] .extension-content th,
+[data-theme="dark"] .extension-content td {
+  border-color: #2a3a5c;
+}
+
+[data-theme="dark"] .extension-content th {
+  background: #16213e;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .extension-content td {
+  color: #c0c0d0;
+}
+
+[data-theme="dark"] .extension-content .callout,
+[data-theme="dark"] .extension-content .callout p,
+[data-theme="dark"] .extension-content .callout li,
+[data-theme="dark"] .extension-content .callout strong {
+  color: inherit;
 }
 
 [data-theme="dark"] .bookmark-btn {
@@ -2064,17 +2150,36 @@ main {
   background: #1e1e1e;
   border: none;
   border-radius: 0;
-  color: #d4d4d4;
-  font-size: 0.84rem;
-  line-height: 1.6;
+  color: #e8e8e8;
+  font-size: 0.88rem;
+  line-height: 1.7;
   overflow-x: auto;
 }
 
 .code-example pre code {
   background: none;
   padding: 0;
-  color: #d4d4d4;
+  color: #e8e8e8;
   font-size: inherit;
+}
+
+/* Override: .code-example inside any parent context (.reading-card, .extension-content, .quiz-card, .feedback-md)
+   Ensures dark-background code blocks always have bright text regardless of parent rules. */
+.reading-card .code-example pre,
+.extension-content .code-example pre,
+.quiz-card .code-example pre,
+.feedback-md .code-example pre {
+  background: #1e1e1e;
+  border: none;
+  color: #e8e8e8;
+}
+
+.reading-card .code-example pre code,
+.extension-content .code-example pre code,
+.quiz-card .code-example pre code,
+.feedback-md .code-example pre code {
+  background: none;
+  color: #e8e8e8;
 }
 
 /* ---- Component 6: Hierarchy Box ---- */
@@ -2243,7 +2348,29 @@ main {
 
 [data-theme="dark"] .code-example pre {
   background: #0d0d1a;
-  color: #d4d4d4;
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .code-example pre code {
+  color: #e8e8e8;
+}
+
+/* Dark mode override: .code-example inside parent contexts */
+[data-theme="dark"] .reading-card .code-example pre,
+[data-theme="dark"] .extension-content .code-example pre,
+[data-theme="dark"] .quiz-card .code-example pre,
+[data-theme="dark"] .feedback-md .code-example pre {
+  background: #0d0d1a;
+  border: none;
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .reading-card .code-example pre code,
+[data-theme="dark"] .extension-content .code-example pre code,
+[data-theme="dark"] .quiz-card .code-example pre code,
+[data-theme="dark"] .feedback-md .code-example pre code {
+  background: none;
+  color: #e8e8e8;
 }
 
 [data-theme="dark"] .hierarchy-box {

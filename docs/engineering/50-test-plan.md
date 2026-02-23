@@ -379,7 +379,7 @@ def test_all_quiz_steps_have_correct_option():
 - [ ] **테스트 스크립트**: `pytest` 명령으로 전체 테스트 실행 가능
 - [ ] **DB 초기화**: `python -m apps.api.seed` 명령으로 Seed 데이터 삽입 가능
 - [ ] **로그 설정**: 에러 로그 console 또는 파일로 기록
-- [ ] **docs/90-log.md 업데이트**: 구현 이슈, 결정사항, 다음 할 일 기재
+- [ ] **docs/tracking/90-log.md 업데이트**: 구현 이슈, 결정사항, 다음 할 일 기재
 
 ---
 
@@ -432,4 +432,4 @@ pytest tests/ --cov=apps.api --cov-report=html
 1. 모든 수동 체크리스트 Pass
 2. pytest 전체 통과 (coverage > 80%)
 3. 릴리스 체크리스트 전항목 확인
-4. docs/90-log.md 최종 업데이트
+4. docs/tracking/90-log.md 최종 업데이트

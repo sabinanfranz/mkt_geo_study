@@ -1018,12 +1018,12 @@ Phase 1(US-001~025) 완료 후, Stage 1~2 비주얼 보강 + Stage 3~5 신규 �
 
 **Definition of Done:**
 - [ ] `tests/` 디렉토리에 신규 테스트 파일 추가
-- [ ] `docs/50-test-plan.md` 업데이트
+- [ ] `docs/engineering/50-test-plan.md` 업데이트
 - [ ] 전체 테스트 통과
 
 **Priority:** P1
 **Slice:** 10
-**변경 파일:** `tests/`, `docs/50-test-plan.md`
+**변경 파일:** `tests/`, `docs/engineering/50-test-plan.md`
 
 ---
 
@@ -1069,7 +1069,7 @@ Phase 1(US-001~025) 완료 후, Stage 1~2 비주얼 보강 + Stage 3~5 신규 �
 
 **Priority:** P0
 **Slice:** 11
-**변경 파일:** `apps/api/seed.py`, `tests/test_phase2.py`, `docs/70-content-dev-plan.md`
+**변경 파일:** `apps/api/seed.py`, `tests/test_phase2.py`, `docs/strategy/70-content-dev-plan.md`
 
 ---
 

@@ -286,9 +286,9 @@ git revert <Phase-3-commit-hash>
 
 | 문서 | 내용 |
 |------|------|
-| `docs/31-visual-components-design.md` | 상세 설계 문서 (컴포넌트별 HTML/CSS/다크모드) |
-| `docs/32-implementation-checklist.md` | 단계별 구현 체크리스트 (Task 레벨 상세) |
-| `docs/33-visual-design-summary.md` | 이 문서 (전체 요약) |
+| `docs/design/31-visual-components-design.md` | 상세 설계 문서 (컴포넌트별 HTML/CSS/다크모드) |
+| `docs/engineering/32-implementation-checklist.md` | 단계별 구현 체크리스트 (Task 레벨 상세) |
+| `docs/design/33-visual-design-summary.md` | 이 문서 (전체 요약) |
 
 ---
 

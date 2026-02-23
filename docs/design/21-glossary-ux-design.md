@@ -1476,4 +1476,4 @@ B + A + C 조합:
 
 **문서 작성**: 2025-02-22
 **대상 담당자**: frontend-dev, product-manager
-**관련 파일**: `docs/10-prd.md`, `docs/20-ux.md`, `apps/api/seed.py`, `apps/web/css/style.css`
+**관련 파일**: `docs/product/10-prd.md`, `docs/design/20-ux.md`, `apps/api/seed.py`, `apps/web/css/style.css`

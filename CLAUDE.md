@@ -47,10 +47,10 @@ MVP 한 줄 아이디어에서 출발해 아래 사이클을 빠르게 반복한
 
 | 파일 | 내용 |
 |------|------|
-| `docs/00-brief.md` | MVP 원문, 제약조건, 가정 |
-| `docs/10-prd.md` | 문제, 대상, 가치, 범위, 비범위, 성공기준, 리스크 |
-| `docs/20-ux.md` | 사용자 플로우, 화면 목록, 텍스트 와이어프레임 |
-| `docs/30-architecture.md` | API 계약, DB 스키마, LangGraph 설계 |
-| `docs/40-backlog.md` | 유저스토리 + 우선순위 + 체크박스 + DoD |
-| `docs/50-test-plan.md` | 수동 체크 10개 + 자동 테스트 제안 |
-| `docs/90-log.md` | 결정사항, 트레이드오프, 다음 할 일 |
+| `docs/foundation/00-brief.md` | MVP 원문, 제약조건, 가정 |
+| `docs/product/10-prd.md` | 문제, 대상, 가치, 범위, 비범위, 성공기준, 리스크 |
+| `docs/design/20-ux.md` | 사용자 플로우, 화면 목록, 텍스트 와이어프레임 |
+| `docs/engineering/30-architecture.md` | API 계약, DB 스키마, LangGraph 설계 |
+| `docs/engineering/40-backlog.md` | 유저스토리 + 우선순위 + 체크박스 + DoD |
+| `docs/engineering/50-test-plan.md` | 수동 체크 10개 + 자동 테스트 제안 |
+| `docs/tracking/90-log.md` | 결정사항, 트레이드오프, 다음 할 일 |

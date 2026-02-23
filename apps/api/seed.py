@@ -12,6 +12,8 @@ def seed(run_migrations: bool = True) -> None:
     if run_migrations:
         init_db()
     conn = get_db()
+    step_type_by_id: dict[int, str] = {}
+    option_buffer_by_step: dict[int, list[dict]] = {}
 
     # ------------------------------------------------------------------
     # Helpers (idempotent content upsert, preserving user progress)
@@ -62,37 +64,141 @@ def seed(run_migrations: bool = True) -> None:
                 "WHERE id = ?",
                 (step_type, title, content_md, extension_md, existing["id"]),
             )
-            return existing["id"]
+            step_id = existing["id"]
+            step_type_by_id[step_id] = step_type
+            return step_id
 
         conn.execute(
             "INSERT INTO steps (module_id, type, title, content_md, order_idx, extension_md) "
             "VALUES (?, ?, ?, ?, ?, ?)",
             (module_id, step_type, title, content_md, order_idx, extension_md),
         )
-        return conn.execute(
+        step_id = conn.execute(
             "SELECT id FROM steps WHERE module_id = ? AND order_idx = ?",
             (module_id, order_idx),
         ).fetchone()["id"]
+        step_type_by_id[step_id] = step_type
+        return step_id
 
     def add_option(step_id, label, content, is_correct, feedback_md, order_idx):
-        existing = conn.execute(
-            "SELECT id FROM options WHERE step_id = ? AND order_idx = ?",
-            (step_id, order_idx),
-        ).fetchone()
-        if existing:
-            conn.execute(
-                "UPDATE options SET "
-                "label = ?, content = ?, is_correct = ?, feedback_md = ? "
-                "WHERE id = ?",
-                (label, content, is_correct, feedback_md, existing["id"]),
-            )
-            return
+        buffered = option_buffer_by_step.setdefault(step_id, [])
+        for opt in buffered:
+            if opt["order_idx"] == order_idx:
+                opt.update(
+                    {
+                        "label": label,
+                        "content": content,
+                        "is_correct": int(is_correct),
+                        "feedback_md": feedback_md,
+                    }
+                )
+                return
 
-        conn.execute(
-            "INSERT INTO options (step_id, label, content, is_correct, feedback_md, order_idx) "
-            "VALUES (?, ?, ?, ?, ?, ?)",
-            (step_id, label, content, is_correct, feedback_md, order_idx),
+        buffered.append(
+            {
+                "label": label,
+                "content": content,
+                "is_correct": int(is_correct),
+                "feedback_md": feedback_md,
+                "order_idx": order_idx,
+            }
         )
+
+    def _rebalance_quiz_answer_labels() -> dict[str, int]:
+        quiz_step_ids = sorted(
+            step_id
+            for step_id, step_type in step_type_by_id.items()
+            if step_type == "quiz"
+        )
+        if not quiz_step_ids:
+            return {"A": 0, "B": 0, "C": 0, "D": 0}
+
+        total_quiz = len(quiz_step_ids)
+        base, rem = divmod(total_quiz, 3)
+        remaining_targets = {
+            "A": base + (1 if rem > 0 else 0),
+            "B": base + (1 if rem > 1 else 0),
+            "C": base,
+        }
+
+        def _pick_next_correct_label() -> str:
+            max_remaining = max(remaining_targets.values())
+            for candidate in ("A", "B", "C"):
+                if remaining_targets[candidate] == max_remaining:
+                    return candidate
+            return "A"
+
+        for step_id in quiz_step_ids:
+            options = option_buffer_by_step.get(step_id, [])
+            if len(options) != 4:
+                raise ValueError(
+                    f"Quiz step {step_id} must have exactly 4 options, got {len(options)}"
+                )
+
+            correct_options = [o for o in options if o["is_correct"] == 1]
+            if len(correct_options) != 1:
+                raise ValueError(
+                    f"Quiz step {step_id} must have exactly 1 correct option, got {len(correct_options)}"
+                )
+
+            correct_option = correct_options[0]
+            target_label = _pick_next_correct_label()
+            correct_option["label"] = target_label
+            remaining_targets[target_label] -= 1
+
+            incorrect_options = sorted(
+                [o for o in options if o["is_correct"] == 0],
+                key=lambda x: x["order_idx"],
+            )
+            remaining_labels = [l for l in ("A", "B", "C", "D") if l != target_label]
+            for opt, label in zip(incorrect_options, remaining_labels):
+                opt["label"] = label
+
+            labels = sorted(o["label"] for o in options)
+            if labels != ["A", "B", "C", "D"]:
+                raise ValueError(f"Quiz step {step_id} labels must be A/B/C/D, got {labels}")
+
+        counts = {"A": 0, "B": 0, "C": 0, "D": 0}
+        for step_id in quiz_step_ids:
+            options = option_buffer_by_step[step_id]
+            correct = next(o for o in options if o["is_correct"] == 1)
+            counts[correct["label"]] += 1
+        return counts
+
+    def _flush_option_buffer_to_db():
+        for step_id in sorted(option_buffer_by_step):
+            options = sorted(option_buffer_by_step[step_id], key=lambda x: x["order_idx"])
+            for opt in options:
+                existing = conn.execute(
+                    "SELECT id FROM options WHERE step_id = ? AND order_idx = ?",
+                    (step_id, opt["order_idx"]),
+                ).fetchone()
+                if existing:
+                    conn.execute(
+                        "UPDATE options SET "
+                        "label = ?, content = ?, is_correct = ?, feedback_md = ? "
+                        "WHERE id = ?",
+                        (
+                            opt["label"],
+                            opt["content"],
+                            opt["is_correct"],
+                            opt["feedback_md"],
+                            existing["id"],
+                        ),
+                    )
+                else:
+                    conn.execute(
+                        "INSERT INTO options (step_id, label, content, is_correct, feedback_md, order_idx) "
+                        "VALUES (?, ?, ?, ?, ?, ?)",
+                        (
+                            step_id,
+                            opt["label"],
+                            opt["content"],
+                            opt["is_correct"],
+                            opt["feedback_md"],
+                            opt["order_idx"],
+                        ),
+                    )
 
     # ------------------------------------------------------------------
     # Stages
@@ -2143,13 +2249,15 @@ def seed(run_migrations: bool = True) -> None:
     ), 1, extension_md=(
         "### FAQ 스키마 오용 주의\n\n"
         "b2b.fastcampus.co.kr에서 발견된 스키마 오용 사례를 분석합니다.\n\n"
-        "#### 사례: Contact 페이지에 Course 타입 적용\n\n"
+        '<div class="callout warning">\n'
+        "<strong>사례: Contact 페이지에 Course 타입 적용</strong><br><br>\n"
         "문의 페이지의 실제 내용은 연락처 정보와 문의 양식인데, "
         "스키마에는 Course(교육 과정) 타입이 적용되어 있었습니다. "
-        "이는 다음과 같은 문제를 일으킵니다.\n\n"
-        "1. **AI 혼란**: 페이지 내용(문의)과 스키마(교육 과정)가 불일치\n"
-        "2. **신뢰도 하락**: 부정확한 스키마는 사이트 전체 신뢰도를 떨어뜨림\n"
-        "3. **패널티 위험**: Google이 의도적 오용으로 판단하면 리치 리절트 제거\n\n"
+        "이는 다음과 같은 문제를 일으킵니다:<br><br>\n"
+        "1. <strong>AI 혼란</strong>: 페이지 내용(문의)과 스키마(교육 과정)가 불일치<br>\n"
+        "2. <strong>신뢰도 하락</strong>: 부정확한 스키마는 사이트 전체 신뢰도를 떨어뜨림<br>\n"
+        "3. <strong>패널티 위험</strong>: Google이 의도적 오용으로 판단하면 리치 리절트 제거\n"
+        "</div>\n\n"
         "스키마는 반드시 페이지의 **실제 콘텐츠**와 일치하는 타입을 사용해야 합니다."
     ))
 
@@ -2251,19 +2359,27 @@ def seed(run_migrations: bool = True) -> None:
         "</div>"
     ), 1, extension_md=(
         "### 흔한 스키마 오류 패턴 상세\n\n"
-        "#### 1. @type 누락\n"
-        "```json\n"
-        '{ "@context": "https://schema.org", "name": "패스트캠퍼스" }\n'
-        "```\n"
+        "#### 1. @type 누락\n\n"
+        '<div class="code-example">'
+        '<div class="code-label">잘못된 JSON-LD 예시</div>'
+        '<pre><code>{ "@context": "https://schema.org", "name": "패스트캠퍼스" }</code></pre>'
+        "</div>\n\n"
         "@type이 없으면 이 데이터가 Organization인지 Person인지 알 수 없습니다.\n\n"
-        "#### 2. 필수 속성 누락\n"
+        "#### 2. 필수 속성 누락\n\n"
         "Article에서 headline 없이 description만 있으면 검증 오류가 발생합니다.\n\n"
-        "#### 3. 잘못된 날짜 형식\n"
+        "#### 3. 잘못된 날짜 형식\n\n"
         '`"datePublished": "2025년 1월"` 대신 `"datePublished": "2025-01-15"`를 사용하세요.\n\n'
-        "#### 4. 타입과 내용 불일치\n"
+        "#### 4. 타입과 내용 불일치\n\n"
         "문의 페이지에 Course 타입을 적용하면 AI가 혼란을 겪습니다.\n\n"
-        "#### 5. 중첩 구조 실수\n"
-        '`"author": "패스트캠퍼스"` 대신 `"author": {"@type": "Organization", "name": "패스트캠퍼스"}`를 사용하세요.'
+        "#### 5. 중첩 구조 실수\n\n"
+        '<div class="code-example">'
+        '<div class="code-label">잘못된 중첩</div>'
+        '<pre><code>"author": "패스트캠퍼스"</code></pre>'
+        "</div>\n\n"
+        '<div class="code-example">'
+        '<div class="code-label">올바른 중첩</div>'
+        '<pre><code>"author": {"@type": "Organization", "name": "패스트캠퍼스"}</code></pre>'
+        "</div>"
     ))
 
     s = add_step(m, "quiz", "스키마 검증 도구", (
@@ -2674,18 +2790,24 @@ def seed(run_migrations: bool = True) -> None:
         "</div>"
     ), 1, extension_md=(
         "### 프레스 릴리즈 vs 에디토리얼의 차이\n\n"
-        "**프레스 릴리즈**\n"
-        "- 기업이 직접 작성하여 뉴스와이어를 통해 배포\n"
-        "- 배포 비용 발생 (뉴스와이어 서비스 이용료)\n"
-        "- 많은 매체에 동일 내용 게재 가능\n"
-        "- 링크는 대부분 nofollow\n"
-        "- 멘션 효과는 있으나 에디토리얼보다 가치 낮음\n\n"
-        "**에디토리얼 기사**\n"
-        "- 기자/편집자가 판단하여 작성하는 기사\n"
-        "- 비용 없음 (뉴스 가치 기반)\n"
-        "- 해당 매체의 독자에게 노출\n"
-        "- 링크가 dofollow인 경우 높은 백링크 가치\n"
-        "- AI가 더 높은 신뢰 신호로 인식\n\n"
+        '<div class="compare-cards">\n'
+        "<div>\n"
+        "<strong>프레스 릴리즈</strong><br>\n"
+        "- 기업이 직접 작성하여 뉴스와이어를 통해 배포<br>\n"
+        "- 배포 비용 발생 (뉴스와이어 서비스 이용료)<br>\n"
+        "- 많은 매체에 동일 내용 게재 가능<br>\n"
+        "- 링크는 대부분 nofollow<br>\n"
+        "- 멘션 효과는 있으나 에디토리얼보다 가치 낮음\n"
+        "</div>\n"
+        "<div>\n"
+        "<strong>에디토리얼 기사</strong><br>\n"
+        "- 기자/편집자가 판단하여 작성하는 기사<br>\n"
+        "- 비용 없음 (뉴스 가치 기반)<br>\n"
+        "- 해당 매체의 독자에게 노출<br>\n"
+        "- 링크가 dofollow인 경우 높은 백링크 가치<br>\n"
+        "- AI가 더 높은 신뢰 신호로 인식\n"
+        "</div>\n"
+        "</div>\n\n"
         "B2B 기업교육 분야에서는 프레스 릴리즈로 기본적인 멘션을 확보하고, "
         "동시에 업계 전문 매체와의 관계를 구축하여 에디토리얼 기사를 목표로 하는 "
         "투트랙 전략이 효과적입니다."
@@ -2783,17 +2905,20 @@ def seed(run_migrations: bool = True) -> None:
         "Google Knowledge Panel은 검색 결과 우측에 표시되는 정보 패널입니다. "
         "이를 확보하면 브랜드의 엔터티 인식이 확인된 것입니다.\n\n"
         "#### Knowledge Panel 확보 단계\n\n"
-        "1. **Google 비즈니스 프로필 등록 및 인증**\n"
-        "   - 사업자 정보를 정확히 입력하고 우편 인증을 완료합니다.\n\n"
-        "2. **공식 웹사이트에 Organization 스키마 구현**\n"
-        "   - name, url, logo, description, sameAs 등 핵심 속성을 포함합니다.\n\n"
-        "3. **위키데이터에 항목 생성**\n"
-        "   - 위키데이터(www.wikidata.org)에 조직 항목을 생성합니다.\n"
-        "   - 공식 웹사이트 URL, 설립일, 소재지 등 속성을 추가합니다.\n\n"
-        "4. **소셜 프로필 일관성 확보**\n"
-        "   - 모든 소셜 미디어 프로필에서 동일한 이름, 로고, 설명을 사용합니다.\n\n"
-        "5. **외부 멘션 확보**\n"
-        "   - 신뢰할 수 있는 매체에서 브랜드가 언급되면 Knowledge Panel 생성 확률이 높아집니다.\n\n"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">Knowledge Panel 확보 프로세스</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">Google 비즈니스 프로필 등록</div><div class="step-desc">사업자 정보를 정확히 입력하고 우편 인증을 완료합니다.</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">Organization 스키마 구현</div><div class="step-desc">공식 웹사이트에 name, url, logo, description, sameAs 등 핵심 속성을 포함합니다.</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">위키데이터 항목 생성</div><div class="step-desc">위키데이터에 조직 항목을 생성하고 공식 웹사이트 URL, 설립일, 소재지 등 속성을 추가합니다.</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">4</div><div class="step-content"><div class="step-title">소셜 프로필 일관성 확보</div><div class="step-desc">모든 소셜 미디어 프로필에서 동일한 이름, 로고, 설명을 사용합니다.</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">5</div><div class="step-content"><div class="step-title">외부 멘션 확보</div><div class="step-desc">신뢰할 수 있는 매체에서 브랜드가 언급되면 Knowledge Panel 생성 확률이 높아집니다.</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
         "Knowledge Panel이 생성되면 Google Search Console에서 "
         "'클레임(Claim)'하여 관리 권한을 확보할 수 있습니다."
     ))
@@ -3200,18 +3325,13 @@ def seed(run_migrations: bool = True) -> None:
     ), 1, extension_md=(
         "### KPI 대시보드 구성 예시\n\n"
         "효과적인 GEO KPI 대시보드는 다음과 같이 구성합니다:\n\n"
-        "#### 상단 영역: 핵심 지표 요약\n\n"
-        "- 이번 주 AI 인용 횟수 / 지난 주 대비 변화율\n"
-        "- AI 경유 트래픽 수 / 전체 트래픽 대비 비율\n"
-        "- Share of Voice 스코어 / 경쟁사 대비 순위\n\n"
-        "#### 중단 영역: 트렌드 차트\n\n"
-        "- 주간 AI 인용 횟수 추이 (최근 12주)\n"
-        "- AI 경유 트래픽 추이 (최근 12주)\n"
-        "- 경쟁사 비교 Share of Voice 추이\n\n"
-        "#### 하단 영역: 상세 데이터\n\n"
-        "- 인용된 페이지별 상세 (URL, 인용 횟수, 인용 맥락)\n"
-        "- 쿼리별 인용 현황 (타겟 쿼리, 인용 여부, 경쟁사 인용 여부)\n"
-        "- E-E-A-T 세부 점수 변화"
+        '<div class="layer-box">\n'
+        '<div class="layer" style="--layer-color: #1a73e8"><div class="layer-label">상단 영역</div><div class="layer-title">핵심 지표 요약</div><div class="layer-desc">이번 주 AI 인용 횟수 / 지난 주 대비 변화율 · AI 경유 트래픽 수 / 전체 대비 비율 · Share of Voice 스코어 / 경쟁사 대비 순위</div></div>\n'
+        '<div class="layer-connector"></div>\n'
+        '<div class="layer" style="--layer-color: #34a853"><div class="layer-label">중단 영역</div><div class="layer-title">트렌드 차트</div><div class="layer-desc">주간 AI 인용 횟수 추이 (최근 12주) · AI 경유 트래픽 추이 · 경쟁사 비교 Share of Voice 추이</div></div>\n'
+        '<div class="layer-connector"></div>\n'
+        '<div class="layer" style="--layer-color: #ea4335"><div class="layer-label">하단 영역</div><div class="layer-title">상세 데이터</div><div class="layer-desc">인용된 페이지별 상세 (URL, 인용 횟수, 인용 맥락) · 쿼리별 인용 현황 · E-E-A-T 세부 점수 변화</div></div>\n'
+        '</div>'
     ))
 
     s = add_step(m, "quiz", "Visibility 핵심 지표", (
@@ -3578,15 +3698,26 @@ def seed(run_migrations: bool = True) -> None:
         "### 자동화 방법 (API 활용)\n\n"
         "AI Validator 루틴을 자동화하면 수동 작업 부담을 크게 줄일 수 있습니다.\n\n"
         "#### 기본 자동화 플로우\n\n"
-        "1. **쿼리 목록 관리**: 스프레드시트나 DB에 타겟 쿼리 목록 관리\n"
-        "2. **API 호출**: OpenAI API 등을 통해 각 쿼리에 대한 답변 자동 수집\n"
-        "3. **인용 분석**: 답변 텍스트에서 자사 브랜드/URL 키워드 자동 검색\n"
-        "4. **점수 기록**: 인용 점수를 자동 계산하여 DB에 저장\n"
-        "5. **알림**: 점수 변동이 크면 Slack/이메일로 알림\n\n"
-        "#### 주의사항\n\n"
-        "- API 비용이 발생하므로 쿼리 수와 빈도를 적절히 설정\n"
-        "- AI 답변은 비결정적이므로 같은 쿼리에 여러 번 질문하여 평균 계산\n"
-        "- AI 모델 버전이 바뀌면 결과가 크게 달라질 수 있으므로 모델 버전도 기록"
+        '<div class="flow-chart">\n'
+        '<div class="flow-title">AI Validator 자동화 파이프라인</div>\n'
+        '<div class="flow-steps">\n'
+        '<div class="flow-step"><div class="step-number">1</div><div class="step-content"><div class="step-title">쿼리 목록 관리</div><div class="step-desc">스프레드시트나 DB에 타겟 쿼리 목록 관리</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">2</div><div class="step-content"><div class="step-title">API 호출</div><div class="step-desc">OpenAI API 등을 통해 각 쿼리에 대한 답변 자동 수집</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">3</div><div class="step-content"><div class="step-title">인용 분석</div><div class="step-desc">답변 텍스트에서 자사 브랜드/URL 키워드 자동 검색</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">4</div><div class="step-content"><div class="step-title">점수 기록</div><div class="step-desc">인용 점수를 자동 계산하여 DB에 저장</div></div></div>\n'
+        '<div class="flow-arrow">↓</div>\n'
+        '<div class="flow-step"><div class="step-number">5</div><div class="step-content"><div class="step-title">알림</div><div class="step-desc">점수 변동이 크면 Slack/이메일로 알림</div></div></div>\n'
+        '</div>\n'
+        '</div>\n\n'
+        '<div class="callout warning">\n'
+        "<strong>주의사항</strong><br>\n"
+        "- API 비용이 발생하므로 쿼리 수와 빈도를 적절히 설정하세요.<br>\n"
+        "- AI 답변은 비결정적이므로 같은 쿼리에 여러 번 질문하여 평균을 계산하세요.<br>\n"
+        "- AI 모델 버전이 바뀌면 결과가 크게 달라질 수 있으므로 모델 버전도 기록하세요.\n"
+        "</div>"
     ))
 
     s = add_step(m, "quiz", "AI Validator 루틴의 핵심", (
@@ -3800,20 +3931,22 @@ def seed(run_migrations: bool = True) -> None:
     ), 1, extension_md=(
         "### 90일 이후 지속 운영 방안\n\n"
         "90일 로드맵 완료 후에도 GEO는 지속적으로 운영해야 합니다.\n\n"
-        "#### 월간 루틴\n\n"
-        "- 주 1회 AI Validator 실행 및 인용 점수 기록\n"
-        "- 월 1회 3층 KPI 리뷰 미팅\n"
-        "- 월 1-2건 새로운 콘텐츠(블로그, FAQ) 발행\n"
-        "- 월 1건 이상 오프사이트 활동 (기고, PR 등)\n\n"
-        "#### 분기별 활동\n\n"
-        "- 분기별 GEO 전략 리뷰 및 방향 조정\n"
-        "- 경쟁사 Share of Voice 비교 분석\n"
-        "- 새로운 AI 플랫폼/모델 업데이트 대응\n"
-        "- 다음 분기 실험 가설 수립\n\n"
-        "#### 연간 활동\n\n"
-        "- 연간 GEO 전략 보고서 작성\n"
-        "- ROI 분석 (투입 자원 대비 AI 인용을 통한 비즈니스 성과)\n"
-        "- 다음 연도 GEO 전략 및 예산 수립"
+        '<div class="hierarchy-box">\n'
+        '<div class="level-1"><strong>월간 루틴</strong><br>\n'
+        "- 주 1회 AI Validator 실행 및 인용 점수 기록<br>\n"
+        "- 월 1회 3층 KPI 리뷰 미팅<br>\n"
+        "- 월 1-2건 새로운 콘텐츠(블로그, FAQ) 발행<br>\n"
+        "- 월 1건 이상 오프사이트 활동 (기고, PR 등)</div>\n"
+        '<div class="level-2"><strong>분기별 활동</strong><br>\n'
+        "- 분기별 GEO 전략 리뷰 및 방향 조정<br>\n"
+        "- 경쟁사 Share of Voice 비교 분석<br>\n"
+        "- 새로운 AI 플랫폼/모델 업데이트 대응<br>\n"
+        "- 다음 분기 실험 가설 수립</div>\n"
+        '<div class="level-3"><strong>연간 활동</strong><br>\n'
+        "- 연간 GEO 전략 보고서 작성<br>\n"
+        "- ROI 분석 (투입 자원 대비 AI 인용 비즈니스 성과)<br>\n"
+        "- 다음 연도 GEO 전략 및 예산 수립</div>\n"
+        "</div>"
     ))
 
     s = add_step(m, "quiz", "90일 로드맵 1단계 핵심", (
@@ -3922,7 +4055,7 @@ def seed(run_migrations: bool = True) -> None:
     add_stage(
         6,
         "GEO 액션 플랜 실행 가이드",
-        "docs/73-geo-action-plan.md의 59개 티켓을 30/60/90일 Phase별로 순차 실행하는 과업 가이드입니다.",
+        "docs/strategy/73-geo-action-plan.md의 59개 티켓을 30/60/90일 Phase별로 순차 실행하는 과업 가이드입니다.",
         6,
         '{"require_stage_complete": 5, "min_score_pct": 70}',
     )
@@ -3940,6 +4073,21 @@ def seed(run_migrations: bool = True) -> None:
         "Stage 6는 학습이 아니라 **실행 과업 운영 단계**입니다. "
         "첫 주에 팀 역할, 승인 흐름, 주간 리듬, KPI 베이스라인을 확정하지 않으면 "
         "과업이 밀리고 우선순위가 흔들립니다.\n\n"
+
+        '<div class="callout glossary">\n'
+        "<p><strong>RACI</strong><br>\n"
+        "책임(R), 승인(A), 자문(C), 통보(I) — 과업별 역할 배분 프레임워크. "
+        "킥오프에서 가장 먼저 확정해야 할 구조입니다.</p>\n"
+        "<p><strong>SLA</strong> (Service Level Agreement)<br>\n"
+        "과업 승인·검토에 걸리는 최대 시간을 합의한 약속. "
+        "예: 콘텐츠 48시간, 스키마 24시간.</p>\n"
+        "<p><strong>Phase / P0·P1·P2</strong><br>\n"
+        "90일 로드맵의 실행 단계와 티켓 우선순위. "
+        "P0 = Phase 1(30일, 28 tickets), P1 = Phase 2(60일, 20 tickets), P2 = Phase 3(90일, 11 tickets).</p>\n"
+        "<p><strong>KPI</strong> (복습)<br>\n"
+        "목표 달성 여부를 숫자로 측정하는 핵심 성과 지표. "
+        "Stage 6에서는 KPI-A(ChatGPT 인용), KPI-B(Google AI 노출), KPI-C(하위 질의 커버리지) 3층 구조로 확장됩니다.</p>\n"
+        "</div>\n\n"
 
         "### 전략 한 줄\n\n"
         "<div class='callout'>\n"
@@ -4124,6 +4272,21 @@ def seed(run_migrations: bool = True) -> None:
         "크롤링 정책을 파악할 수 없습니다. 콘텐츠를 아무리 개선해도 봇이 수집하지 못하면 "
         "AI 검색 결과에 반영되지 않습니다.\n\n"
 
+        '<div class="callout glossary">\n'
+        "<p><strong>OAI-SearchBot</strong><br>\n"
+        "OpenAI의 ChatGPT Search 전용 크롤러. "
+        "이 봇을 robots.txt에서 차단하면 ChatGPT 검색 결과에서 완전히 제외됩니다.</p>\n"
+        "<p><strong>GPTBot</strong><br>\n"
+        "OpenAI의 모델 학습용 크롤러. OAI-SearchBot과 별개이며, 선택적 허용이 가능합니다.</p>\n"
+        "<p><strong>SOP</strong> (Standard Operating Procedure)<br>\n"
+        "표준 운영 절차서. 반복 과업을 누구나 동일하게 실행할 수 있도록 정리한 문서입니다.</p>\n"
+        "<p><strong>DoD</strong> (Definition of Done)<br>\n"
+        "과업 완료를 판정하는 최소 기준 목록. '배포했다'가 아니라 '검증까지 끝났다'를 뜻합니다.</p>\n"
+        "<p><strong>robots.txt</strong> (복습)<br>\n"
+        "검색엔진 봇에게 크롤링 허용/제외 범위를 알려주는 텍스트 파일. "
+        "현재 b2b.fastcampus.co.kr은 이 파일이 404(Not Found) 상태입니다.</p>\n"
+        "</div>\n\n"
+
         "### 5대 과업 실행 순서\n\n"
         '<div class="flow-chart">\n'
         '<div class="flow-title">기술 인프라 5대 과업</div>\n'
@@ -4147,7 +4310,7 @@ def seed(run_migrations: bool = True) -> None:
         "</div>\n\n"
         "**작성 예시:**\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "User-agent: *\n"
         "Allow: /\n"
         "Disallow: /admin/\n"
@@ -4160,7 +4323,7 @@ def seed(run_migrations: bool = True) -> None:
         "User-agent: Google-Extended\n"
         "Allow: /\n\n"
         "Sitemap: https://b2b.fastcampus.co.kr/sitemap.xml\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
         "**핵심 규칙**: OAI-SearchBot은 ChatGPT Search의 크롤러이므로 **반드시 Allow**해야 합니다. "
         "GPTBot은 학습용 크롤러로 선택적 허용이 가능하지만, 인용 최적화를 위해 허용을 권장합니다.\n\n"
@@ -4185,7 +4348,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### P0-4: Organization/BreadcrumbList JSON-LD 템플릿\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         '&lt;script type=\"application/ld+json\"&gt;\n'
         "{\n"
         '  \"@context\": \"https://schema.org\",\n'
@@ -4200,7 +4363,7 @@ def seed(run_migrations: bool = True) -> None:
         "  }\n"
         "}\n"
         "&lt;/script&gt;\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
         "**DoD**: 템플릿 문서 작성 + 3개 페이지 파일럿 적용\n\n"
 
@@ -4221,25 +4384,29 @@ def seed(run_migrations: bool = True) -> None:
         "</div>"
     ), 1, extension_md=(
         "### robots.txt 봇별 상세 설명\n\n"
-        "| 봇 이름 | 소속 | 용도 | 권장 정책 |\n"
-        "|---------|------|------|----------|\n"
-        "| OAI-SearchBot | OpenAI | ChatGPT Search 크롤링 | **Allow (필수)** |\n"
-        "| GPTBot | OpenAI | 모델 학습용 크롤링 | Allow (권장) |\n"
-        "| Google-Extended | Google | Gemini 학습용 | Allow (권장) |\n"
-        "| Googlebot | Google | 일반 검색 크롤링 | Allow (필수) |\n"
-        "| Bingbot | Microsoft | Bing 검색 크롤링 | Allow (필수) |\n\n"
+        '<table class="comparison-table"><thead><tr>'
+        "<th>봇 이름</th><th>소속</th><th>용도</th><th>권장 정책</th>"
+        "</tr></thead><tbody>\n"
+        "<tr><td>OAI-SearchBot</td><td>OpenAI</td><td>ChatGPT Search 크롤링</td><td><strong>Allow (필수)</strong></td></tr>\n"
+        "<tr><td>GPTBot</td><td>OpenAI</td><td>모델 학습용 크롤링</td><td>Allow (권장)</td></tr>\n"
+        "<tr><td>Google-Extended</td><td>Google</td><td>Gemini 학습용</td><td>Allow (권장)</td></tr>\n"
+        "<tr><td>Googlebot</td><td>Google</td><td>일반 검색 크롤링</td><td><strong>Allow (필수)</strong></td></tr>\n"
+        "<tr><td>Bingbot</td><td>Microsoft</td><td>Bing 검색 크롤링</td><td><strong>Allow (필수)</strong></td></tr>\n"
+        "</tbody></table>\n\n"
         "### BreadcrumbList JSON-LD 템플릿\n\n"
-        "```json\n"
-        "{\n"
-        "  \"@context\": \"https://schema.org\",\n"
-        "  \"@type\": \"BreadcrumbList\",\n"
-        "  \"itemListElement\": [\n"
-        "    {\"@type\": \"ListItem\", \"position\": 1, \"name\": \"홈\", \"item\": \"https://b2b.fastcampus.co.kr/\"},\n"
-        "    {\"@type\": \"ListItem\", \"position\": 2, \"name\": \"서비스\", \"item\": \"https://b2b.fastcampus.co.kr/service\"},\n"
-        "    {\"@type\": \"ListItem\", \"position\": 3, \"name\": \"맞춤형 교육\"}\n"
-        "  ]\n"
-        "}\n"
-        "```\n\n"
+        '<div class="code-example">'
+        '<div class="code-label">BreadcrumbList JSON-LD</div>'
+        "<pre><code>"
+        '{\n'
+        '  "@context": "https://schema.org",\n'
+        '  "@type": "BreadcrumbList",\n'
+        '  "itemListElement": [\n'
+        '    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://b2b.fastcampus.co.kr/"},\n'
+        '    {"@type": "ListItem", "position": 2, "name": "서비스", "item": "https://b2b.fastcampus.co.kr/service"},\n'
+        '    {"@type": "ListItem", "position": 3, "name": "맞춤형 교육"}\n'
+        '  ]\n'
+        '}'
+        "</code></pre></div>\n\n"
         "배포 전 반드시 Google Rich Results Test와 Schema Markup Validator로 검증하세요."
     ))
 
@@ -4312,6 +4479,21 @@ def seed(run_migrations: bool = True) -> None:
         "명확한 정답 문장을 찾아 인용합니다. 현재 b2b.fastcampus.co.kr의 24/25 페이지(96%)에는 "
         "상단 정답 문장이 없어 AI가 인용할 텍스트를 찾지 못하고 있습니다.\n\n"
 
+        '<div class="callout glossary">\n'
+        "<p><strong>Answer-first</strong> (복습)<br>\n"
+        "페이지 상단(H1 직하단)에 핵심 답변을 2~6문장으로 배치하는 콘텐츠 작성법. "
+        "AI 검색 엔진이 정답으로 인용할 텍스트를 먼저 제공합니다.</p>\n"
+        "<p><strong>CTA</strong> (Call to Action)<br>\n"
+        "방문자에게 다음 행동(문의, 다운로드, 가입)을 유도하는 버튼이나 링크. "
+        "Answer-first 5줄의 마지막 문장이 CTA 역할을 합니다.</p>\n"
+        "<p><strong>H1</strong> (복습)<br>\n"
+        "HTML에서 가장 큰 대제목 태그. AI 검색 엔진이 페이지 주제를 파악하는 1차 신호이며, "
+        "Answer-first 블록은 반드시 H1 바로 아래에 배치합니다.</p>\n"
+        "<p><strong>Hero section</strong><br>\n"
+        "웹페이지 최상단의 대형 배너 영역. 첫 화면에 보이는 가장 눈에 띄는 섹션으로, "
+        "/index 페이지 재구성 시 핵심 대상입니다.</p>\n"
+        "</div>\n\n"
+
         "### 배치 원칙\n\n"
         "<div class='callout'>\n"
         "Answer-first 블록은 반드시 <strong>H1 직하단</strong>에 배치합니다.<br>\n"
@@ -4335,7 +4517,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### 템플릿 1: 서비스 페이지용\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "## [서비스명] 개요\n\n"
         "[서비스명]은(는) [대상 조직/직무]가 [비즈니스 목표]를 달성하도록 돕는\n"
         "[서비스 유형: 교육/컨설팅/플랫폼]입니다.\n"
@@ -4345,12 +4527,12 @@ def seed(run_migrations: bool = True) -> None:
         "운영 중에는 [학습관리/참여 관리/성과 측정]을 제공합니다.\n"
         "산출물은 [커리큘럼/실습자료/운영 리포트]이며,\n"
         "[보안/폐쇄망] 등 제약조건도 반영합니다.\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### 템플릿 2: 사례(레퍼런스) 페이지용\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "## [사례 제목] 사례 요약\n\n"
         "이 사례는 [산업/조직 유형]의 [대상]을 대상으로 [주제] 교육을\n"
         "[방식]으로 운영한 결과를 요약합니다.\n"
@@ -4358,12 +4540,12 @@ def seed(run_migrations: bool = True) -> None:
         "평균 만족도는 [점수]입니다(측정 기준: [설문 기준]).\n"
         "핵심 설계는 [사전 진단/직무 인터뷰]를 통해 [현업 문제]를 해결하는\n"
         "실습 중심으로 구성했습니다.\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### 템플릿 3: 리소스(리포트/가이드) 페이지용\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "## [자료명] 개요\n\n"
         "이 자료는 [주제]에 대해 [대상]에게 필요한 [산출물 유형]\n"
         "체크리스트를 [분량]으로 정리한 [가이드/리포트]입니다.\n"
@@ -4371,7 +4553,7 @@ def seed(run_migrations: bool = True) -> None:
         "각 항목은 [적용 레벨]별로 바로 실행할 수 있도록 구성했습니다.\n"
         "본문에는 [통계/사례/정의]가 포함되어 있으며,\n"
         "근거는 [출처 레벨] 자료를 우선 인용했습니다.\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### /service_custom Answer-first 초안 예시\n\n"
@@ -4489,6 +4671,21 @@ def seed(run_migrations: bool = True) -> None:
         "Answer-first로 정답 문장을 배치한 후, 바로 아래에 **근거(Proof) 블록**을 추가하면 "
         "AI 검색 엔진이 '출처 있는 주장'으로 인식하여 인용 우선순위가 높아집니다.\n\n"
 
+        '<div class="callout glossary">\n'
+        "<p><strong>Proof-first</strong><br>\n"
+        "Answer-first 직하단에 통계·인용·외부 출처 블록을 배치하여 주장의 신뢰도를 높이는 전략. "
+        "Answer-first와 짝을 이루는 GEO 핵심 기법입니다.</p>\n"
+        "<p><strong>Tier</strong> (출처 신뢰도 계층)<br>\n"
+        "출처의 공신력 등급. Tier 1(정부/학술 기관), Tier 2(산업 리서치/글로벌 컨설팅), "
+        "Tier 3(미디어/블로그). Proof 블록에는 Tier 1~2 출처를 우선 사용합니다.</p>\n"
+        "<p><strong>Citation</strong> (복습)<br>\n"
+        "AI가 답변에서 '출처: 우리 사이트'라고 표시하는 것. "
+        "Proof 블록이 있으면 AI가 신뢰할 수 있는 출처로 인식하여 인용 확률이 높아집니다.</p>\n"
+        "<p><strong>E-E-A-T</strong> (복습)<br>\n"
+        "경험·전문성·권위·신뢰 — AI가 콘텐츠를 믿을지 판단하는 4가지 기준. "
+        "Proof-first는 E-E-A-T 중 '신뢰(Trust)' 신호를 직접 강화합니다.</p>\n"
+        "</div>\n\n"
+
         "### Proof 3요소\n\n"
         "<div class='hierarchy-box'>\n"
         "<strong>1. 핵심 통계</strong>: 수치 + 기간 + 표본 + 정의 + 출처 링크<br>\n"
@@ -4508,7 +4705,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### Proof-first 템플릿\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "## 근거 (Proof Block)\n\n"
         "### 핵심 통계\n"
         "- **[지표A]**: [수치] ([기간], [표본], [정의])\n"
@@ -4522,7 +4719,7 @@ def seed(run_migrations: bool = True) -> None:
         "1. [1차 가이드/표준] -- [설명]\n"
         "2. [리서치/서베이] -- [설명]\n"
         "3. [케이스/벤치마크] -- [설명]\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### 10개 페이지 Proof 유형 매핑\n\n"
@@ -4637,6 +4834,21 @@ def seed(run_migrations: bool = True) -> None:
         "'무엇이 인용되는가'를 주간 단위로 추적해야 실험과 개선이 빠릅니다. "
         "측정 없는 콘텐츠 개선은 방향을 잃기 쉽습니다.\n\n"
 
+        '<div class="callout glossary">\n'
+        "<p><strong>KPI-A / KPI-B / KPI-C</strong><br>\n"
+        "Stage 6 전용 3층 측정 체계. KPI-A = ChatGPT Search 인용 빈도(주 2회 측정), "
+        "KPI-B = Google AI Overviews 노출(주 1회), KPI-C = 하위 질의 커버리지(주 1회).</p>\n"
+        "<p><strong>AI Validator</strong> (복습)<br>\n"
+        "AI에게 주기적으로 질문하여 우리 콘텐츠가 인용되는지 확인하는 프로세스. "
+        "Stage 6에서는 Top 50 질문 세트로 주간 인용률을 추적합니다.</p>\n"
+        "<p><strong>A/B Test</strong> (복습)<br>\n"
+        "두 가지 버전(A: 기존, B: 변경)을 비교하여 어떤 것이 더 효과적인지 검증하는 실험. "
+        "Stage 6에서는 4주 실험 루프로 Answer-first 길이, Proof 위치 등을 테스트합니다.</p>\n"
+        "<p><strong>GA4</strong> (복습)<br>\n"
+        "Google이 제공하는 무료 웹 분석 도구. "
+        "utm_source=chatgpt.com 필터로 AI 검색 유입 트래픽을 분리 추적합니다.</p>\n"
+        "</div>\n\n"
+
         "### KPI 3종 정의\n\n"
         '<div class="hierarchy-box">\n'
         '<table class="comparison-table"><thead><tr><th>KPI</th><th>정의</th><th>측정 빈도</th><th>도구</th><th>목표</th></tr></thead>\n'
@@ -4649,7 +4861,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### KPI-A 측정 SOP\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "주 2회 (화/금 10:00)\n"
         "1. Top 50 질문 세트의 각 질문을 ChatGPT Search에 입력\n"
         "2. 상위 3개 출처 확인 (클릭 가능한 출처)\n"
@@ -4657,7 +4869,7 @@ def seed(run_migrations: bool = True) -> None:
         "4. 인용된 텍스트 스크린샷 + 출처 문장 로깅\n"
         "5. 해당 페이지 URL + 인용 블록 식별\n"
         "6. 주간 리포트: 노출 페이지/질문/인용문 요약\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### Top 50 질문 세트 (5카테고리 x 10)\n\n"
@@ -4669,7 +4881,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### 주간 인용 로그 양식\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "[주간 AI Validator 인용 로그]\n"
         "기간: YYYY-MM-DD ~ YYYY-MM-DD (Week XX)\n\n"
         "KPI-A: ChatGPT Search 인용\n"
@@ -4681,12 +4893,12 @@ def seed(run_migrations: bool = True) -> None:
         "2점(Answer만): __개\n"
         "1점(관련만): __개\n"
         "0점(커버없음): __개\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### AI Validator 핵심 프롬프트 (10개 중 5개)\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "Prompt 1: ChatGPT Search 인용 빈도 평가\n"
         "- Top 50 질문 -> ChatGPT Search -> b2b.fastcampus 노출 여부 기록\n\n"
         "Prompt 3: 상위 10 랜딩 Answer-first 평가 (0~5점)\n"
@@ -4697,7 +4909,7 @@ def seed(run_migrations: bool = True) -> None:
         "- Organization/BreadcrumbList/Event/Article/FAQPage 적용 여부\n\n"
         "Prompt 10: 주간 KPI 종합 리포트\n"
         "- KPI-A/B/C 통합, 트렌드, 다음주 액션 3개\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### 4주 실험 루프\n\n"
@@ -4808,6 +5020,21 @@ def seed(run_migrations: bool = True) -> None:
         "AI 검색 엔진의 query fan-out 메커니즘은 하위 질의별로 전문 페이지를 찾습니다. "
         "허브-스포크 구조를 통해 하위 질의 커버리지를 확대하면 인용 기회가 크게 늘어납니다.\n\n"
 
+        '<div class="callout glossary">\n'
+        "<p><strong>Fan-out</strong> (Query fan-out)<br>\n"
+        "AI 검색 엔진이 하나의 질문을 여러 하위 질문으로 분해하여, "
+        "각각에 대해 전문 페이지를 찾아 종합 답변을 생성하는 메커니즘입니다.</p>\n"
+        "<p><strong>Hub-Spoke</strong> (복습: Hub-Cluster)<br>\n"
+        "핵심 주제 페이지(허브)에서 세부 페이지(스포크)로 체계적으로 연결하는 사이트 구조. "
+        "허브는 상위 질문에 대한 개요와 네비게이션을, 스포크는 하위 질문에 대한 집중 답변을 제공합니다.</p>\n"
+        "<p><strong>Batch</strong> (배치 발행)<br>\n"
+        "대량의 스포크 페이지를 한꺼번에 발행하지 않고, 20개씩 묶어 순차 발행하는 방식. "
+        "Batch 1에는 Top 50 질문 커버리지가 높은 스포크를 우선 배치합니다.</p>\n"
+        "<p><strong>Internal Link</strong> (복습)<br>\n"
+        "같은 웹사이트 안에서 페이지끼리 연결하는 하이퍼링크. "
+        "Hub→Spoke, Spoke→Hub, Spoke↔Spoke 3종으로 구분하여 표준화합니다.</p>\n"
+        "</div>\n\n"
+
         "### 7개 허브 목록\n\n"
         '<div class="tree-diagram">\n'
         '<div class="tree-title">허브-스포크 아키텍처 (7 Hubs)</div>\n'
@@ -4828,7 +5055,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### 스포크 페이지 포맷 (600~1,200자)\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "# [스포크 페이지 타이틀]\n"
         "*발행일: YYYY-MM-DD | 카테고리: [허브명]*\n\n"
         "## 개요 (Answer-first, 2~4문장)\n"
@@ -4844,7 +5071,7 @@ def seed(run_migrations: bool = True) -> None:
         "[답변 1~2문장]\n\n"
         "## 근거 (Proof Block)\n"
         "[Proof-first 템플릿 적용]\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>\n\n"
 
         "### 내부링크 3종 규칙\n\n"
@@ -4956,6 +5183,21 @@ def seed(run_migrations: bool = True) -> None:
         "### 왜 Phase 3가 중요한가?\n\n"
         "Phase 1~2에서 콘텐츠와 구조를 정비했다면, Phase 3에서는 **외부 권위 신호**와 "
         "**자동화 루틴**으로 지속 가능한 GEO 운영 체계를 완성합니다.\n\n"
+
+        '<div class="callout glossary">\n'
+        "<p><strong>Organization</strong> (스키마 타입)<br>\n"
+        "기업/단체의 공식 정보(이름, URL, 로고, 연락처)를 AI에게 전달하는 구조화 데이터 타입. "
+        "모든 페이지에 필수 적용해야 합니다.</p>\n"
+        "<p><strong>URL Inspection</strong><br>\n"
+        "Google Search Console에서 실제 URL의 크롤링·렌더링·인덱싱 상태를 확인하는 도구. "
+        "스키마 4단계 검증 파이프라인의 마지막 단계입니다.</p>\n"
+        "<p><strong>Digital PR</strong> (복습)<br>\n"
+        "온라인 매체에 기고, 보도자료, 인터뷰 등을 통해 브랜드를 노출하고 역링크를 확보하는 활동. "
+        "Phase 3에서 외부 권위를 구축하는 핵심 수단입니다.</p>\n"
+        "<p><strong>FAQPage</strong> (복습)<br>\n"
+        "자주 묻는 질문 페이지를 AI에게 알려주는 구조화 데이터 타입. "
+        "스포크 FAQ 섹션에 적용하면 리치 리절트 노출 기회가 늘어납니다.</p>\n"
+        "</div>\n\n"
 
         "### 구조화데이터 전사 적용 (P2-1~5)\n\n"
         '<div class="hierarchy-box">\n'
@@ -5145,7 +5387,7 @@ def seed(run_migrations: bool = True) -> None:
 
         "### GEO 작업 요청 템플릿 (복붙 가능)\n\n"
         "<div class='code-example'>\n"
-        "<pre>\n"
+        "<pre><code>\n"
         "# GEO 작업 요청서\n"
         "- 작업명: [예: Answer-first 적용 - /service_custom]\n"
         "- 요청자: [이름]\n"
@@ -5155,7 +5397,7 @@ def seed(run_migrations: bool = True) -> None:
         "- 대상 URL: [URL 목록]\n"
         "- 요청 산출물: Answer-first 초안 / Proof 블록 / FAQ / 내부링크\n"
         "- DoD: 배포 + 출처 검증 + 5인 리뷰 + 스크린샷\n"
-        "</pre>\n"
+        "</code></pre>\n"
         "</div>"
     ), 1, extension_md=(
         "### 분기별 우선순위 (Q2 2026 이후)\n\n"
@@ -5226,9 +5468,14 @@ def seed(run_migrations: bool = True) -> None:
                "성과 그래프만으로는 다음 실행을 보장할 수 없습니다. "
                "지표와 과업이 연결된 캘린더 및 책임 구조가 함께 제출되어야 합니다.", 4)
 
+    distribution = _rebalance_quiz_answer_labels()
+    _flush_option_buffer_to_db()
     conn.commit()
     conn.close()
-    print("Seed data upserted successfully.")
+    print(
+        "Seed data upserted successfully. "
+        f"Quiz answer labels: A={distribution['A']} B={distribution['B']} C={distribution['C']} D={distribution['D']}"
+    )
 
 
 if __name__ == "__main__":

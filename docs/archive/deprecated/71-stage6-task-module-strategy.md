@@ -1,5 +1,5 @@
-> **⚠️ 이 문서는 폐기되었습니다.** Stage 6은 `docs/73-geo-action-plan.md` 기반으로 재구성되었습니다.
-> 새 설계: `docs/77-stage6-curriculum-design.md` 참조.
+> **⚠️ 이 문서는 폐기되었습니다.** Stage 6은 `docs/strategy/73-geo-action-plan.md` 기반으로 재구성되었습니다.
+> 새 설계: `docs/strategy/77-stage6-curriculum-design.md` 참조.
 
 # 71 — Stage 6 과업 모듈 전략 설명서 (LLM Handoff) — ~~DEPRECATED~~
 
@@ -14,7 +14,7 @@
 - 모듈은 “팀이 다음 주 바로 실행 가능한 과업 묶음(work package)” 기준으로 설계했다.
 
 관련 문서:
-- Stage 6 시드 제작 프로세스: `docs/75-stage6-seed-content-preparation.md`
+- Stage 6 시드 제작 프로세스: `docs/archive/deprecated/75-stage6-seed-content-preparation.md`
 
 ---
 

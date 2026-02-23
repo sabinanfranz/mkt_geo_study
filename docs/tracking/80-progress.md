@@ -65,10 +65,10 @@
 |------|------|--------|------|
 | 2026-02-22 | materials/ 3개 소스 문서 분석 | 콘텐츠 매핑 | ✅ 완료 |
 | 2026-02-22 | b2b.fastcampus.co.kr 웹크롤링 | `data/crawled/` (10개 JSON) | ✅ 완료 |
-| 2026-02-22 | 크롤링 분석 + Stage 3~5 계획서 | `docs/60-crawl-analysis-and-stage3-plan.md` | ✅ 완료 |
-| 2026-02-22 | 상세 콘텐츠 개발 계획 | `docs/70-content-dev-plan.md` | ✅ 완료 |
-| 2026-02-22 | Phase 2 백로그 작성 (US-026~035) | `docs/40-backlog.md` 업데이트 | ✅ 완료 |
-| 2026-02-22 | 진행 현황 문서 작성 | `docs/80-progress.md` | ✅ 완료 |
+| 2026-02-22 | 크롤링 분석 + Stage 3~5 계획서 | `docs/strategy/60-crawl-analysis-and-stage3-plan.md` | ✅ 완료 |
+| 2026-02-22 | 상세 콘텐츠 개발 계획 | `docs/strategy/70-content-dev-plan.md` | ✅ 완료 |
+| 2026-02-22 | Phase 2 백로그 작성 (US-026~035) | `docs/engineering/40-backlog.md` 업데이트 | ✅ 완료 |
+| 2026-02-22 | 진행 현황 문서 작성 | `docs/tracking/80-progress.md` | ✅ 완료 |
 
 ### 구현 계획
 

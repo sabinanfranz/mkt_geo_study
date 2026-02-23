@@ -11,10 +11,10 @@
 
 | 파일 | 용도 | 핵심 내용 |
 |------|------|----------|
-| `docs/70-content-dev-plan.md` | **Phase 2 개발 계획서** | 비주얼 컴포넌트 6종 설계, Stage 1-2 보강 매핑, Stage 3-5 커리큘럼, 구현 순서, 수치 목표 |
-| `docs/40-backlog.md` | **Phase 2 백로그** (하단 Phase 2 섹션) | US-026~035 (Slice 5~10), 각 AC/DoD 포함. Phase 1 US-001~025 전부 완료 |
-| `docs/80-progress.md` | **진행 현황 트래커** | Phase 1 완료 상태, Phase 2 Slice별 상태, 크롤링 활용 현황 |
-| `docs/90-log.md` | **결정 로그** | D1~D8 결정사항, 세션별 작업 기록, Next Steps |
+| `docs/strategy/70-content-dev-plan.md` | **Phase 2 개발 계획서** | 비주얼 컴포넌트 6종 설계, Stage 1-2 보강 매핑, Stage 3-5 커리큘럼, 구현 순서, 수치 목표 |
+| `docs/engineering/40-backlog.md` | **Phase 2 백로그** (하단 Phase 2 섹션) | US-026~035 (Slice 5~10), 각 AC/DoD 포함. Phase 1 US-001~025 전부 완료 |
+| `docs/tracking/80-progress.md` | **진행 현황 트래커** | Phase 1 완료 상태, Phase 2 Slice별 상태, 크롤링 활용 현황 |
+| `docs/tracking/90-log.md` | **결정 로그** | D1~D8 결정사항, 세션별 작업 기록, Next Steps |
 
 ## 2. 기존 코드 (구현 참고)
 
@@ -36,7 +36,7 @@
 | `data/crawled/_report.md` | 크롤링 리포트 (Missing Elements, 링크 맵) |
 | `data/crawled/_summary.json` | 크롤링 요약 (10페이지) |
 | `data/crawled/*.json` | 개별 페이지 크롤링 데이터 |
-| `docs/60-crawl-analysis-and-stage3-plan.md` | 크롤링 분석 + Stage 3-5 상세 계획 |
+| `docs/strategy/60-crawl-analysis-and-stage3-plan.md` | 크롤링 분석 + Stage 3-5 상세 계획 |
 
 ---
 
@@ -56,12 +56,12 @@ C:\Users\admin\Desktop\Mkt Geo Study
 - 서버: uvicorn apps.api.main:app --port 8010
 
 ## 해야 할 일
-docs/40-backlog.md의 Phase 2 섹션(US-026~035)을 Slice 5→6→7→8→9→10 순서로 구현.
-각 Slice 완료 시 docs/80-progress.md와 docs/90-log.md를 업데이트.
+docs/engineering/40-backlog.md의 Phase 2 섹션(US-026~035)을 Slice 5→6→7→8→9→10 순서로 구현.
+각 Slice 완료 시 docs/tracking/80-progress.md와 docs/tracking/90-log.md를 업데이트.
 
 ## 반드시 먼저 읽을 파일 (순서대로)
-1. docs/70-content-dev-plan.md — 전체 개발 계획 (비주얼 컴포넌트 6종, Stage별 보강/신규 매핑)
-2. docs/40-backlog.md — Phase 2 백로그 (US-026~035, 하단 "Phase 2" 섹션)
+1. docs/strategy/70-content-dev-plan.md — 전체 개발 계획 (비주얼 컴포넌트 6종, Stage별 보강/신규 매핑)
+2. docs/engineering/40-backlog.md — Phase 2 백로그 (US-026~035, 하단 "Phase 2" 섹션)
 3. apps/api/seed.py — 현재 콘텐츠 구조 (add_module/add_step/add_option 패턴)
 4. apps/web/css/style.css — 현재 CSS (비주얼 컴포넌트 추가 위치 확인)
 5. apps/api/database.py — DB 스키마 (Stage 3-5 unlock_condition 지원 확인)
@@ -86,7 +86,7 @@ docs/40-backlog.md의 Phase 2 섹션(US-026~035)을 Slice 5→6→7→8→9→10
 - 작업: 기존 14개 reading 스텝의 content_md에 인라인 HTML 비주얼 삽입
 - Stage 1 (M1-1~M1-7): 각 모듈 reading 스텝에 browser-mockup/compare-cards/diagram-box 추가
 - Stage 2 (M2-1~M2-7): data/crawled/ 실제 크롤링 데이터 기반 비주얼 추가
-- 모듈별 매핑은 docs/70-content-dev-plan.md "2. Stage 1~2 비주얼 보강" 섹션 참조
+- 모듈별 매핑은 docs/strategy/70-content-dev-plan.md "2. Stage 1~2 비주얼 보강" 섹션 참조
 - extension_md 없던 스텝에 신규 추가 (9→~21개)
 - 주의: quiz/practice 스텝 구조, 옵션, 피드백은 절대 변경하지 않음
 - 검증: python -m apps.api.seed && pytest tests/ && 서버 시작 후 브라우저 확인
@@ -181,8 +181,8 @@ docs/40-backlog.md의 Phase 2 섹션(US-026~035)을 Slice 5→6→7→8→9→10
 3. uvicorn apps.api.main:app --port 8010 (서버 시작)
 4. 브라우저에서 해당 Stage reading 스텝 확인 (비주얼 렌더링)
 5. 다크모드 토글 확인
-6. docs/80-progress.md 해당 Slice 상태 업데이트 (⬜→✅)
-7. docs/90-log.md에 작업 로그 추가
+6. docs/tracking/80-progress.md 해당 Slice 상태 업데이트 (⬜→✅)
+7. docs/tracking/90-log.md에 작업 로그 추가
 
 ## 주의사항
 - app.js는 수정하지 않음 (비주얼은 CSS만으로 처리)

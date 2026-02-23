@@ -1,7 +1,7 @@
 # 74 — Railway Deployment Runbook
 
 관련 구현 문서:
-- Railway 코드 변경 상세: `docs/76-railway-code-changes.md`
+- Railway 코드 변경 상세: `docs/ops/76-railway-code-changes.md`
 
 ## 1) 목표
 

@@ -1,5 +1,5 @@
-> **⚠️ 이 문서는 폐기되었습니다.** Stage 6은 `docs/73-geo-action-plan.md` 기반으로 재구성되었습니다.
-> 새 설계: `docs/77-stage6-curriculum-design.md` 참조.
+> **⚠️ 이 문서는 폐기되었습니다.** Stage 6은 `docs/strategy/73-geo-action-plan.md` 기반으로 재구성되었습니다.
+> 새 설계: `docs/strategy/77-stage6-curriculum-design.md` 참조.
 
 # 75 — Stage 6 시드 콘텐츠 준비 프로세스 (LLM Handoff) — ~~DEPRECATED~~
 
@@ -40,9 +40,9 @@
 |---|---|---|
 | `materials/b2b.fastcampus.co.kr를 위한 GEO 심층 리서치 및 90일 실행 로드맵.md` | L1~L5 온사이트, 오프사이트, 측정, 90일 로드맵 | M6-2~M6-7 과업 축 |
 | `materials/strategy/b2b.fastcampus.co.kr GEO 가시성 극대화 전략서.md` | 실행 우선순위, 페이지/채널 매핑 | M6-2, M6-5, M6-6 |
-| `docs/73-geo-action-plan.md` | 90일 액션 아이템과 KPI 구조 | M6-1 운영 리듬, M6-7 제출물 |
+| `docs/strategy/73-geo-action-plan.md` | 90일 액션 아이템과 KPI 구조 | M6-1 운영 리듬, M6-7 제출물 |
 | `data/crawled/*.json`, `_report.md` | 실제 사이트 구조/링크/스키마 이슈 | M6-2~M6-4 실무 시나리오 |
-| `docs/71-stage6-task-module-strategy.md` | 전략 축과 모듈 매핑 원칙 | Stage 6 모듈 골격 |
+| `docs/archive/deprecated/71-stage6-task-module-strategy.md` | 전략 축과 모듈 매핑 원칙 | Stage 6 모듈 골격 |
 
 ### 3-2. 선별 기준
 
@@ -178,7 +178,7 @@ Stage 6를 개정/확장할 때 아래 순서를 고정한다.
 5. 옵션 4지선다 + 피드백 품질 규칙 반영
 6. `seed.py`에서 `order_idx` 충돌 없이 반영
 7. `tests/test_phase2.py`에 수량/호환성/품질 검증 추가
-8. `docs/71`, `docs/75`, `docs/90-log` 동기화
+8. `docs/archive/deprecated/71-stage6-task-module-strategy.md`, `docs/archive/deprecated/75-stage6-seed-content-preparation.md`, `docs/tracking/90-log.md` 동기화
 
 ---
 
@@ -208,7 +208,7 @@ Stage 6를 개정/확장할 때 아래 순서를 고정한다.
 - [ ] M6-7 평가 호환성(quiz 포함) 확인
 - [ ] 피드백 품질 규칙(길이/존댓말/설명성) 확인
 - [ ] 테스트 케이스 업데이트 반영
-- [ ] 전략 문서(`docs/71`)와 제작 근거 문서(`docs/75`) 동시 갱신
+- [ ] 전략 문서(`docs/archive/deprecated/71-stage6-task-module-strategy.md`)와 제작 근거 문서(`docs/archive/deprecated/75-stage6-seed-content-preparation.md`) 동시 갱신
 
 ---
 
