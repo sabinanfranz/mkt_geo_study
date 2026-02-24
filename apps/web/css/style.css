@@ -1402,7 +1402,7 @@ main {
 
 [data-theme="dark"] .feedback p,
 [data-theme="dark"] .feedback-md p {
-  color: #d0d0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .feedback-md code {
@@ -1424,7 +1424,7 @@ main {
 [data-theme="dark"] .reading-card p,
 [data-theme="dark"] .reading-card li,
 [data-theme="dark"] .quiz-question p {
-  color: #d0d0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .reading-card h1,
@@ -1457,13 +1457,13 @@ main {
 
 [data-theme="dark"] .reading-card th {
   background: #16213e;
-  color: #d0d0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .reading-card th,
 [data-theme="dark"] .reading-card td {
   border-color: #2a3a5c;
-  color: #d0d0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .reading-card strong {
@@ -1512,7 +1512,7 @@ main {
 
 [data-theme="dark"] .extension-content p,
 [data-theme="dark"] .extension-content li {
-  color: #c0c0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .extension-content strong {
@@ -1556,7 +1556,7 @@ main {
 }
 
 [data-theme="dark"] .extension-content td {
-  color: #c0c0d0;
+  color: #f1f5f9;
 }
 
 [data-theme="dark"] .extension-content .callout,
@@ -2248,6 +2248,18 @@ main {
   font-size: inherit;
 }
 
+.code-example,
+.code-example pre,
+.code-example pre code,
+.code-example pre code * {
+  color: var(--code-block-fg) !important;
+}
+
+.code-example .code-label,
+.code-example .code-label * {
+  color: var(--code-label-fg) !important;
+}
+
 .log-example {
   margin: 16px 0;
   border-radius: 10px;
@@ -2273,6 +2285,19 @@ main {
   background: none;
   color: var(--log-block-fg);
   padding: 0;
+}
+
+.log-example,
+.log-example pre,
+.log-example pre code,
+.log-example pre code * {
+  color: var(--log-block-fg) !important;
+}
+
+.browser-body pre,
+.browser-body pre code,
+.browser-body pre code * {
+  color: var(--log-block-fg) !important;
 }
 
 /* Override: .code-example inside any parent context (.reading-card, .extension-content, .quiz-card, .feedback-md)
