@@ -3417,6 +3417,7 @@ def seed(run_migrations: bool = True) -> None:
         '<span class="browser-url">search.google.com/search-console</span>\n'
         "</div>\n"
         '<div class="browser-body">\n'
+        '<div class="log-example">\n'
         "<pre>\n"
         "URL Inspection Result\n"
         "---------------------\n"
@@ -3426,6 +3427,7 @@ def seed(run_migrations: bool = True) -> None:
         "Crawled: 2026-02-18\n"
         "Rich Results: FAQ detected (valid)\n"
         "</pre>\n"
+        "</div>\n"
         "</div>\n"
         "</div>\n\n"
         '<div class="callout tip">\n'
@@ -3671,6 +3673,7 @@ def seed(run_migrations: bool = True) -> None:
         '<span class="browser-url">chatgpt.com</span>\n'
         "</div>\n"
         '<div class="browser-body">\n'
+        '<div class="log-example">\n'
         "<pre>\n"
         "Q: B2B 기업교육 추천 서비스 알려줘\n\n"
         "A: B2B 기업교육 서비스를 추천드리겠습니다.\n\n"
@@ -3680,6 +3683,7 @@ def seed(run_migrations: bool = True) -> None:
         "   - [출처: b2b.fastcampus.co.kr]  &lt;-- 인용 확인!\n\n"
         "2. ...\n"
         "</pre>\n"
+        "</div>\n"
         "</div>\n"
         "</div>\n\n"
         '<div class="callout key-point">\n'
